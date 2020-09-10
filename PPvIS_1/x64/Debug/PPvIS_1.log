@@ -1,0 +1,4 @@
+﻿  matrix.cpp
+  PPvIS_1.cpp
+D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\PPvIS_1.cpp(10,8): error C2676: бинарный "++": "Matrix" не определяет этот оператор или преобразование к типу приемлемо к встроенному оператору
+  Создание кода...

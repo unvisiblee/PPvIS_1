@@ -4,14 +4,21 @@ using namespace std;
 
 class Matrix {
 public:
-	Matrix();
+	Matrix(int lines, int columns);
 	~Matrix();
+	Matrix& operator ++ ();
+	Matrix& operator -- ();
+	void Print();
 	void setRowsNum(unsigned int);  
 	void setColumnsNum(unsigned int);
 	Matrix* loadMatrixFromFile(const string&);
 	Matrix* extractSubMatrix(unsigned int,unsigned int);
 	string getMatrixType();
 	Matrix* transpose();
+
 private:
 	// all other methods here
+	int lines;
+	int columns;
+	int** matrix;
 };
