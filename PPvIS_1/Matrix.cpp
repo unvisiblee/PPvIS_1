@@ -1,6 +1,5 @@
 #include "Matrix.h"
 #include <iostream>
-#include <ctime>
 
 Matrix::Matrix(int lines, int columns)
 {
@@ -17,7 +16,19 @@ Matrix::Matrix(int lines, int columns)
 
 }
 
-Matrix::~Matrix()
+Matrix::Matrix(const Matrix& other) // shit copy constructor (to remake)
+{
+	this->matrix = new int* [this->lines];
+	for (int i = 0; i < this->lines; i++)
+		matrix[i] = new int[this->columns];
+
+	for (int i = 0; i < this->lines; i++)
+		for (int k = 0; k < this->columns; k++)
+			this->matrix[i][k] = other.matrix[i][k];
+
+}
+
+Matrix::~Matrix() //clean memory destructor
 {
 	for (int i = 0; i < lines; i++)
 		delete[]matrix[i];
@@ -25,7 +36,7 @@ Matrix::~Matrix()
 	delete[]matrix;
 }
 
-Matrix& Matrix::operator++()
+Matrix& Matrix::operator++() // prefix
 {
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
@@ -34,8 +45,30 @@ Matrix& Matrix::operator++()
 	return *this;
 }
 
-Matrix& Matrix::operator--()
+Matrix& Matrix::operator++(int a) // postfix
 {
+	Matrix temp(*this);
+
+	for (int i = 0; i < lines; i++)
+		for (int k = 0; k < columns; k++)
+			matrix[i][k] += 1;
+
+	return *this;
+}
+
+Matrix& Matrix::operator--() // prefix
+{
+	for (int i = 0; i < lines; i++)
+		for (int k = 0; k < columns; k++)
+			matrix[i][k] -= 1;
+
+	return *this;
+}
+
+Matrix& Matrix::operator--(int a) // postfix
+{
+	Matrix temp(*this);
+
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
 			matrix[i][k] -= 1;
@@ -80,5 +113,8 @@ string Matrix::getMatrixType()
 
 Matrix* Matrix::transpose()
 {
-	return nullptr;
+	int temp;
+
+
+	return this;
 }

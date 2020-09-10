@@ -5,9 +5,12 @@ using namespace std;
 class Matrix {
 public:
 	Matrix(int lines, int columns);
+	Matrix(const Matrix& other);
 	~Matrix();
 	Matrix& operator ++ ();
+	Matrix& operator ++ (int a);
 	Matrix& operator -- ();
+	Matrix& operator--(int a);
 	void Print();
 	void setRowsNum(unsigned int);  
 	void setColumnsNum(unsigned int);
