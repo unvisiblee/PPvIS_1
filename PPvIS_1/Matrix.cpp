@@ -1,12 +1,12 @@
 #include "Matrix.h"
 #include <iostream>
 
-Matrix::Matrix(int lines, int columns)
+Matrix::Matrix(int l, int c)
 {
-	this->lines = lines;
-	this->columns = columns;
+	lines = l;
+	columns = c;
 
-	this->matrix = new int* [lines];
+	matrix = new int* [lines];
 	for (int i = 0; i < lines; i++)
 		matrix[i] = new int[columns];
 
@@ -18,12 +18,15 @@ Matrix::Matrix(int lines, int columns)
 
 Matrix::Matrix(const Matrix& other) // shit copy constructor (to remake)
 {
-	this->matrix = new int* [this->lines];
-	for (int i = 0; i < this->lines; i++)
-		matrix[i] = new int[this->columns];
+	this->columns = other.columns;
+	this->lines = other.lines;
 
-	for (int i = 0; i < this->lines; i++)
-		for (int k = 0; k < this->columns; k++)
+	this->matrix = new int* [lines];
+	for (int i = 0; i < lines; i++)
+		matrix[i] = new int[columns];
+
+	for (int i = 0; i < lines; i++)
+		for (int k = 0; k < columns; k++)
 			this->matrix[i][k] = other.matrix[i][k];
 
 }
@@ -47,7 +50,7 @@ Matrix& Matrix::operator++() // prefix
 
 Matrix& Matrix::operator++(int a) // postfix
 {
-	Matrix temp(*this);
+	Matrix temp = *this;
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
@@ -67,7 +70,7 @@ Matrix& Matrix::operator--() // prefix
 
 Matrix& Matrix::operator--(int a) // postfix
 {
-	Matrix temp(*this);
+	Matrix temp = *this;
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
