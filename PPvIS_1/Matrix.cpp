@@ -79,8 +79,9 @@ Matrix& Matrix::operator--(int a) // postfix
 	return *this;
 }
 
-void Matrix::Print()
+void Matrix::print()
 {
+	cout << "-----------\n";
 	for (int i = 0; i < lines; i++)
 	{
 		for (int k = 0; k < columns; k++)
@@ -91,15 +92,43 @@ void Matrix::Print()
 		
 }
 
-void Matrix::setRowsNum(unsigned int)
-{
+void Matrix::setLinesNum(unsigned int newLinesNum) {
+	int** newMatrix = new int* [newLinesNum];
+	for (int i = 0; i < newLinesNum; i++)
+		newMatrix[i] = new int[this->columns];
+
+	for (int i = 0; i < newLinesNum; i++)
+		for (int j = 0; j < this->columns; j++) {
+			if (this->lines <= i)
+				newMatrix[i][j] = 0;
+			else
+				newMatrix[i][j] = this->matrix[i][j];
+		}
+
+	delete this->matrix;
+	this->matrix = newMatrix;
+	this->lines = newLinesNum;
 }
 
-void Matrix::setColumnsNum(unsigned int)
-{
+void Matrix::setColumnsNum(unsigned int newColumnsNum) {
+	int** newMatrix = new int* [this->lines];
+	for (int i = 0; i < this->lines; i++)
+		newMatrix[i] = new int[newColumnsNum];
+
+	for (int i = 0; i < this->lines; i++)
+		for (int j = 0; j < newColumnsNum; j++) {
+			if (this->columns <= j)
+				newMatrix[i][j] = 0;
+			else
+				newMatrix[i][j] = this->matrix[i][j];
+		}
+
+	delete this->matrix;
+	this->matrix = newMatrix;
+	this->columns = newColumnsNum;
 }
 
-Matrix* Matrix::loadMatrixFromFile(const string&)
+Matrix* Matrix::loadMatrixFromFile(const string& filepath)
 {
 	return nullptr;
 }

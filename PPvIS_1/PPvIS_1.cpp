@@ -9,12 +9,20 @@ int main()
 {
     srand(time(NULL));
     Matrix mat(3, 3);
-    mat.Print();
+    mat.print();
     ++mat;
     cout << endl;
-    mat.Print();
+    mat.print();
     mat++;
-    mat.Print();
+    mat.print();
+    mat.setLinesNum(5);
+    mat.print();
+    mat.setColumnsNum(10);
+    mat.print();
+    mat.setLinesNum(3);
+    mat.print();
+    mat.setColumnsNum(3);
+    mat.print();
 
     return 0;
 }

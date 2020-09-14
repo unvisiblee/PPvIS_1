@@ -1,3 +1,3 @@
-﻿  matrix.cpp
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(119,6): warning C4101: temp: неиспользованная локальная переменная
-  PPvIS_1.vcxproj -> D:\study\2course\3sem\PPVISlab\PPvIS_1\x64\Debug\PPvIS_1.exe
+﻿  PPvIS_1.cpp
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\PPvIS_1.cpp(10,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  PPvIS_1.vcxproj -> C:\Users\bobaw\Desktop\PPvIS_1\x64\Debug\PPvIS_1.exe

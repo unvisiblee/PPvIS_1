@@ -11,8 +11,8 @@ public:
 	Matrix& operator ++ (int a);
 	Matrix& operator -- ();
 	Matrix& operator--(int a);
-	void Print();
-	void setRowsNum(unsigned int);  
+	void print();
+	void setLinesNum(unsigned int);  
 	void setColumnsNum(unsigned int);
 	Matrix* loadMatrixFromFile(const string&);
 	Matrix* extractSubMatrix(unsigned int,unsigned int);
