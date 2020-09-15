@@ -19,11 +19,15 @@ int main()
     mat.print();
     mat.setColumnsNum(10);
     mat.print();
-    mat.setLinesNum(3);
+    mat.setLinesNum(5);
     mat.print();
-    mat.setColumnsNum(3);
+    mat.setColumnsNum(5);
     mat.print();
-    cout << mat[1][1];
+    mat.transpose();
+    mat.print();
+    Matrix test = mat.extractSubMatrix(2, 6);
+    test.print();
+    
 
     return 0;
 }

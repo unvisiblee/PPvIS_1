@@ -79,6 +79,13 @@ Matrix& Matrix::operator--(int a) // postfix
 	return *this;
 }
 
+
+int* Matrix::operator[](unsigned int i) {
+	if (i > this->lines)
+		throw "Index is out of bounds!";
+	else return this->matrix[i];
+}
+
 void Matrix::print()
 {
 	cout << "-----------\n";
@@ -133,9 +140,18 @@ Matrix* Matrix::loadMatrixFromFile(const string& filepath)
 	return nullptr;
 }
 
-Matrix* Matrix::extractSubMatrix(unsigned int, unsigned int)
-{
-	return nullptr;
+
+Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns) {
+	if (lines > this->lines || columns > this->columns)
+		throw "Index out of bounds!";
+
+	Matrix newMatrix(lines, columns);
+
+	for (int i = 0; i < lines; i++)
+		for (int j = 0; j < columns; j++)
+			newMatrix[i][j] = matrix[i][j];
+
+	return newMatrix;
 }
 
 string Matrix::getMatrixType()
@@ -143,15 +159,18 @@ string Matrix::getMatrixType()
 	return string();
 }
 
-Matrix* Matrix::transpose()
-{
-	int temp;
+void Matrix::transpose() {
+	int** newMatrix = new int* [this->columns];
+	for (int i = 0; i < this->columns; i++)
+		newMatrix[i] = new int[this->lines];
 
-	return this;
+	for (int i = 0; i < this->lines; i++)
+		for (int j = 0; j < this->columns; j++) {
+			newMatrix[j][i] = this->matrix[i][j];
+		}
+	
+	delete this->matrix;
+	this->matrix = newMatrix;
+	swap(this->columns, this->lines);
 }
 
-int* Matrix::operator[](unsigned int i) {
-	if (i > this->lines)
-		throw "Index is out of bounds!";
-	else return this->matrix[i];
-}

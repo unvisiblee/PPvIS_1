@@ -16,9 +16,9 @@ public:
 	void setLinesNum(unsigned int);  
 	void setColumnsNum(unsigned int);
 	Matrix* loadMatrixFromFile(const string&);
-	Matrix* extractSubMatrix(unsigned int,unsigned int);
+	Matrix extractSubMatrix(unsigned int,unsigned int);
 	string getMatrixType();
-	Matrix* transpose();
+	void transpose();
 
 private:
 	// all other methods here
