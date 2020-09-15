@@ -14,7 +14,7 @@ Matrix::Matrix(int l, int c)
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			matrix[i][k] = rand() % 2;
+			matrix[i][k] = rand() % 30 - 15;
 
 }
 
@@ -188,6 +188,21 @@ Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns) {
 	return newMatrix;
 }
 
+void Matrix::transpose() {
+	int** newMatrix = new int* [this->columns];
+	for (int i = 0; i < this->columns; i++)
+		newMatrix[i] = new int[this->lines];
+
+	for (int i = 0; i < this->lines; i++)
+		for (int j = 0; j < this->columns; j++) {
+			newMatrix[j][i] = this->matrix[i][j];
+		}
+
+	delete this->matrix;
+	this->matrix = newMatrix;
+	swap(this->columns, this->lines);
+}
+
 string Matrix::getMatrixType()
 {
 	string result = "";
@@ -237,24 +252,47 @@ string Matrix::getMatrixType()
 		result = "Diagonal ";
 	}
 
-	
+	if (diagonal)
+	{
+		int ones = 0;
+		int k = 0;
+		for (int i = 0; i < this->lines; i++)
+		{
+			if (this->matrix[i][k] == 1)
+			{
+				ones++;
+			}
+			k++;
+		}
+
+		if (ones == this->columns)
+		{
+			result += "Identity "
+		}
+	}
+
+	int zeros = 0;
+	for (int i = 0; i < this->lines; i++)
+	{
+		for (int k = 0; k < this->columns; k++)
+		{
+			if (this->matrix[i][k] == 0)
+			{
+				zeros++;
+			}
+		}
+	}
+
+	if (zeros == this->columns * this->lines)
+	{
+		result += "Null ";
+	}
+
+	/*symmetric ===> this mat == transpose mat*/
 
 	return "Matrix type is " + result + "\n";
 }
 
-void Matrix::transpose() {
-	int** newMatrix = new int* [this->columns];
-	for (int i = 0; i < this->columns; i++)
-		newMatrix[i] = new int[this->lines];
 
-	for (int i = 0; i < this->lines; i++)
-		for (int j = 0; j < this->columns; j++) {
-			newMatrix[j][i] = this->matrix[i][j];
-		}
-	
-	delete this->matrix;
-	this->matrix = newMatrix;
-	swap(this->columns, this->lines);
-}
 
 

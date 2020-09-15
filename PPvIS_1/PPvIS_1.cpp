@@ -11,6 +11,10 @@ int main()
     Matrix mat(2, 2);
     Matrix loaded = mat.loadMatrixFromFile("matrix.txt");
     loaded.print();
+    Matrix mat(3, 3);
+    mat.print();
+    string type = mat.getMatrixType();
+    cout << type;
 
     return 0;
 }
