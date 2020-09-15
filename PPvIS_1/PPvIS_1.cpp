@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
     srand(time(NULL));
-    Matrix mat(3, 3);
+    Matrix mat(2, 2);
     mat.print();
     string type = mat.getMatrixType();
     cout << type;

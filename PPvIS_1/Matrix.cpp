@@ -201,6 +201,10 @@ string Matrix::getMatrixType()
 		{
 			diagonal = true;
 		}
+		else
+		{
+			diagonal = false;
+		}
 	}
 
 	if (diagonal)
