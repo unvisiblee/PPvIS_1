@@ -267,7 +267,7 @@ string Matrix::getMatrixType()
 
 		if (ones == this->columns)
 		{
-			result += "Identity "
+			result += "Identity ";
 		}
 	}
 
