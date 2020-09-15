@@ -12,11 +12,11 @@ Matrix::Matrix(int l, int c)
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			matrix[i][k] = rand() % 30 - 15;
+			matrix[i][k] = rand() % 2;
 
 }
 
-Matrix::Matrix(const Matrix& other) // shit copy constructor (to remake)
+Matrix::Matrix(const Matrix& other) // copy constructor
 {
 	this->columns = other.columns;
 	this->lines = other.lines;
@@ -135,11 +135,20 @@ void Matrix::setColumnsNum(unsigned int newColumnsNum) {
 	this->columns = newColumnsNum;
 }
 
+int Matrix::getLines()
+{
+	return this->lines;
+}
+
+int Matrix::getColumns()
+{
+	return this->columns;
+}
+
 Matrix* Matrix::loadMatrixFromFile(const string& filepath)
 {
 	return nullptr;
 }
-
 
 Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns) {
 	if (lines > this->lines || columns > this->columns)
@@ -156,7 +165,52 @@ Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns) {
 
 string Matrix::getMatrixType()
 {
-	return string();
+	string result = "";
+
+	if (this->columns == this->lines)
+	{
+		result += "Square ";
+	}
+
+	bool diagonal;
+
+	if (result != "Square ")
+	{
+		diagonal = false;
+	}
+	else
+	{
+		int zeros = 0;
+		for (int i = 0; i < this->lines; i++)
+		{
+			for (int k = 0; k < this->columns; k++)
+			{
+				if (i == k)
+				{
+					continue;
+				}
+
+				if (this->matrix[i][k] == 0)
+				{
+					zeros++;
+				}
+			}
+		}
+
+		if (zeros == (this->lines * this->columns - this->columns))
+		{
+			diagonal = true;
+		}
+	}
+
+	if (diagonal)
+	{
+		result = "Diagonal ";
+	}
+
+	
+
+	return "Matrix type is " + result + "\n";
 }
 
 void Matrix::transpose() {
@@ -173,4 +227,5 @@ void Matrix::transpose() {
 	this->matrix = newMatrix;
 	swap(this->columns, this->lines);
 }
+
 

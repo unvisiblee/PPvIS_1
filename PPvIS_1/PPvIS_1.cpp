@@ -10,24 +10,8 @@ int main()
     srand(time(NULL));
     Matrix mat(3, 3);
     mat.print();
-    ++mat;
-    cout << endl;
-    mat.print();
-    mat++;
-    mat.print();
-    mat.setLinesNum(5);
-    mat.print();
-    mat.setColumnsNum(10);
-    mat.print();
-    mat.setLinesNum(5);
-    mat.print();
-    mat.setColumnsNum(5);
-    mat.print();
-    mat.transpose();
-    mat.print();
-    Matrix test = mat.extractSubMatrix(2, 3);
-    test.print();
-    // 11^32 15.09
+    string type = mat.getMatrixType();
+    cout << type;
 
     return 0;
 }

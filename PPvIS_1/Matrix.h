@@ -19,6 +19,8 @@ public:
 	Matrix extractSubMatrix(unsigned int,unsigned int);
 	string getMatrixType();
 	void transpose();
+	int getLines();
+	int getColumns();
 
 private:
 	// all other methods here
