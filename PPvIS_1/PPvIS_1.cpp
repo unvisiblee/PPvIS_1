@@ -9,11 +9,9 @@ int main()
 {
     srand(time(NULL));
     Matrix mat(2, 2);
-    Matrix loaded = mat.loadMatrixFromFile("matrix.txt");
-    loaded.print();
-
-    /*string type = mat.getMatrixType();
-    cout << type;*/
-
+    mat.print();
+    //Matrix loaded = mat.loadMatrixFromFile("matrix.txt");
+    cout << mat.getMatrixType();
+ 
     return 0;
 }

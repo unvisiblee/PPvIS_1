@@ -14,7 +14,7 @@ Matrix::Matrix(int l, int c)
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			matrix[i][k] = rand() % 30 - 16;
+			matrix[i][k] = rand() % 2;
 
 }
 
@@ -234,15 +234,14 @@ void Matrix::transpose() {
 string Matrix::getMatrixType()
 {
 	string result = "";
-
+	bool square = false;
 	if (this->columns == this->lines)
 	{
-		result += "Square ";
+		square = true;
 	}
 
 	bool diagonal;
-
-	if (result != "Square ")
+	if (!square)
 	{
 		diagonal = false;
 	}
@@ -275,11 +274,7 @@ string Matrix::getMatrixType()
 		}
 	}
 
-	if (diagonal)
-	{
-		result = "Diagonal ";
-	}
-
+	bool identity = false;
 	if (diagonal)
 	{
 		int ones = 0;
@@ -295,25 +290,20 @@ string Matrix::getMatrixType()
 
 		if (ones == this->columns)
 		{
-			result += "Identity ";
+			identity = true;
 		}
 	}
 
-	int zeros = 0;
+	bool nullM = true;
 	for (int i = 0; i < this->lines; i++)
 	{
 		for (int k = 0; k < this->columns; k++)
 		{
-			if (this->matrix[i][k] == 0)
+			if (this->matrix[i][k] != 0)
 			{
-				zeros++;
+				nullM = false;
 			}
 		}
-	}
-
-	if (zeros == (this->columns * this->lines))
-	{
-		result += "Null ";
 	}
 
 	/*Matrix trans = this->transpose();
@@ -322,7 +312,8 @@ string Matrix::getMatrixType()
 		result += "Symmetric ";
 	}*/
 
-	if (this->columns == this->lines)
+	bool symmetricM = false;
+	if (square)
 	{
 		int symmetric = 0;
 		for (int i = 0; i < this->lines; i++)
@@ -342,13 +333,13 @@ string Matrix::getMatrixType()
 		}
 		if (symmetric == this->columns * this->columns - this->columns)
 		{
-			result += "Symmetric ";
+			symmetricM = true ;
 		}
 	}
 
-	if (this->columns == this->lines)
+	bool upTriangle = true;
+	if (square)
 	{
-		bool upTriangle = false;
 		for (int i = 0; i < this->lines; i++)
 		{
 			for (int j = 0; j < this->columns; j++)
@@ -359,29 +350,55 @@ string Matrix::getMatrixType()
 				}
 			}
 		}
-		if (upTriangle)
-		{
-			result += "Upper Triangle ";
-		}
 	}
 
-	if (this->columns == this->lines)
+	bool downTriangle = true;
+	if (square)
 	{
-		bool downTriangle = false;
 		for (int i = 0; i < this->lines; i++)
 		{
 			for (int j = 0; j < this->columns; j++)
 			{
-				if (i + j > this->columns + this->lines - 2 && this->matrix[i][j] != 0)
+				if ((i + j > this->columns + this->lines - 2) && this->matrix[i][j] != 0)
 				{
 					downTriangle = false;
 				}
 			}
 		}
-		if (downTriangle)
-		{
-			result += "Down Triangle ";
-		}
+	}
+
+	if (downTriangle)
+	{
+		result += "Down Triangle ";
+	}
+	else if (upTriangle)
+	{
+		result += "UpperTriangle ";
+	}
+
+	if (symmetricM)
+	{
+		result += "Symmetric ";
+	}
+
+	if (identity)
+	{
+		result += "Identity ";
+	}
+
+	if (nullM)
+	{
+		result = "Null ";
+	}
+
+	if (diagonal && !nullM)
+	{
+		result += "Diagonal ";
+	}
+
+	if (square && !diagonal && !identity && !symmetricM && !downTriangle && !upTriangle)
+	{
+		result += "Square ";
 	}
 
 	return "Matrix type is " + result + "\n";
