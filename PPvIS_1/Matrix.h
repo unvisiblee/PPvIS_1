@@ -11,6 +11,7 @@ public:
 	Matrix& operator ++ (int a);
 	Matrix& operator -- ();
 	Matrix& operator--(int a);
+	int* operator[](unsigned int i);
 	void print();
 	void setLinesNum(unsigned int);  
 	void setColumnsNum(unsigned int);

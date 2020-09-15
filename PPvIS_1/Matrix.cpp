@@ -147,6 +147,11 @@ Matrix* Matrix::transpose()
 {
 	int temp;
 
-
 	return this;
+}
+
+int* Matrix::operator[](unsigned int i) {
+	if (i > this->lines)
+		throw "Index is out of bounds!";
+	else return this->matrix[i];
 }

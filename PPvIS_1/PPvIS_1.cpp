@@ -23,6 +23,7 @@ int main()
     mat.print();
     mat.setColumnsNum(3);
     mat.print();
+    cout << mat[1][1];
 
     return 0;
 }
