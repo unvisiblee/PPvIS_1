@@ -25,9 +25,9 @@ int main()
     mat.print();
     mat.transpose();
     mat.print();
-    Matrix test = mat.extractSubMatrix(2, 6);
+    Matrix test = mat.extractSubMatrix(2, 3);
     test.print();
-    
+    // 11^32 15.09
 
     return 0;
 }
