@@ -12,7 +12,7 @@ Matrix::Matrix(int l, int c)
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			matrix[i][k] = rand() % 30 - 15;
+			matrix[i][k] = rand() % 30 - 16;
 
 }
 
@@ -37,6 +37,14 @@ Matrix::~Matrix() //clean memory destructor
 		delete[]matrix[i];
 
 	delete[]matrix;
+}
+
+void Matrix::operator=(const Matrix& other)
+{
+	for (int i = 0; i < this->lines; i++)
+		for (int j = 0; j < this->columns; j++)
+			this->matrix[i][j] = other.matrix[i][j];
+
 }
 
 Matrix& Matrix::operator++() // prefix
@@ -79,6 +87,26 @@ Matrix& Matrix::operator--(int a) // postfix
 	return *this;
 }
 
+bool Matrix::operator==(Matrix& other)
+{
+	if (this->lines != other.getLines() || this->columns != other.getColumns())
+	{
+		return false;
+	}
+
+	for (int i = 0; i < this->lines; i++)
+	{
+		for (int k = 0; k < this->columns; k++)
+		{
+			if (this->matrix[i][k] != other.matrix[i][k])
+			{
+				return false;
+			}
+		}
+	}
+	
+	return true;
+}
 
 int* Matrix::operator[](unsigned int i) {
 	if (i > this->lines)
@@ -169,13 +197,13 @@ void Matrix::transpose() {
 		newMatrix[i] = new int[this->lines];
 
 	for (int i = 0; i < this->lines; i++)
-		for (int j = 0; j < this->columns; j++) {
+		for (int j = 0; j < this->columns; j++)
 			newMatrix[j][i] = this->matrix[i][j];
-		}
 
 	delete this->matrix;
 	this->matrix = newMatrix;
 	swap(this->columns, this->lines);
+
 }
 
 string Matrix::getMatrixType()
@@ -242,7 +270,7 @@ string Matrix::getMatrixType()
 
 		if (ones == this->columns)
 		{
-			result += "Identity "
+			result += "Identity ";
 		}
 	}
 
@@ -258,16 +286,78 @@ string Matrix::getMatrixType()
 		}
 	}
 
-	if (zeros == this->columns * this->lines)
+	if (zeros == (this->columns * this->lines))
 	{
 		result += "Null ";
 	}
 
-	/*symmetric ===> this mat == transpose mat*/
+	/*Matrix trans = this->transpose();
+	if (this->operator==(trans))
+	{
+		result += "Symmetric ";
+	}*/
+
+	if (this->columns == this->lines)
+	{
+		int symmetric = 0;
+		for (int i = 0; i < this->lines; i++)
+		{ 
+			for (int j = 0; j < this->columns; j++)
+			{
+				if (i == j)
+				{
+					continue;
+				}
+
+				if (this->matrix[j][i] = this->matrix[i][j])
+				{
+					symmetric++;
+				}
+			}
+		}
+		if (symmetric == this->columns * this->columns - this->columns)
+		{
+			result += "Symmetric ";
+		}
+	}
+
+	if (this->columns == this->lines)
+	{
+		bool upTriangle = false;
+		for (int i = 0; i < this->lines; i++)
+		{
+			for (int j = 0; j < this->columns; j++)
+			{
+				if (i + j < this->columns + this->lines - 2 && this->matrix[i][j] != 0)
+				{
+					upTriangle = false;
+				}
+			}
+		}
+		if (upTriangle)
+		{
+			result += "Upper Triangle ";
+		}
+	}
+
+	if (this->columns == this->lines)
+	{
+		bool downTriangle = false;
+		for (int i = 0; i < this->lines; i++)
+		{
+			for (int j = 0; j < this->columns; j++)
+			{
+				if (i + j > this->columns + this->lines - 2 && this->matrix[i][j] != 0)
+				{
+					downTriangle = false;
+				}
+			}
+		}
+		if (downTriangle)
+		{
+			result += "Down Triangle ";
+		}
+	}
 
 	return "Matrix type is " + result + "\n";
 }
-
-
-
-

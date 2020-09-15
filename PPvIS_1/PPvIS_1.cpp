@@ -8,10 +8,13 @@ using namespace std;
 int main()
 {
     srand(time(NULL));
+
     Matrix mat(3, 3);
+    cout << "mat: ";
     mat.print();
-    string type = mat.getMatrixType();
-    cout << type;
+
+    /*string type = mat.getMatrixType();
+    cout << type;*/
 
     return 0;
 }
