@@ -1,5 +1,7 @@
 #include "Matrix.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 Matrix::Matrix(int l, int c)
 {
@@ -173,9 +175,32 @@ int Matrix::getColumns()
 	return this->columns;
 }
 
-Matrix* Matrix::loadMatrixFromFile(const string& filepath)
-{
-	return nullptr;
+Matrix Matrix::loadMatrixFromFile(const string& filepath) {
+	ifstream fin;
+	fin.open(filepath);
+	if (!fin.is_open())
+		throw "Error while opening file!";
+
+	unsigned int lines, columns;
+	int elem;	
+	string buff;
+	stringstream ss;
+	getline(fin, buff);
+	ss << buff;
+	ss >> lines;
+	ss >> columns;
+	Matrix newMatrix(lines, columns);
+	for (int i = 0; i < lines; i++) {
+		getline(fin, buff);
+		stringstream ss;
+		ss << buff;
+		for (int j = 0; j < columns; j++) {
+			ss >> elem;
+			newMatrix[i][j] = elem;
+		}
+	}
+
+	return newMatrix;
 }
 
 Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns) {

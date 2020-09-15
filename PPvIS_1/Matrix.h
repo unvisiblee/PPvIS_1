@@ -17,8 +17,8 @@ public:
 	void print();
 	void setLinesNum(unsigned int);  
 	void setColumnsNum(unsigned int);
-	Matrix* loadMatrixFromFile(const string&);
-	Matrix extractSubMatrix(unsigned int, unsigned int);
+	Matrix loadMatrixFromFile(const string&);
+	Matrix extractSubMatrix(unsigned int,unsigned int);
 	string getMatrixType();
 	void transpose();
 	int getLines();

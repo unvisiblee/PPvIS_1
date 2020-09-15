@@ -8,10 +8,9 @@ using namespace std;
 int main()
 {
     srand(time(NULL));
-
-    Matrix mat(3, 3);
-    cout << "mat: ";
-    mat.print();
+    Matrix mat(2, 2);
+    Matrix loaded = mat.loadMatrixFromFile("matrix.txt");
+    loaded.print();
 
     /*string type = mat.getMatrixType();
     cout << type;*/
