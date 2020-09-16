@@ -10,37 +10,9 @@
 
 using namespace std;
 
-int main()
+void Menu(Matrix& mat)
 {
-    srand(time(NULL));
-    int create;
-    cout << "Enter the number of columns: ";
-    int columns;
-    cin >> columns;
-    cout << "and lines: ";
-    int lines;
-    cin >> lines;
-    cout << "Choose how to init matrix:\n1 - Filling with random numbers\n2 - Loading from file\n3 - Filling manual\n";
-    cin >> create;
-    Matrix mat(lines, columns);
-    
-    if (create == 1)
-    {
-        Matrix mat(lines, columns);
-    }
-    else if (create == 2)
-    {
-        Matrix mat = mat.loadMatrixFromFile("matrix.txt");
-    }
-    else if (create == 3)
-    {
-        Matrix mat(lines, columns);
-        cin >> mat;
-    }
-
     int mode = 0;
-    cout << "Choose what to do:\n1 - Print Matrix\n2 - Operator ++ (postfix)\n3 - Operator ++ (prefix)\n4 - Operator -- (postfix)\n5 - Operator -- (prefix)\n6 - Operator ==\n7 - Operator []\n8 - Set number of lines\n9 - Set number of columns\n10 - extract SubMatrix\n11 - Transpose\n12 - get Matrix type\n13 - exit\n";
-    cin >> mode;
 
     while (true)
     {
@@ -120,7 +92,7 @@ int main()
             cout << "Enter the index (lines, columns): ";
             cin >> index1;
             cin >> index2;
-            cout << "Here is your element: " << mat[index1][index2];
+            cout << "Here is your element: " << mat[index1][index2] << endl;
         }
 
         if (mode == 8)
@@ -151,7 +123,7 @@ int main()
 
         if (mode == 11)
         {
-            mat.transpose();
+            mat = mat.transpose();
         }
 
         if (mode == 12)
@@ -163,9 +135,39 @@ int main()
         {
             break;
         }
-
     }
-   
+}
+
+int main()
+{
+    srand(time(NULL));
+    int create;
+    cout << "Enter the number of columns: ";
+    int columns;
+    cin >> columns;
+    cout << "and lines: ";
+    int lines;
+    cin >> lines;
+    cout << "Choose how to init matrix:\n1 - Filling with random numbers\n2 - Loading from file\n3 - Filling manual\n";
+    cin >> create;
+    
+    if (create == 1)
+    {
+        Matrix mat(lines, columns);
+        Menu(mat);
+    }
+    else if (create == 2)
+    {
+        Matrix mat = mat.loadMatrixFromFile("matrix.txt");
+        Menu(mat);
+    }
+    else if (create == 3)
+    {
+        Matrix mat(lines, columns);
+        cin >> mat;
+        Menu(mat);
+    }
+
 
     return 0;
 }
