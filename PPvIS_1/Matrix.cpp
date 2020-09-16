@@ -114,9 +114,20 @@ void Matrix::operator=(const Matrix& other)
 	/*!
 		Перегрузка оператора присваивания передаёт элементы одной матрицы в соответсвующие индексы другой
 	*/
+
+	this->lines = other.lines;
+	this->columns = other.columns;
+	int** newMatrix = new int* [lines];
+	for (int i = 0; i < lines; i++)
+		newMatrix[i] = new int[columns];
+	
+
 	for (int i = 0; i < this->lines; i++)
 		for (int j = 0; j < this->columns; j++)
-			this->matrix[i][j] = other.matrix[i][j];
+			newMatrix[i][j] = other.matrix[i][j];
+
+	delete this->matrix;
+	this->matrix = newMatrix;
 }
 
 Matrix& Matrix::operator++()
