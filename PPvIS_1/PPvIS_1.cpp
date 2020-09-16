@@ -10,7 +10,6 @@ int main()
     srand(time(NULL));
     Matrix mat(2, 2);
     mat.print();
-    //Matrix loaded = mat.loadMatrixFromFile("matrix.txt");
     cout << mat.getMatrixType();
  
     return 0;

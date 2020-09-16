@@ -12,6 +12,8 @@ public:
 	Matrix& operator ++ (int a);
 	Matrix& operator -- ();
 	Matrix& operator--(int a);
+	/*ostream& operator << (ostream& os, Matrix& p);
+	istream& operator >> (istream& in, Matrix& p);*/
 	bool operator==(Matrix& other);
 	int* operator[](unsigned int i);
 	void print();

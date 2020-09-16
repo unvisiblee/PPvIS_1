@@ -41,6 +41,16 @@ Matrix::~Matrix() //clean memory destructor
 	delete[]matrix;
 }
 
+int Matrix::getLines()
+{
+	return this->lines;
+}
+
+int Matrix::getColumns()
+{
+	return this->columns;
+}
+
 void Matrix::operator=(const Matrix& other)
 {
 	for (int i = 0; i < this->lines; i++)
@@ -116,6 +126,25 @@ int* Matrix::operator[](unsigned int i) {
 	else return this->matrix[i];
 }
 
+//ostream& operator<<(ostream& os, Matrix& p)
+//{
+//	for (int i = 0; i < p.lines; i++) {
+//		for (int k = 0; k < p.columns; k++)
+//			cout << p.matrix[i][k] << " ";
+//		cout << endl;
+//	}
+//	return os;
+//}
+//
+//istream& operator>>(istream& in, Matrix& p)
+//{
+//	for (int i = 0; i < p.lines; i++) {
+//		for (int k = 0; k < p.columns; k++)
+//			cin >> p.matrix[i][k];
+//	}
+//	return in;
+//}
+
 void Matrix::print()
 {
 	cout << "-----------\n";
@@ -163,16 +192,6 @@ void Matrix::setColumnsNum(unsigned int newColumnsNum) {
 	delete this->matrix;
 	this->matrix = newMatrix;
 	this->columns = newColumnsNum;
-}
-
-int Matrix::getLines()
-{
-	return this->lines;
-}
-
-int Matrix::getColumns()
-{
-	return this->columns;
 }
 
 Matrix Matrix::loadMatrixFromFile(const string& filepath) {
@@ -312,12 +331,11 @@ string Matrix::getMatrixType()
 		result += "Symmetric ";
 	}*/
 
-	bool symmetricM = false;
+	bool symmetricM = true;
 	if (square)
 	{
-		int symmetric = 0;
 		for (int i = 0; i < this->lines; i++)
-		{ 
+		{
 			for (int j = 0; j < this->columns; j++)
 			{
 				if (i == j)
@@ -325,15 +343,11 @@ string Matrix::getMatrixType()
 					continue;
 				}
 
-				if (this->matrix[j][i] = this->matrix[i][j])
+				if (this->matrix[j][i] != this->matrix[i][j])
 				{
-					symmetric++;
+					symmetricM = false;
 				}
 			}
-		}
-		if (symmetric == this->columns * this->columns - this->columns)
-		{
-			symmetricM = true ;
 		}
 	}
 
@@ -344,7 +358,7 @@ string Matrix::getMatrixType()
 		{
 			for (int j = 0; j < this->columns; j++)
 			{
-				if (i + j < this->columns + this->lines - 2 && this->matrix[i][j] != 0)
+				if (i + j > this->lines - 1 && this->matrix[i][j] != 0)
 				{
 					upTriangle = false;
 				}
@@ -359,7 +373,7 @@ string Matrix::getMatrixType()
 		{
 			for (int j = 0; j < this->columns; j++)
 			{
-				if ((i + j > this->columns + this->lines - 2) && this->matrix[i][j] != 0)
+				if (i + j > this->lines - 1 && this->matrix[i][j] != 0)
 				{
 					downTriangle = false;
 				}
@@ -367,11 +381,11 @@ string Matrix::getMatrixType()
 		}
 	}
 
-	if (downTriangle)
+	if (downTriangle && !nullM)
 	{
 		result += "Down Triangle ";
 	}
-	else if (upTriangle)
+	else if (upTriangle && !nullM)
 	{
 		result += "UpperTriangle ";
 	}
