@@ -1,15 +1,15 @@
 ﻿  PPvIS_1.cpp
 C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\PPvIS_1.cpp(10,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   matrix.cpp
-C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(86,8): warning C4018: '>': signed/unsigned mismatch
-C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(106,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(109,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(128,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(165,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(169,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(179,12): warning C4018: '>': signed/unsigned mismatch
-C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(179,37): warning C4018: '>': signed/unsigned mismatch
-C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(184,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(124,8): warning C4018: '>': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(163,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(166,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(185,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(212,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(216,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(226,12): warning C4018: '>': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(226,37): warning C4018: '>': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(231,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(232,21): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   PPvIS_1.vcxproj -> C:\Users\bobaw\Desktop\PPvIS_1\x64\Debug\PPvIS_1.exe

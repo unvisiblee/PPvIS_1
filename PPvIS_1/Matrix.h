@@ -22,7 +22,7 @@ public:
 	Matrix loadMatrixFromFile(const string&);
 	Matrix extractSubMatrix(unsigned int,unsigned int);
 	string getMatrixType();
-	void transpose();
+	Matrix transpose();
 	int getLines();
 	int getColumns();
 
