@@ -7,6 +7,9 @@ using namespace std;
 
 int main()
 {
+    /*!
+        Основной файл с использованием функционала класса Matrix
+    */
     srand(time(NULL));
     Matrix mat(12, 12);
     cout << mat;

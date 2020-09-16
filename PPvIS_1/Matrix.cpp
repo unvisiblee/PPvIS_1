@@ -72,6 +72,9 @@ int Matrix::getColumns()
 
 ostream& operator<<(ostream& os, const Matrix& p)
 {
+	/*!
+		Перегрузка потокового оператора для вывода матрицы в консоль
+	*/
 	cout << "-----------\n";
 	for (int i = 0; i < p.lines; i++)
 	{
@@ -86,6 +89,9 @@ ostream& operator<<(ostream& os, const Matrix& p)
 
 istream& operator>>(istream& in, Matrix& p)
 {
+	/*!
+		Перегрузка потокового оператора для ввода матрицы вручную
+	*/
 	cout << "Fill in the matrix: \n";
 	for (int i = 0; i < p.lines; i++) {
 		for (int k = 0; k < p.columns; k++)
@@ -96,13 +102,19 @@ istream& operator>>(istream& in, Matrix& p)
 
 void Matrix::operator=(const Matrix& other)
 {
+	/*!
+		Перегрузка оператора присваивания передаёт элементы одной матрицы в соответсвующие индексы другой
+	*/
 	for (int i = 0; i < this->lines; i++)
 		for (int j = 0; j < this->columns; j++)
 			this->matrix[i][j] = other.matrix[i][j];
 }
 
-Matrix& Matrix::operator++() // prefix
+Matrix& Matrix::operator++()
 {
+	/*!
+		Префиксный инкремент увеличивает каждый элемент матрицы на единицу
+	*/
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
 			matrix[i][k] += 1;
@@ -112,6 +124,9 @@ Matrix& Matrix::operator++() // prefix
 
 Matrix& Matrix::operator++(int a) // postfix
 {
+	/*!
+		Постфиксный инкремент увеличивает каждый элемент матрицы на единицу
+	*/
 	Matrix temp = *this;
 
 	for (int i = 0; i < lines; i++)
@@ -122,7 +137,9 @@ Matrix& Matrix::operator++(int a) // postfix
 }
 
 Matrix& Matrix::operator--() // prefix
-{
+{	/*!
+		Префиксный декремент уменьшает каждый элемент матрицы на единицу
+	*/
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
 			matrix[i][k] -= 1;
@@ -132,6 +149,9 @@ Matrix& Matrix::operator--() // prefix
 
 Matrix& Matrix::operator--(int a) // postfix
 {
+	/*!
+		Префиксный декремент уменьшает каждый элемент матрицы на единицу
+	*/
 	Matrix temp = *this;
 
 	for (int i = 0; i < lines; i++)
@@ -142,7 +162,9 @@ Matrix& Matrix::operator--(int a) // postfix
 }
 
 bool Matrix::operator==(Matrix& other)
-{
+{	/*!
+		Перегрузка оператора сравнения возвращает true, если матрицы равны и false в ином случае
+	*/
 	if (this->lines != other.getLines() || this->columns != other.getColumns())
 	{
 		return false;
@@ -162,7 +184,11 @@ bool Matrix::operator==(Matrix& other)
 	return true;
 }
 
-int* Matrix::operator[](unsigned int i) {
+int* Matrix::operator[](unsigned int i)
+{
+	/*!
+		Перегрузка оператора [] для доступа к элементу матрицы по индексу
+	*/
 	if (i > this->lines)
 		throw "Index is out of bounds!";
 	else return this->matrix[i];
@@ -170,6 +196,9 @@ int* Matrix::operator[](unsigned int i) {
 
 void Matrix::print()
 {
+	/*!
+		Метод print() выводит матрицу в консоль
+	*/
 	cout << "-----------\n";
 	for (int i = 0; i < lines; i++)
 	{
@@ -216,7 +245,8 @@ void Matrix::setColumnsNum(unsigned int newColumnsNum) {
 	this->columns = newColumnsNum;
 }
 
-Matrix Matrix::loadMatrixFromFile(const string& filepath) {
+Matrix Matrix::loadMatrixFromFile(const string& filepath)
+{
 	ifstream fin;
 	fin.open(filepath);
 	if (!fin.is_open())
@@ -244,7 +274,8 @@ Matrix Matrix::loadMatrixFromFile(const string& filepath) {
 	return newMatrix;
 }
 
-Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns) {
+Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns)
+{
 	if (lines > this->lines || columns > this->columns)
 		throw "Index out of bounds!";
 
@@ -269,6 +300,10 @@ Matrix Matrix::transpose() {
 
 string Matrix::getMatrixType()
 {
+	/*!
+		Метод возвращает строку, которая описывает тип матрицы (квадратная, диагональная, нулевая, единичная, симметрическая,
+верхняя треугольная, нижняя треугольная)
+	*/
 	string result = "";
 	bool square = false;
 	if (this->columns == this->lines)
