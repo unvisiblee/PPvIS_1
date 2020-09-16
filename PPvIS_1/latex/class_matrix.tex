@@ -8,6 +8,8 @@
 \item 
 \hyperlink{class_matrix_abcf708e864ed3d9db2c3b317c5e529ab}{Matrix} (const \hyperlink{class_matrix}{Matrix} \&other)
 \item 
+\hyperlink{class_matrix_a9b1c3627f573d78a2f08623fdfef990f}{$\sim$\-Matrix} ()
+\item 
 void \hyperlink{class_matrix_a3ce481e0324e859ecca287b76e39473c}{operator=} (const \hyperlink{class_matrix}{Matrix} \&other)
 \item 
 \hyperlink{class_matrix}{Matrix} \& \hyperlink{class_matrix_a8507366342ab66e74b5a14226bf99791}{operator++} ()
@@ -24,22 +26,17 @@ int $\ast$ \hyperlink{class_matrix_ae37518aad41f7aa920116dd2ca9a9656}{operator\m
 \item 
 void \hyperlink{class_matrix_a99ba97122b8fdd54e95290caf80fc8e2}{print} ()
 \item 
-\hypertarget{class_matrix_a04d8186abfddfcb928b5f69277a6b66f}{void {\bfseries set\-Lines\-Num} (unsigned int)}\label{class_matrix_a04d8186abfddfcb928b5f69277a6b66f}
-
+void \hyperlink{class_matrix_a04d8186abfddfcb928b5f69277a6b66f}{set\-Lines\-Num} (unsigned int)
 \item 
-\hypertarget{class_matrix_af79f8f1854e16e5279d04a881c21eddb}{void {\bfseries set\-Columns\-Num} (unsigned int)}\label{class_matrix_af79f8f1854e16e5279d04a881c21eddb}
-
+void \hyperlink{class_matrix_af79f8f1854e16e5279d04a881c21eddb}{set\-Columns\-Num} (unsigned int)
 \item 
-\hypertarget{class_matrix_a3097b9717038793d2d73157641e16aef}{\hyperlink{class_matrix}{Matrix} {\bfseries load\-Matrix\-From\-File} (const string \&)}\label{class_matrix_a3097b9717038793d2d73157641e16aef}
-
+\hyperlink{class_matrix}{Matrix} \hyperlink{class_matrix_a3097b9717038793d2d73157641e16aef}{load\-Matrix\-From\-File} (const string \&)
 \item 
-\hypertarget{class_matrix_adc694bfade2852594a5ce3efcf17a616}{\hyperlink{class_matrix}{Matrix} {\bfseries extract\-Sub\-Matrix} (unsigned int, unsigned int)}\label{class_matrix_adc694bfade2852594a5ce3efcf17a616}
-
+\hyperlink{class_matrix}{Matrix} \hyperlink{class_matrix_adc694bfade2852594a5ce3efcf17a616}{extract\-Sub\-Matrix} (unsigned int, unsigned int)
 \item 
 string \hyperlink{class_matrix_a171ca8f5a482ede4adc3a84d10f59da3}{get\-Matrix\-Type} ()
 \item 
-\hypertarget{class_matrix_ae23f817021383e3c8636a714dcba1d21}{\hyperlink{class_matrix}{Matrix} {\bfseries transpose} ()}\label{class_matrix_ae23f817021383e3c8636a714dcba1d21}
-
+\hyperlink{class_matrix}{Matrix} \hyperlink{class_matrix_ae23f817021383e3c8636a714dcba1d21}{transpose} ()
 \item 
 int \hyperlink{class_matrix_acc315708bcdb54795a686b91277f5bdf}{get\-Lines} ()
 \item 
@@ -70,10 +67,25 @@ istream \& \hyperlink{class_matrix_a4e914824d92c87ee5eb20abe65f35ff3}{operator$>
 \item[{const {\bf Matrix} \&}]{other}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_abcf708e864ed3d9db2c3b317c5e529ab}
-Конструктор копирования потом напишу подробнее
+Конструктор копирования создаёт новый объект и копирует в него другой, избегая проблем с памятью\hypertarget{class_matrix_a9b1c3627f573d78a2f08623fdfef990f}{\index{Matrix@{Matrix}!$\sim$\-Matrix@{$\sim$\-Matrix}}
+\index{$\sim$\-Matrix@{$\sim$\-Matrix}!Matrix@{Matrix}}
+\subsubsection[{$\sim$\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\-::$\sim$\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_a9b1c3627f573d78a2f08623fdfef990f}
+Деструктор освобождает память, выделенную для матрицы
 
 \subsection{Методы}
-\hypertarget{class_matrix_a324b4057cd6e2167687e406abd720020}{\index{Matrix@{Matrix}!get\-Columns@{get\-Columns}}
+\hypertarget{class_matrix_adc694bfade2852594a5ce3efcf17a616}{\index{Matrix@{Matrix}!extract\-Sub\-Matrix@{extract\-Sub\-Matrix}}
+\index{extract\-Sub\-Matrix@{extract\-Sub\-Matrix}!Matrix@{Matrix}}
+\subsubsection[{extract\-Sub\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} Matrix\-::extract\-Sub\-Matrix (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{lines, }
+\item[{unsigned int}]{columns}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_adc694bfade2852594a5ce3efcf17a616}
+Возвращает подматрицу заданных размеров\hypertarget{class_matrix_a324b4057cd6e2167687e406abd720020}{\index{Matrix@{Matrix}!get\-Columns@{get\-Columns}}
 \index{get\-Columns@{get\-Columns}!Matrix@{Matrix}}
 \subsubsection[{get\-Columns}]{\setlength{\rightskip}{0pt plus 5cm}int Matrix\-::get\-Columns (
 \begin{DoxyParamCaption}
@@ -96,7 +108,14 @@ istream \& \hyperlink{class_matrix_a4e914824d92c87ee5eb20abe65f35ff3}{operator$>
 )}}\label{class_matrix_a171ca8f5a482ede4adc3a84d10f59da3}
 \begin{DoxyVerb}    Метод возвращает строку, которая описывает тип матрицы (квадратная, диагональная, нулевая, единичная, симметрическая,
 \end{DoxyVerb}
- верхняя треугольная, нижняя треугольная)\hypertarget{class_matrix_a8507366342ab66e74b5a14226bf99791}{\index{Matrix@{Matrix}!operator++@{operator++}}
+ верхняя треугольная, нижняя треугольная)\hypertarget{class_matrix_a3097b9717038793d2d73157641e16aef}{\index{Matrix@{Matrix}!load\-Matrix\-From\-File@{load\-Matrix\-From\-File}}
+\index{load\-Matrix\-From\-File@{load\-Matrix\-From\-File}!Matrix@{Matrix}}
+\subsubsection[{load\-Matrix\-From\-File}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} Matrix\-::load\-Matrix\-From\-File (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{filepath}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_a3097b9717038793d2d73157641e16aef}
+Принимает путь к файлу с матрицей и возвращает объект с данной матрицей\hypertarget{class_matrix_a8507366342ab66e74b5a14226bf99791}{\index{Matrix@{Matrix}!operator++@{operator++}}
 \index{operator++@{operator++}!Matrix@{Matrix}}
 \subsubsection[{operator++}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} \& Matrix\-::operator++ (
 \begin{DoxyParamCaption}
@@ -152,7 +171,28 @@ istream \& \hyperlink{class_matrix_a4e914824d92c87ee5eb20abe65f35ff3}{operator$>
 {}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_a99ba97122b8fdd54e95290caf80fc8e2}
-Метод \hyperlink{class_matrix_a99ba97122b8fdd54e95290caf80fc8e2}{print()} выводит матрицу в консоль
+Метод \hyperlink{class_matrix_a99ba97122b8fdd54e95290caf80fc8e2}{print()} выводит матрицу в консоль\hypertarget{class_matrix_af79f8f1854e16e5279d04a881c21eddb}{\index{Matrix@{Matrix}!set\-Columns\-Num@{set\-Columns\-Num}}
+\index{set\-Columns\-Num@{set\-Columns\-Num}!Matrix@{Matrix}}
+\subsubsection[{set\-Columns\-Num}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-::set\-Columns\-Num (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{new\-Columns\-Num}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_af79f8f1854e16e5279d04a881c21eddb}
+Изменение количества столбцов матрицы\hypertarget{class_matrix_a04d8186abfddfcb928b5f69277a6b66f}{\index{Matrix@{Matrix}!set\-Lines\-Num@{set\-Lines\-Num}}
+\index{set\-Lines\-Num@{set\-Lines\-Num}!Matrix@{Matrix}}
+\subsubsection[{set\-Lines\-Num}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-::set\-Lines\-Num (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{new\-Lines\-Num}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_a04d8186abfddfcb928b5f69277a6b66f}
+Изменение количества строк матрицы\hypertarget{class_matrix_ae23f817021383e3c8636a714dcba1d21}{\index{Matrix@{Matrix}!transpose@{transpose}}
+\index{transpose@{transpose}!Matrix@{Matrix}}
+\subsubsection[{transpose}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} Matrix\-::transpose (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_ae23f817021383e3c8636a714dcba1d21}
+Возвращает матрицу транспонированную данной
 
 \subsection{Документация по друзьям класса и функциям, отноносящимся к классу}
 \hypertarget{class_matrix_aa8f4214bd22af7e40971a2614816063d}{\index{Matrix@{Matrix}!operator$<$$<$@{operator$<$$<$}}
@@ -176,4 +216,4 @@ istream \& \hyperlink{class_matrix_a4e914824d92c87ee5eb20abe65f35ff3}{operator$>
 Объявления и описания членов классов находятся в файлах\-:\begin{DoxyCompactItemize}
 \item 
 Matrix.\-h\item 
-Matrix.\-cpp\end{DoxyCompactItemize}
+\hyperlink{_matrix_8cpp}{Matrix.\-cpp}\end{DoxyCompactItemize}

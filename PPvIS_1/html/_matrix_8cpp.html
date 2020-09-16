@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Matrix Class: Файлы</title>
+<title>Matrix Class: Файл Matrix.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -58,11 +58,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
       <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
     </ul>
   </div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -77,18 +76,86 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
 </iframe>
 </div>
 
+</div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a>  </div>
   <div class="headertitle">
-<div class="title">Файлы</div>  </div>
+<div class="title">Файл Matrix.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Полный список документированных файлов.</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2doc.png" alt="*" width="24" height="22" /><a class="el" href="_matrix_8cpp.html" target="_self">Matrix.cpp</a></td><td class="desc">Файл с описанием функционала класса <a class="el" href="class_matrix.html">Matrix</a></td></tr>
-<tr id="row_1_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><a href="_matrix_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>Matrix.h</b></td><td class="desc"></td></tr>
-<tr id="row_2_" class="even"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2doc.png" alt="*" width="24" height="22" /><a class="el" href="_p_pv_i_s__1_8cpp.html" target="_self">PPvIS_1.cpp</a></td><td class="desc">Основной файл с использованием функционала класса <a class="el" href="class_matrix.html">Matrix</a></td></tr>
+
+<p>Файл с описанием функционала класса <a class="el" href="class_matrix.html">Matrix</a>.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;Matrix.h&quot;</code><br/>
+<code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;fstream&gt;</code><br/>
+<code>#include &lt;sstream&gt;</code><br/>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:aa8f4214bd22af7e40971a2614816063d"><td class="memItemLeft" align="right" valign="top">ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_matrix_8cpp.html#aa8f4214bd22af7e40971a2614816063d">operator&lt;&lt;</a> (ostream &amp;os, const <a class="el" href="class_matrix.html">Matrix</a> &amp;p)</td></tr>
+<tr class="separator:aa8f4214bd22af7e40971a2614816063d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e914824d92c87ee5eb20abe65f35ff3"><td class="memItemLeft" align="right" valign="top">istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_matrix_8cpp.html#a4e914824d92c87ee5eb20abe65f35ff3">operator&gt;&gt;</a> (istream &amp;in, <a class="el" href="class_matrix.html">Matrix</a> &amp;p)</td></tr>
+<tr class="separator:a4e914824d92c87ee5eb20abe65f35ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- directory -->
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Файл с описанием функционала класса <a class="el" href="class_matrix.html">Matrix</a>. </p>
+</div><h2 class="groupheader">Функции</h2>
+<a class="anchor" id="aa8f4214bd22af7e40971a2614816063d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Перегрузка потокового оператора для вывода матрицы в консоль</p>
+
+</div>
+</div>
+<a class="anchor" id="a4e914824d92c87ee5eb20abe65f35ff3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">istream&amp; operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">istream &amp;&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_matrix.html">Matrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Перегрузка потокового оператора для ввода матрицы вручную</p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

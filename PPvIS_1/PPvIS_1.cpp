@@ -16,12 +16,13 @@ void Menu(Matrix& mat)
 
     while (true)
     {
-        cout << "Choose what to do:\n1 - Print Matrix\n2 - Operator ++ (postfix)\n3 - Operator ++ (prefix)\n4 - Operator -- (postfix)\n5 - Operator -- (prefix)\n6 - Operator ==\n7 - Operator []\n8 - Set number of lines\n9 - Set number of columns\n10 - extract SubMatrix\n11 - Transpose\n12 - get Matrix type\n13 - exit\n";
+        cout << mat;
+        cout << "Choose what to do:\n1 - Exit\n2 - Operator ++ (postfix)\n3 - Operator ++ (prefix)\n4 - Operator -- (postfix)\n5 - Operator -- (prefix)\n6 - Operator ==\n7 - Operator []\n8 - Set number of lines\n9 - Set number of columns\n10 - extract SubMatrix\n11 - Transpose\n12 - get Matrix type\n";
         cin >> mode;
 
         if (mode == 1)
         {
-            cout << mat;
+            break;
         }
 
         if (mode == 2)
@@ -48,19 +49,18 @@ void Menu(Matrix& mat)
         {
             cout << "You should create second matrix to compare with this\n";
             int create2;
-            cout << "Enter the number of columns: ";
-            int columns2;
-            cin >> columns2;
-            cout << " and lines: ";
-            int lines2;
-            cin >> lines2;
             cout << "Choose how to init matrix:\n1 - Filling with random numbers\n2 - Loading from file\n3 - Filling manual\n";
             cin >> create2;
-            cout << "Choose how to init matrix:\n1 - Filling with random numbers\n2 - Loading from file\n3 - Filling manual\n";
-            Matrix mat2;
+            Matrix mat2(2, 2);
 
             if (create2 == 1)
             {
+                cout << "Enter the number of columns: ";
+                int columns2;
+                cin >> columns2;
+                cout << " and lines: ";
+                int lines2;
+                cin >> lines2;
                 Matrix mat2(lines2, columns2);
             }
             else if (create2 == 2)
@@ -69,6 +69,12 @@ void Menu(Matrix& mat)
             }
             else if (create2 == 3)
             {
+                cout << "Enter the number of columns: ";
+                int columns2;
+                cin >> columns2;
+                cout << " and lines: ";
+                int lines2;
+                cin >> lines2;
                 Matrix mat2(lines2, columns2);
                 cin >> mat2;
             }
@@ -130,11 +136,6 @@ void Menu(Matrix& mat)
         {
             cout << mat.getMatrixType();
         }
-
-        if (mode == 13)
-        {
-            break;
-        }
     }
 }
 
@@ -142,17 +143,17 @@ int main()
 {
     srand(time(NULL));
     int create;
-    cout << "Enter the number of columns: ";
-    int columns;
-    cin >> columns;
-    cout << "and lines: ";
-    int lines;
-    cin >> lines;
     cout << "Choose how to init matrix:\n1 - Filling with random numbers\n2 - Loading from file\n3 - Filling manual\n";
     cin >> create;
     
     if (create == 1)
     {
+        cout << "Enter the number of columns: ";
+        int columns;
+        cin >> columns;
+        cout << "and lines: ";
+        int lines;
+        cin >> lines;
         Matrix mat(lines, columns);
         Menu(mat);
     }
@@ -163,6 +164,12 @@ int main()
     }
     else if (create == 3)
     {
+        cout << "Enter the number of columns: ";
+        int columns;
+        cin >> columns;
+        cout << "and lines: ";
+        int lines;
+        cin >> lines;
         Matrix mat(lines, columns);
         cin >> mat;
         Menu(mat);
