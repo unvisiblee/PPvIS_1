@@ -216,18 +216,14 @@ Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns) {
 	return newMatrix;
 }
 
-void Matrix::transpose() {
-	int** newMatrix = new int* [this->columns];
-	for (int i = 0; i < this->columns; i++)
-		newMatrix[i] = new int[this->lines];
+Matrix Matrix::transpose() {
+	Matrix newMatrix(this->columns, this->lines);
 
 	for (int i = 0; i < this->lines; i++)
 		for (int j = 0; j < this->columns; j++)
 			newMatrix[j][i] = this->matrix[i][j];
 
-	delete this->matrix;
-	this->matrix = newMatrix;
-	swap(this->columns, this->lines);
+	return newMatrix;
 
 }
 
@@ -339,7 +335,7 @@ string Matrix::getMatrixType()
 		{
 			for (int j = 0; j < this->columns; j++)
 			{
-				if (i + j > this->lines - 1 && this->matrix[i][j] != 0)
+				if (i > j && this->matrix[i][j] != 0)
 				{
 					upTriangle = false;
 				}
@@ -354,7 +350,7 @@ string Matrix::getMatrixType()
 		{
 			for (int j = 0; j < this->columns; j++)
 			{
-				if (i + j > this->lines - 1 && this->matrix[i][j] != 0)
+				if (i < j && this->matrix[i][j] != 0)
 				{
 					downTriangle = false;
 				}
