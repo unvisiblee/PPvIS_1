@@ -8,10 +8,8 @@ using namespace std;
 int main()
 {
     srand(time(NULL));
-    Matrix mat(3, 3);
-    Matrix mat2(mat);
+    Matrix mat(12, 12);
     cout << mat;
-    cout << mat2;
 
     return 0;
 }

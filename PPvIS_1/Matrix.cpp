@@ -6,7 +6,7 @@
 Matrix::Matrix(int l, int c)
 {
 	/*!
-		Конструктор принимает количество строк и столбцов матрицы и заполняет их случайными числами в диапазоне
+		Конструктор принимает количество строк и столбцов матрицы и заполняет их случайными числами в диапазоне от -50 до 50
 	*/
 	lines = l;
 	columns = c;
@@ -17,13 +17,16 @@ Matrix::Matrix(int l, int c)
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			matrix[i][k] = rand() % 11 - 5;
+			matrix[i][k] = rand() % 100 - 50;
 
 	cout << "Constructor " << this << endl;
 }
 
-Matrix::Matrix(const Matrix& other) // copy constructor
+Matrix::Matrix(const Matrix& other) 
 {
+	/*!
+		Конструктор копирования потом напишу подробнее
+	*/
 	this->columns = other.columns;
 	this->lines = other.lines;
 
@@ -38,8 +41,11 @@ Matrix::Matrix(const Matrix& other) // copy constructor
 	cout << "Copy constructor " << this << endl;
 }
 
-Matrix::~Matrix() //clean memory destructor
+Matrix::~Matrix()
 {
+	/*!
+		Деструктор освобождает память, выделенную для матрицы
+	*/
 	for (int i = 0; i < lines; i++)
 		delete[]matrix[i];
 
@@ -50,11 +56,17 @@ Matrix::~Matrix() //clean memory destructor
 
 int Matrix::getLines()
 {
+	/*!
+		Геттер для получения количества строк данной матрицы
+	*/
 	return this->lines;
 }
 
 int Matrix::getColumns()
 {
+	/*!
+		Геттер для получения столбцов данной матрицы
+	*/
 	return this->columns;
 }
 
