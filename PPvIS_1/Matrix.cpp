@@ -61,9 +61,9 @@ ostream& operator<<(ostream& os, const Matrix& p)
 	for (int i = 0; i < p.lines; i++)
 	{
 		for (int k = 0; k < p.columns; k++)
-			cout << p.matrix[i][k] << "\t";
+			os << p.matrix[i][k] << "\t";
 
-		cout << endl << endl;
+		os << endl << endl;
 	}
 
 	return os;
@@ -74,7 +74,7 @@ istream& operator>>(istream& in, Matrix& p)
 	cout << "Fill in the matrix: \n";
 	for (int i = 0; i < p.lines; i++) {
 		for (int k = 0; k < p.columns; k++)
-			cin >> p.matrix[i][k];
+			in >> p.matrix[i][k];
 	}
 	return in;
 }
