@@ -1,0 +1,179 @@
+\hypertarget{class_matrix}{\section{Класс Matrix}
+\label{class_matrix}\index{Matrix@{Matrix}}
+}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_matrix_ad74c6b0c2db846ab723754759c52dad6}{Matrix} (int lines, int columns)
+\item 
+\hyperlink{class_matrix_abcf708e864ed3d9db2c3b317c5e529ab}{Matrix} (const \hyperlink{class_matrix}{Matrix} \&other)
+\item 
+void \hyperlink{class_matrix_a3ce481e0324e859ecca287b76e39473c}{operator=} (const \hyperlink{class_matrix}{Matrix} \&other)
+\item 
+\hyperlink{class_matrix}{Matrix} \& \hyperlink{class_matrix_a8507366342ab66e74b5a14226bf99791}{operator++} ()
+\item 
+\hyperlink{class_matrix}{Matrix} \& \hyperlink{class_matrix_a28c611cb965b7486d18a0a2ac4c45d2f}{operator++} (int a)
+\item 
+\hyperlink{class_matrix}{Matrix} \& \hyperlink{class_matrix_ad408cd4553ebed67bfd3fd5cc17f8423}{operator-\/-\/} ()
+\item 
+\hyperlink{class_matrix}{Matrix} \& \hyperlink{class_matrix_abecc73da1d79f5fd01cb7334e85b93e7}{operator-\/-\/} (int a)
+\item 
+bool \hyperlink{class_matrix_a1e08ad098ff5d0a8022d5c735f01c4cb}{operator==} (\hyperlink{class_matrix}{Matrix} \&other)
+\item 
+int $\ast$ \hyperlink{class_matrix_ae37518aad41f7aa920116dd2ca9a9656}{operator\mbox{[}$\,$\mbox{]}} (unsigned int i)
+\item 
+void \hyperlink{class_matrix_a99ba97122b8fdd54e95290caf80fc8e2}{print} ()
+\item 
+\hypertarget{class_matrix_a04d8186abfddfcb928b5f69277a6b66f}{void {\bfseries set\-Lines\-Num} (unsigned int)}\label{class_matrix_a04d8186abfddfcb928b5f69277a6b66f}
+
+\item 
+\hypertarget{class_matrix_af79f8f1854e16e5279d04a881c21eddb}{void {\bfseries set\-Columns\-Num} (unsigned int)}\label{class_matrix_af79f8f1854e16e5279d04a881c21eddb}
+
+\item 
+\hypertarget{class_matrix_a3097b9717038793d2d73157641e16aef}{\hyperlink{class_matrix}{Matrix} {\bfseries load\-Matrix\-From\-File} (const string \&)}\label{class_matrix_a3097b9717038793d2d73157641e16aef}
+
+\item 
+\hypertarget{class_matrix_adc694bfade2852594a5ce3efcf17a616}{\hyperlink{class_matrix}{Matrix} {\bfseries extract\-Sub\-Matrix} (unsigned int, unsigned int)}\label{class_matrix_adc694bfade2852594a5ce3efcf17a616}
+
+\item 
+string \hyperlink{class_matrix_a171ca8f5a482ede4adc3a84d10f59da3}{get\-Matrix\-Type} ()
+\item 
+\hypertarget{class_matrix_ae23f817021383e3c8636a714dcba1d21}{\hyperlink{class_matrix}{Matrix} {\bfseries transpose} ()}\label{class_matrix_ae23f817021383e3c8636a714dcba1d21}
+
+\item 
+int \hyperlink{class_matrix_acc315708bcdb54795a686b91277f5bdf}{get\-Lines} ()
+\item 
+int \hyperlink{class_matrix_a324b4057cd6e2167687e406abd720020}{get\-Columns} ()
+\end{DoxyCompactItemize}
+\subsection*{Друзья}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{class_matrix_aa8f4214bd22af7e40971a2614816063d}{operator$<$$<$} (ostream \&os, const \hyperlink{class_matrix}{Matrix} \&p)
+\item 
+istream \& \hyperlink{class_matrix_a4e914824d92c87ee5eb20abe65f35ff3}{operator$>$$>$} (istream \&in, \hyperlink{class_matrix}{Matrix} \&p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Конструктор(ы)}
+\hypertarget{class_matrix_ad74c6b0c2db846ab723754759c52dad6}{\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\-::\-Matrix (
+\begin{DoxyParamCaption}
+\item[{int}]{lines, }
+\item[{int}]{columns}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_ad74c6b0c2db846ab723754759c52dad6}
+Конструктор принимает количество строк и столбцов матрицы и заполняет их случайными числами в диапазоне от -\/50 до 50\hypertarget{class_matrix_abcf708e864ed3d9db2c3b317c5e529ab}{\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\-::\-Matrix (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_abcf708e864ed3d9db2c3b317c5e529ab}
+Конструктор копирования потом напишу подробнее
+
+\subsection{Методы}
+\hypertarget{class_matrix_a324b4057cd6e2167687e406abd720020}{\index{Matrix@{Matrix}!get\-Columns@{get\-Columns}}
+\index{get\-Columns@{get\-Columns}!Matrix@{Matrix}}
+\subsubsection[{get\-Columns}]{\setlength{\rightskip}{0pt plus 5cm}int Matrix\-::get\-Columns (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_a324b4057cd6e2167687e406abd720020}
+Геттер для получения столбцов данной матрицы\hypertarget{class_matrix_acc315708bcdb54795a686b91277f5bdf}{\index{Matrix@{Matrix}!get\-Lines@{get\-Lines}}
+\index{get\-Lines@{get\-Lines}!Matrix@{Matrix}}
+\subsubsection[{get\-Lines}]{\setlength{\rightskip}{0pt plus 5cm}int Matrix\-::get\-Lines (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_acc315708bcdb54795a686b91277f5bdf}
+Геттер для получения количества строк данной матрицы\hypertarget{class_matrix_a171ca8f5a482ede4adc3a84d10f59da3}{\index{Matrix@{Matrix}!get\-Matrix\-Type@{get\-Matrix\-Type}}
+\index{get\-Matrix\-Type@{get\-Matrix\-Type}!Matrix@{Matrix}}
+\subsubsection[{get\-Matrix\-Type}]{\setlength{\rightskip}{0pt plus 5cm}string Matrix\-::get\-Matrix\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_a171ca8f5a482ede4adc3a84d10f59da3}
+\begin{DoxyVerb}    Метод возвращает строку, которая описывает тип матрицы (квадратная, диагональная, нулевая, единичная, симметрическая,
+\end{DoxyVerb}
+ верхняя треугольная, нижняя треугольная)\hypertarget{class_matrix_a8507366342ab66e74b5a14226bf99791}{\index{Matrix@{Matrix}!operator++@{operator++}}
+\index{operator++@{operator++}!Matrix@{Matrix}}
+\subsubsection[{operator++}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} \& Matrix\-::operator++ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_a8507366342ab66e74b5a14226bf99791}
+Префиксный инкремент увеличивает каждый элемент матрицы на единицу\hypertarget{class_matrix_a28c611cb965b7486d18a0a2ac4c45d2f}{\index{Matrix@{Matrix}!operator++@{operator++}}
+\index{operator++@{operator++}!Matrix@{Matrix}}
+\subsubsection[{operator++}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} \& Matrix\-::operator++ (
+\begin{DoxyParamCaption}
+\item[{int}]{a}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_a28c611cb965b7486d18a0a2ac4c45d2f}
+Постфиксный инкремент увеличивает каждый элемент матрицы на единицу\hypertarget{class_matrix_ad408cd4553ebed67bfd3fd5cc17f8423}{\index{Matrix@{Matrix}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!Matrix@{Matrix}}
+\subsubsection[{operator-\/-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} \& Matrix\-::operator-\/-\/ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_ad408cd4553ebed67bfd3fd5cc17f8423}
+Префиксный декремент уменьшает каждый элемент матрицы на единицу\hypertarget{class_matrix_abecc73da1d79f5fd01cb7334e85b93e7}{\index{Matrix@{Matrix}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!Matrix@{Matrix}}
+\subsubsection[{operator-\/-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} \& Matrix\-::operator-\/-\/ (
+\begin{DoxyParamCaption}
+\item[{int}]{a}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_abecc73da1d79f5fd01cb7334e85b93e7}
+Префиксный декремент уменьшает каждый элемент матрицы на единицу\hypertarget{class_matrix_a3ce481e0324e859ecca287b76e39473c}{\index{Matrix@{Matrix}!operator=@{operator=}}
+\index{operator=@{operator=}!Matrix@{Matrix}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_a3ce481e0324e859ecca287b76e39473c}
+Перегрузка оператора присваивания передаёт элементы одной матрицы в соответсвующие индексы другой\hypertarget{class_matrix_a1e08ad098ff5d0a8022d5c735f01c4cb}{\index{Matrix@{Matrix}!operator==@{operator==}}
+\index{operator==@{operator==}!Matrix@{Matrix}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool Matrix\-::operator== (
+\begin{DoxyParamCaption}
+\item[{{\bf Matrix} \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_a1e08ad098ff5d0a8022d5c735f01c4cb}
+Перегрузка оператора сравнения возвращает true, если матрицы равны и false в ином случае\hypertarget{class_matrix_ae37518aad41f7aa920116dd2ca9a9656}{\index{Matrix@{Matrix}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!Matrix@{Matrix}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Matrix\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{i}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_ae37518aad41f7aa920116dd2ca9a9656}
+Перегрузка оператора \mbox{[}\mbox{]} для доступа к элементу матрицы по индексу\hypertarget{class_matrix_a99ba97122b8fdd54e95290caf80fc8e2}{\index{Matrix@{Matrix}!print@{print}}
+\index{print@{print}!Matrix@{Matrix}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-::print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_matrix_a99ba97122b8fdd54e95290caf80fc8e2}
+Метод \hyperlink{class_matrix_a99ba97122b8fdd54e95290caf80fc8e2}{print()} выводит матрицу в консоль
+
+\subsection{Документация по друзьям класса и функциям, отноносящимся к классу}
+\hypertarget{class_matrix_aa8f4214bd22af7e40971a2614816063d}{\index{Matrix@{Matrix}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Matrix@{Matrix}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{os, }
+\item[{const {\bf Matrix} \&}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_matrix_aa8f4214bd22af7e40971a2614816063d}
+Перегрузка потокового оператора для вывода матрицы в консоль\hypertarget{class_matrix_a4e914824d92c87ee5eb20abe65f35ff3}{\index{Matrix@{Matrix}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!Matrix@{Matrix}}
+\subsubsection[{operator$>$$>$}]{\setlength{\rightskip}{0pt plus 5cm}istream\& operator$>$$>$ (
+\begin{DoxyParamCaption}
+\item[{istream \&}]{in, }
+\item[{{\bf Matrix} \&}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_matrix_a4e914824d92c87ee5eb20abe65f35ff3}
+Перегрузка потокового оператора для ввода матрицы вручную
+
+Объявления и описания членов классов находятся в файлах\-:\begin{DoxyCompactItemize}
+\item 
+Matrix.\-h\item 
+Matrix.\-cpp\end{DoxyCompactItemize}

@@ -1,3 +1,3 @@
 ﻿  PPvIS_1.cpp
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\PPvIS_1.cpp(10,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\PPvIS_1.cpp(16,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
   PPvIS_1.vcxproj -> D:\study\2course\3sem\PPVISlab\PPvIS_1\x64\Debug\PPvIS_1.exe

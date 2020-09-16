@@ -12,10 +12,11 @@ using namespace std;
 
 int main()
 {
-
     srand(time(NULL));
-    Matrix mat(12, 12);
-    cout << mat;
+    Matrix mat(4, 4);
+    Matrix loaded = mat.loadMatrixFromFile("matrix.txt");
+    cout << loaded;
+    cout << loaded.getMatrixType();
 
     return 0;
 }

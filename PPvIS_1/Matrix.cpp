@@ -1,3 +1,7 @@
+/*!
+\file
+\brief Файл с описанием функционала класса Matrix
+*/
 #include "Matrix.h"
 #include <iostream>
 #include <fstream>
@@ -19,7 +23,7 @@ Matrix::Matrix(int l, int c)
 		for (int k = 0; k < columns; k++)
 			matrix[i][k] = rand() % 100 - 50;
 
-	cout << "Constructor " << this << endl;
+	//cout << "Constructor " << this << endl;
 }
 
 Matrix::Matrix(const Matrix& other) 
@@ -38,7 +42,7 @@ Matrix::Matrix(const Matrix& other)
 		for (int k = 0; k < columns; k++)
 			this->matrix[i][k] = other.matrix[i][k];
 
-	cout << "Copy constructor " << this << endl;
+	//cout << "Copy constructor " << this << endl;
 }
 
 Matrix::~Matrix()
@@ -51,7 +55,7 @@ Matrix::~Matrix()
 
 	delete[]matrix;
 
-	cout << "Destructor  " << this << endl;
+	//cout << "Destructor  " << this << endl;
 }
 
 int Matrix::getLines()
@@ -122,7 +126,7 @@ Matrix& Matrix::operator++()
 	return *this;
 }
 
-Matrix& Matrix::operator++(int a) // postfix
+Matrix& Matrix::operator++(int a)
 {
 	/*!
 		Постфиксный инкремент увеличивает каждый элемент матрицы на единицу
@@ -209,7 +213,11 @@ void Matrix::print()
 	}
 }
 
-void Matrix::setLinesNum(unsigned int newLinesNum) {
+void Matrix::setLinesNum(unsigned int newLinesNum)
+{
+	/*!
+		Изменение количества строк матрицы
+	*/
 	int** newMatrix = new int* [newLinesNum];
 	for (int i = 0; i < newLinesNum; i++)
 		newMatrix[i] = new int[this->columns];
@@ -227,7 +235,11 @@ void Matrix::setLinesNum(unsigned int newLinesNum) {
 	this->lines = newLinesNum;
 }
 
-void Matrix::setColumnsNum(unsigned int newColumnsNum) {
+void Matrix::setColumnsNum(unsigned int newColumnsNum)
+{
+	/*!
+		Изменение количества столбцов матрицы
+	*/
 	int** newMatrix = new int* [this->lines];
 	for (int i = 0; i < this->lines; i++)
 		newMatrix[i] = new int[newColumnsNum];
@@ -247,6 +259,9 @@ void Matrix::setColumnsNum(unsigned int newColumnsNum) {
 
 Matrix Matrix::loadMatrixFromFile(const string& filepath)
 {
+	/*!
+		Принимает путь к файлу с матрицей и возвращает объект с данной матрицей
+	*/
 	ifstream fin;
 	fin.open(filepath);
 	if (!fin.is_open())
@@ -276,6 +291,9 @@ Matrix Matrix::loadMatrixFromFile(const string& filepath)
 
 Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns)
 {
+	/*!
+		Возвращает подматрицу заданных размеров
+	*/
 	if (lines > this->lines || columns > this->columns)
 		throw "Index out of bounds!";
 
@@ -288,7 +306,11 @@ Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns)
 	return newMatrix;
 }
 
-Matrix Matrix::transpose() {
+Matrix Matrix::transpose()
+{
+	/*!
+		Возвращает матрицу транспонированную данной
+	*/
 	Matrix newMatrix(this->columns, this->lines);
 
 	for (int i = 0; i < this->lines; i++)
