@@ -9,6 +9,7 @@ using namespace std;
 class Matrix {
 
 public:
+	Matrix();
 	Matrix(int lines, int columns);
 	Matrix(const Matrix& other);
 	~Matrix();

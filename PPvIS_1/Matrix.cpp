@@ -7,6 +7,11 @@
 #include <fstream>
 #include <sstream>
 
+Matrix::Matrix()
+{
+
+}
+
 Matrix::Matrix(int l, int c)
 {
 	/*!
@@ -29,7 +34,7 @@ Matrix::Matrix(int l, int c)
 Matrix::Matrix(const Matrix& other) 
 {
 	/*!
-		Конструктор копирования потом напишу подробнее
+		Конструктор копирования создаёт новый объект и копирует в него другой, избегая проблем с памятью 
 	*/
 	this->columns = other.columns;
 	this->lines = other.lines;
@@ -48,7 +53,7 @@ Matrix::Matrix(const Matrix& other)
 Matrix::~Matrix()
 {
 	/*!
-		\file Деструктор освобождает память, выделенную для матрицы
+		Деструктор освобождает память, выделенную для матрицы
 	*/
 	for (int i = 0; i < lines; i++)
 		delete[]matrix[i];
