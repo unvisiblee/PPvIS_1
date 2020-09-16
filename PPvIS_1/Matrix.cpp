@@ -44,7 +44,7 @@ Matrix::Matrix(const Matrix& other)
 Matrix::~Matrix()
 {
 	/*!
-		Деструктор освобождает память, выделенную для матрицы
+		\file Деструктор освобождает память, выделенную для матрицы
 	*/
 	for (int i = 0; i < lines; i++)
 		delete[]matrix[i];

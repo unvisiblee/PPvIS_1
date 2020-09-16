@@ -1,11 +1,13 @@
+/*!
+	\file Описание прототипов методов и полей класса Matrix
+*/
+
 #pragma once
 #include <string>
 using namespace std;
 
 class Matrix {
-	/*!
-		Описание прототипов методов и полей класса Matrix
-	*/
+
 public:
 	Matrix(int lines, int columns);
 	Matrix(const Matrix& other);
