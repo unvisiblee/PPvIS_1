@@ -14,8 +14,9 @@ Matrix::Matrix(int l, int c)
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			matrix[i][k] = rand() % 2;
+			matrix[i][k] = rand() % 11 - 5;
 
+	cout << "Constructor " << this << endl;
 }
 
 Matrix::Matrix(const Matrix& other) // copy constructor
@@ -31,6 +32,7 @@ Matrix::Matrix(const Matrix& other) // copy constructor
 		for (int k = 0; k < columns; k++)
 			this->matrix[i][k] = other.matrix[i][k];
 
+	cout << "Copy constructor " << this << endl;
 }
 
 Matrix::~Matrix() //clean memory destructor
@@ -39,6 +41,8 @@ Matrix::~Matrix() //clean memory destructor
 		delete[]matrix[i];
 
 	delete[]matrix;
+
+	cout << "Destructor  " << this << endl;
 }
 
 int Matrix::getLines()
@@ -51,12 +55,35 @@ int Matrix::getColumns()
 	return this->columns;
 }
 
+ostream& operator<<(ostream& os, const Matrix& p)
+{
+	cout << "-----------\n";
+	for (int i = 0; i < p.lines; i++)
+	{
+		for (int k = 0; k < p.columns; k++)
+			cout << p.matrix[i][k] << "\t";
+
+		cout << endl << endl;
+	}
+
+	return os;
+}
+
+istream& operator>>(istream& in, Matrix& p)
+{
+	cout << "Fill in the matrix: \n";
+	for (int i = 0; i < p.lines; i++) {
+		for (int k = 0; k < p.columns; k++)
+			cin >> p.matrix[i][k];
+	}
+	return in;
+}
+
 void Matrix::operator=(const Matrix& other)
 {
 	for (int i = 0; i < this->lines; i++)
 		for (int j = 0; j < this->columns; j++)
 			this->matrix[i][j] = other.matrix[i][j];
-
 }
 
 Matrix& Matrix::operator++() // prefix
@@ -136,7 +163,6 @@ void Matrix::print()
 
 		cout << endl << endl;
 	}
-		
 }
 
 void Matrix::setLinesNum(unsigned int newLinesNum) {
@@ -224,7 +250,6 @@ Matrix Matrix::transpose() {
 			newMatrix[j][i] = this->matrix[i][j];
 
 	return newMatrix;
-
 }
 
 string Matrix::getMatrixType()

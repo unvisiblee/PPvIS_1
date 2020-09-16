@@ -23,6 +23,8 @@ public:
 	Matrix transpose();
 	int getLines();
 	int getColumns();
+	friend ostream& operator << (ostream& os, const Matrix& p);
+	friend istream& operator >> (istream& in, Matrix& p);
 
 private:
 	int lines;
