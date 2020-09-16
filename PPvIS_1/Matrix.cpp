@@ -126,25 +126,6 @@ int* Matrix::operator[](unsigned int i) {
 	else return this->matrix[i];
 }
 
-//ostream& operator<<(ostream& os, Matrix& p)
-//{
-//	for (int i = 0; i < p.lines; i++) {
-//		for (int k = 0; k < p.columns; k++)
-//			cout << p.matrix[i][k] << " ";
-//		cout << endl;
-//	}
-//	return os;
-//}
-//
-//istream& operator>>(istream& in, Matrix& p)
-//{
-//	for (int i = 0; i < p.lines; i++) {
-//		for (int k = 0; k < p.columns; k++)
-//			cin >> p.matrix[i][k];
-//	}
-//	return in;
-//}
-
 void Matrix::print()
 {
 	cout << "-----------\n";
@@ -390,7 +371,7 @@ string Matrix::getMatrixType()
 		result += "UpperTriangle ";
 	}
 
-	if (symmetricM)
+	if (symmetricM && !diagonal)
 	{
 		result += "Symmetric ";
 	}
@@ -405,7 +386,7 @@ string Matrix::getMatrixType()
 		result = "Null ";
 	}
 
-	if (diagonal && !nullM)
+	if (diagonal && !nullM && !identity)
 	{
 		result += "Diagonal ";
 	}
