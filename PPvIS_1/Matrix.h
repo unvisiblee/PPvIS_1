@@ -13,28 +13,28 @@ public:
 	Matrix(int lines, int columns);
 	Matrix(const Matrix& other);
 	~Matrix();
-	void operator = (const Matrix& other);
+	Matrix& operator = (const Matrix& other);
 	Matrix& operator ++ ();
-	Matrix& operator ++ (int a);
+	Matrix& operator ++ (int number);
 	Matrix& operator -- ();
 	Matrix& operator--(int a);
 	bool operator==(Matrix& other);
-	int* operator[](unsigned int i);
+	int* operator[](unsigned int index);
 	void print();
-	void setLinesNum(unsigned int);  
-	void setColumnsNum(unsigned int);
+	void setLinesNumber(unsigned int);  
+	void setColumnsNumber(unsigned int);
 	Matrix loadMatrixFromFile(const string&);
-	Matrix extractSubMatrix(unsigned int,unsigned int);
+	Matrix extractSubMatrix(unsigned int lines, unsigned int columns);
 	string getMatrixType();
 	Matrix transpose();
 	int getLines();
 	int getColumns();
-	friend ostream& operator << (ostream& os, const Matrix& p);
-	friend istream& operator >> (istream& in, Matrix& p);
+	friend ostream& operator << (ostream& os, const Matrix& matrix);
+	friend istream& operator >> (istream& in, Matrix& matrix);
 
 private:
 	int lines;
 	int columns;
-	int** matrix;
+	int** elements;
 
 };

@@ -9,7 +9,9 @@
 
 Matrix::Matrix()
 {
-	
+	columns = 0;
+	lines = 0;
+	elements = nullptr;
 }
 
 Matrix::Matrix(int l, int c)
@@ -20,13 +22,13 @@ Matrix::Matrix(int l, int c)
 	lines = l;
 	columns = c;
 
-	matrix = new int* [lines];
+	elements = new int* [lines];
 	for (int i = 0; i < lines; i++)
-		matrix[i] = new int[columns];
+		elements[i] = new int[columns];
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			matrix[i][k] = rand() % 100 - 50;
+			elements[i][k] = rand() % 100 - 50;
 
 	//cout << "Constructor " << this << endl;
 }
@@ -39,13 +41,13 @@ Matrix::Matrix(const Matrix& other)
 	this->columns = other.columns;
 	this->lines = other.lines;
 
-	this->matrix = new int* [lines];
+	this->elements = new int* [lines];
 	for (int i = 0; i < lines; i++)
-		matrix[i] = new int[columns];
+		elements[i] = new int[columns];
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			this->matrix[i][k] = other.matrix[i][k];
+			this->elements[i][k] = other.elements[i][k];
 
 	//cout << "Copy constructor " << this << endl;
 }
@@ -56,9 +58,9 @@ Matrix::~Matrix()
 		Деструктор освобождает память, выделенную для матрицы
 	*/
 	for (int i = 0; i < lines; i++)
-		delete[]matrix[i];
+		delete[]elements[i];
 
-	delete[]matrix;
+	delete[]elements;
 
 	//cout << "Destructor  " << this << endl;
 }
@@ -88,7 +90,7 @@ ostream& operator<<(ostream& os, const Matrix& p)
 	for (int i = 0; i < p.lines; i++)
 	{
 		for (int k = 0; k < p.columns; k++)
-			os << p.matrix[i][k] << "\t";
+			os << p.elements[i][k] << "\t";
 
 		os << endl << endl;
 	}
@@ -104,16 +106,20 @@ istream& operator>>(istream& in, Matrix& p)
 	cout << "Fill in the matrix: \n";
 	for (int i = 0; i < p.lines; i++) {
 		for (int k = 0; k < p.columns; k++)
-			in >> p.matrix[i][k];
+			in >> p.elements[i][k];
 	}
 	return in;
 }
 
-void Matrix::operator=(const Matrix& other)
+Matrix& Matrix::operator=(const Matrix& other)
 {
 	/*!
 		Перегрузка оператора присваивания передаёт элементы одной матрицы в соответсвующие индексы другой
 	*/
+	if (this->elements != nullptr)
+	{
+		delete this->elements;
+	}
 
 	this->lines = other.lines;
 	this->columns = other.columns;
@@ -124,10 +130,12 @@ void Matrix::operator=(const Matrix& other)
 
 	for (int i = 0; i < this->lines; i++)
 		for (int j = 0; j < this->columns; j++)
-			newMatrix[i][j] = other.matrix[i][j];
+			newMatrix[i][j] = other.elements[i][j];
 
-	delete this->matrix;
-	this->matrix = newMatrix;
+	delete this->elements;
+	this->elements = newMatrix;
+
+	return *this;
 }
 
 Matrix& Matrix::operator++()
@@ -137,7 +145,7 @@ Matrix& Matrix::operator++()
 	*/
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			matrix[i][k] += 1;
+			elements[i][k] += 1;
 
 	return *this;
 }
@@ -151,23 +159,23 @@ Matrix& Matrix::operator++(int a)
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			matrix[i][k] += 1;
+			elements[i][k] += 1;
 
 	return *this;
 }
 
-Matrix& Matrix::operator--() // prefix
+Matrix& Matrix::operator--()
 {	/*!
 		Префиксный декремент уменьшает каждый элемент матрицы на единицу
 	*/
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			matrix[i][k] -= 1;
+			elements[i][k] -= 1;
 
 	return *this;
 }
 
-Matrix& Matrix::operator--(int a) // postfix
+Matrix& Matrix::operator--(int a)
 {
 	/*!
 		Префиксный декремент уменьшает каждый элемент матрицы на единицу
@@ -176,7 +184,7 @@ Matrix& Matrix::operator--(int a) // postfix
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			matrix[i][k] -= 1;
+			elements[i][k] -= 1;
 
 	return *this;
 }
@@ -194,7 +202,7 @@ bool Matrix::operator==(Matrix& other)
 	{
 		for (int k = 0; k < this->columns; k++)
 		{
-			if (this->matrix[i][k] != other.matrix[i][k])
+			if (this->elements[i][k] != other.elements[i][k])
 			{
 				return false;
 			}
@@ -211,7 +219,7 @@ int* Matrix::operator[](unsigned int i)
 	*/
 	if (i > this->lines)
 		throw "Index is out of bounds!";
-	else return this->matrix[i];
+	else return this->elements[i];
 }
 
 void Matrix::print()
@@ -223,13 +231,13 @@ void Matrix::print()
 	for (int i = 0; i < lines; i++)
 	{
 		for (int k = 0; k < columns; k++)
-			cout << matrix[i][k] << "\t";
+			cout << elements[i][k] << "\t";
 
 		cout << endl << endl;
 	}
 }
 
-void Matrix::setLinesNum(unsigned int newLinesNum)
+void Matrix::setLinesNumber(unsigned int newLinesNum)
 {
 	/*!
 		Изменение количества строк матрицы
@@ -243,15 +251,15 @@ void Matrix::setLinesNum(unsigned int newLinesNum)
 			if (this->lines <= i)
 				newMatrix[i][j] = 0;
 			else
-				newMatrix[i][j] = this->matrix[i][j];
+				newMatrix[i][j] = this->elements[i][j];
 		}
 
-	delete this->matrix;
-	this->matrix = newMatrix;
+	delete this->elements;
+	this->elements = newMatrix;
 	this->lines = newLinesNum;
 }
 
-void Matrix::setColumnsNum(unsigned int newColumnsNum)
+void Matrix::setColumnsNumber(unsigned int newColumnsNum)
 {
 	/*!
 		Изменение количества столбцов матрицы
@@ -265,11 +273,11 @@ void Matrix::setColumnsNum(unsigned int newColumnsNum)
 			if (this->columns <= j)
 				newMatrix[i][j] = 0;
 			else
-				newMatrix[i][j] = this->matrix[i][j];
+				newMatrix[i][j] = this->elements[i][j];
 		}
 
-	delete this->matrix;
-	this->matrix = newMatrix;
+	delete this->elements;
+	this->elements = newMatrix;
 	this->columns = newColumnsNum;
 }
 
@@ -317,7 +325,7 @@ Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns)
 
 	for (int i = 0; i < lines; i++)
 		for (int j = 0; j < columns; j++)
-			newMatrix[i][j] = matrix[i][j];
+			newMatrix[i][j] = elements[i][j];
 
 	return newMatrix;
 }
@@ -331,7 +339,7 @@ Matrix Matrix::transpose()
 
 	for (int i = 0; i < this->lines; i++)
 		for (int j = 0; j < this->columns; j++)
-			newMatrix[j][i] = this->matrix[i][j];
+			newMatrix[j][i] = this->elements[i][j];
 
 	return newMatrix;
 }
@@ -366,7 +374,7 @@ string Matrix::getMatrixType()
 					continue;
 				}
 
-				if (this->matrix[i][k] == 0)
+				if (this->elements[i][k] == 0)
 				{
 					zeros++;
 				}
@@ -390,7 +398,7 @@ string Matrix::getMatrixType()
 		int k = 0;
 		for (int i = 0; i < this->lines; i++)
 		{
-			if (this->matrix[i][k] == 1)
+			if (this->elements[i][k] == 1)
 			{
 				ones++;
 			}
@@ -408,18 +416,12 @@ string Matrix::getMatrixType()
 	{
 		for (int k = 0; k < this->columns; k++)
 		{
-			if (this->matrix[i][k] != 0)
+			if (this->elements[i][k] != 0)
 			{
 				nullM = false;
 			}
 		}
 	}
-
-	/*Matrix trans = this->transpose();
-	if (this->operator==(trans))
-	{
-		result += "Symmetric ";
-	}*/
 
 	bool symmetricM = true;
 	if (square)
@@ -433,7 +435,7 @@ string Matrix::getMatrixType()
 					continue;
 				}
 
-				if (this->matrix[j][i] != this->matrix[i][j])
+				if (this->elements[j][i] != this->elements[i][j])
 				{
 					symmetricM = false;
 				}
@@ -448,7 +450,7 @@ string Matrix::getMatrixType()
 		{
 			for (int j = 0; j < this->columns; j++)
 			{
-				if (i > j && this->matrix[i][j] != 0)
+				if (i > j && this->elements[i][j] != 0)
 				{
 					upTriangle = false;
 				}
@@ -463,7 +465,7 @@ string Matrix::getMatrixType()
 		{
 			for (int j = 0; j < this->columns; j++)
 			{
-				if (i < j && this->matrix[i][j] != 0)
+				if (i < j && this->elements[i][j] != 0)
 				{
 					downTriangle = false;
 				}
