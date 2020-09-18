@@ -443,6 +443,10 @@ string Matrix::getMatrixType()
 			}
 		}
 	}
+	else
+	{
+		symmetricM = false;
+	}
 
 	bool upTriangle = true;
 	if (square)
@@ -458,6 +462,10 @@ string Matrix::getMatrixType()
 			}
 		}
 	}
+	else
+	{
+		upTriangle = false;
+	}
 
 	bool downTriangle = true;
 	if (square)
@@ -472,6 +480,10 @@ string Matrix::getMatrixType()
 				}
 			}
 		}
+	}
+	else
+	{
+		downTriangle = false;
 	}
 
 	if (downTriangle && !nullM)
@@ -506,6 +518,11 @@ string Matrix::getMatrixType()
 	if (square && !diagonal && !identity && !symmetricM && !downTriangle && !upTriangle)
 	{
 		result += "Square ";
+	}
+
+	if (result == "")
+	{
+		result = "None";
 	}
 
 	return "Matrix type is " + result + "\n";
