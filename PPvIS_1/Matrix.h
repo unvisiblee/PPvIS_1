@@ -17,19 +17,18 @@ public:
 	Matrix& operator ++ ();
 	Matrix& operator ++ (int number);
 	Matrix& operator -- ();
-	Matrix& operator--(int a);
+	Matrix& operator--(int number);
 	bool operator==(Matrix& other);
 	int* operator[](unsigned int index);
-	void setLinesNumber(unsigned int);  
-	void setColumnsNumber(unsigned int);
-	Matrix loadMatrixFromFile(const string&);
+	void setLinesNumber(unsigned int lines);  
+	void setColumnsNumber(unsigned int columns);
+	Matrix loadMatrixFromFile(const string& path);
 	Matrix extractSubMatrix(unsigned int lines, unsigned int columns);
 	string getMatrixType();
 	Matrix transpose();
 	int getLines();
 	int getColumns();
-	friend ostream& operator << (ostream& os, const Matrix& matrix);
-	friend istream& operator >> (istream& in, Matrix& matrix);
+	
 
 private:
 	int lines;

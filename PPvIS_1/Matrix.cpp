@@ -343,7 +343,7 @@ Matrix Matrix::transpose()
 			newMatrix[j][i] = this->elements[i][j];
 
 	return newMatrix;
-}
+} 
 
 string Matrix::getMatrixType()
 {
