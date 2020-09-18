@@ -13,8 +13,7 @@ public:
 	Matrix(int lines, int columns);
 	Matrix(const Matrix& other);
 	~Matrix();
-	ostream& operator << (ostream& os, const Matrix& matrix);
-	istream& operator >> (istream& in, Matrix& matrix);
+	
 	Matrix operator = (const Matrix& other);
 	Matrix& operator ++ ();
 	Matrix& operator ++ (int number);
@@ -37,6 +36,8 @@ public:
 	friend bool symmetricType(const Matrix& matrix, bool square);
 	friend bool upTriangleType(const Matrix& matrix, bool square);
 	friend bool downTriangleType(const Matrix& matrix, bool square);
+	friend ostream& operator << (ostream& os, const Matrix& matrix);
+	friend istream& operator >> (istream& in, Matrix& matrix);
 
 private:
 	int lines;
