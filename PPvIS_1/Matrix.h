@@ -13,6 +13,8 @@ public:
 	Matrix(int lines, int columns);
 	Matrix(const Matrix& other);
 	~Matrix();
+	ostream& operator << (ostream& os, const Matrix& matrix);
+	istream& operator >> (istream& in, Matrix& matrix);
 	Matrix operator = (const Matrix& other);
 	Matrix& operator ++ ();
 	Matrix& operator ++ (int number);
@@ -24,11 +26,17 @@ public:
 	void setColumnsNumber(unsigned int columns);
 	Matrix loadMatrixFromFile(const string& path);
 	Matrix extractSubMatrix(unsigned int lines, unsigned int columns);
-	string getMatrixType();
+	string getMatrixType(const Matrix& matrix);
 	Matrix transpose();
 	int getLines();
 	int getColumns();
-	
+	friend bool squareType(const Matrix& matrix);
+	friend bool diagonalType(const Matrix& matrix, bool square);
+	friend bool dentityType(const Matrix& matrix, bool diagonal);
+	friend bool nullType(const Matrix& matrix);
+	friend bool symmetricType(const Matrix& matrix, bool square);
+	friend bool upTriangleType(const Matrix& matrix, bool square);
+	friend bool downTriangleType(const Matrix& matrix, bool square);
 
 private:
 	int lines;

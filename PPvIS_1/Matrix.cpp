@@ -89,16 +89,16 @@ int Matrix::getColumns()
 	return this->columns;
 }
 
-ostream& operator<<(ostream& os, const Matrix& p)
+ostream& operator<<(ostream& os, const Matrix& matrix)
 {
 	/*!
 		Перегрузка потокового оператора для вывода матрицы в консоль
 	*/
 	cout << "-----------\n";
-	for (int i = 0; i < p.lines; i++)
+	for (int i = 0; i < matrix.lines; i++)
 	{
-		for (int k = 0; k < p.columns; k++)
-			os << p.elements[i][k] << "\t";
+		for (int k = 0; k < matrix.columns; k++)
+			os << matrix.elements[i][k] << "\t";
 
 		os << endl << endl;
 	}
@@ -106,15 +106,15 @@ ostream& operator<<(ostream& os, const Matrix& p)
 	return os;
 }
 
-istream& operator>>(istream& in, Matrix& p)
+istream& operator>>(istream& in, Matrix& matrix)
 {
 	/*!
 		Перегрузка потокового оператора для ввода матрицы вручную
 	*/
 	cout << "Fill in the matrix: \n";
-	for (int i = 0; i < p.lines; i++) {
-		for (int k = 0; k < p.columns; k++)
-			in >> p.elements[i][k];
+	for (int i = 0; i < matrix.lines; i++) {
+		for (int k = 0; k < matrix.columns; k++)
+			in >> matrix.elements[i][k];
 	}
 	return in;
 }
@@ -343,148 +343,186 @@ Matrix Matrix::transpose()
 			newMatrix[j][i] = this->elements[i][j];
 
 	return newMatrix;
-} 
+}
 
-string Matrix::getMatrixType()
+bool squareType(const Matrix& matrix)
 {
-	/*!
-		Метод возвращает строку, которая описывает тип матрицы (квадратная, диагональная, нулевая, единичная, симметрическая,
-верхняя треугольная, нижняя треугольная)
-	*/
-	string result = "";
-	bool square = false;
-	if (this->columns == this->lines)
+	if (matrix.columns == matrix.lines)
 	{
-		square = true;
+		return true;
 	}
+	else
+	{
+		return false;
+	}
+}
 
-	bool diagonal;
+bool diagonalType(const Matrix& matrix, bool square)
+{
 	if (!square)
 	{
-		diagonal = false;
+		return false;
 	}
 	else
 	{
 		int zeros = 0;
-		for (int i = 0; i < this->lines; i++)
+		for (int i = 0; i < matrix.lines; i++)
 		{
-			for (int k = 0; k < this->columns; k++)
+			for (int k = 0; k < matrix.columns; k++)
 			{
 				if (i == k)
 				{
 					continue;
 				}
 
-				if (this->elements[i][k] == 0)
+				if (matrix.elements[i][k] == 0)
 				{
 					zeros++;
 				}
 			}
 		}
 
-		if (zeros == (this->lines * this->columns - this->columns))
+		if (zeros == matrix.lines * matrix.columns - matrix.columns)
 		{
-			diagonal = true;
+			return true;
 		}
 		else
 		{
-			diagonal = false;
+			return false;
 		}
 	}
+}
 
-	bool identity = false;
+bool dentityType(const Matrix& matrix, bool diagonal)
+{
 	if (diagonal)
 	{
 		int ones = 0;
 		int k = 0;
-		for (int i = 0; i < this->lines; i++)
+		for (int i = 0; i < matrix.lines; i++)
 		{
-			if (this->elements[i][k] == 1)
+			if (matrix.elements[i][k] == 1)
 			{
 				ones++;
 			}
 			k++;
 		}
 
-		if (ones == this->columns)
+		if (ones == matrix.columns)
 		{
-			identity = true;
+			return true;
 		}
 	}
-
-	bool nullM = true;
-	for (int i = 0; i < this->lines; i++)
+	else
 	{
-		for (int k = 0; k < this->columns; k++)
+		return false;
+	}
+}
+
+bool nullType(const Matrix& matrix)
+{
+	for (int i = 0; i < matrix.lines; i++)
+	{
+		for (int k = 0; k < matrix.columns; k++)
 		{
-			if (this->elements[i][k] != 0)
+			if (matrix.elements[i][k] != 0)
 			{
-				nullM = false;
+				return false;
 			}
 		}
 	}
 
-	bool symmetricM = true;
+	return true;
+}
+
+bool symmetricType(const Matrix& matrix, bool square)
+{
 	if (square)
 	{
-		for (int i = 0; i < this->lines; i++)
+		for (int i = 0; i < matrix.lines; i++)
 		{
-			for (int j = 0; j < this->columns; j++)
+			for (int j = 0; j < matrix.columns; j++)
 			{
 				if (i == j)
 				{
 					continue;
 				}
 
-				if (this->elements[j][i] != this->elements[i][j])
+				if (matrix.elements[j][i] != matrix.elements[i][j])
 				{
-					symmetricM = false;
+					return false;
 				}
 			}
 		}
 	}
 	else
 	{
-		symmetricM = false;
+		return false;
 	}
 
-	bool upTriangle = true;
+	return true;
+}
+
+bool upTriangleType(const Matrix& matrix, bool square)
+{
 	if (square)
 	{
-		for (int i = 0; i < this->lines; i++)
+		for (int i = 0; i < matrix.lines; i++)
 		{
-			for (int j = 0; j < this->columns; j++)
+			for (int j = 0; j < matrix.columns; j++)
 			{
-				if (i > j && this->elements[i][j] != 0)
+				if (i > j && matrix.elements[i][j] != 0)
 				{
-					upTriangle = false;
+					return false;
 				}
 			}
 		}
 	}
 	else
 	{
-		upTriangle = false;
+		return false;
 	}
 
-	bool downTriangle = true;
+	return true;
+}
+
+bool downTriangleType(const Matrix& matrix, bool square)
+{
 	if (square)
 	{
-		for (int i = 0; i < this->lines; i++)
+		for (int i = 0; i < matrix.lines; i++)
 		{
-			for (int j = 0; j < this->columns; j++)
+			for (int j = 0; j < matrix.columns; j++)
 			{
-				if (i < j && this->elements[i][j] != 0)
+				if (i < j && matrix.elements[i][j] != 0)
 				{
-					downTriangle = false;
+					return false;
 				}
 			}
 		}
 	}
 	else
 	{
-		downTriangle = false;
+		return false;
 	}
+
+	return true;
+}
+
+string Matrix::getMatrixType(const Matrix& matrix)
+{
+	/*!
+		Метод возвращает строку, которая описывает тип матрицы (квадратная, диагональная, нулевая, единичная, симметрическая,
+верхняя треугольная, нижняя треугольная)
+	*/
+	string result = "";
+	bool square = squareType(matrix);
+	bool diagonal = diagonalType(matrix, square);
+	bool identity = dentityType(matrix, diagonal);
+	bool nullM = nullType(matrix);
+	bool symmetricM = symmetricType(matrix, square);
+	bool upTriangle = upTriangleType(matrix, square);
+	bool downTriangle = downTriangleType(matrix, square);
 
 	if (downTriangle && !nullM)
 	{
