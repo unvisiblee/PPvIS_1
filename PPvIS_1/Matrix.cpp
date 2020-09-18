@@ -319,7 +319,7 @@ Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns)
 	/*!
 		Возвращает подматрицу заданных размеров
 	*/
-	if (lines > this->lines || columns > this->columns)
+	if (lines > this->lines || columns > this->columns || lines <= 0 || columns <= 0)
 		throw "Index out of bounds!";
 
 	Matrix newMatrix(lines, columns);

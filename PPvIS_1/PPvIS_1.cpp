@@ -134,7 +134,7 @@ void Menu(Matrix& mat)
             cout << "Enter the number of lines and columns of submatrix: ";
             cin >> sublines;
             cin >> subcolumns;
-            mat.extractSubMatrix(sublines, subcolumns);
+            mat = mat.extractSubMatrix(sublines, subcolumns);
         }
 
         if (mode == 11)
