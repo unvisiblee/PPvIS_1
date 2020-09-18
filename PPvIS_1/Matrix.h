@@ -13,14 +13,13 @@ public:
 	Matrix(int lines, int columns);
 	Matrix(const Matrix& other);
 	~Matrix();
-	Matrix& operator = (const Matrix& other);
+	Matrix operator = (const Matrix& other);
 	Matrix& operator ++ ();
 	Matrix& operator ++ (int number);
 	Matrix& operator -- ();
 	Matrix& operator--(int a);
 	bool operator==(Matrix& other);
 	int* operator[](unsigned int index);
-	void print();
 	void setLinesNumber(unsigned int);  
 	void setColumnsNumber(unsigned int);
 	Matrix loadMatrixFromFile(const string&);

@@ -47,8 +47,6 @@ void Menu(Matrix& mat)
 
         if (mode == 6)
         {
-            Matrix mat;
-            mat = mat.loadMatrixFromFile("matrix.txt");
             cout << "You should create second matrix to compare with this\n";
             int create2;
             cout << "Choose how to init matrix:\n1 - Filling with random numbers\n2 - Loading from file\n3 - Filling manual\n";
@@ -94,62 +92,63 @@ void Menu(Matrix& mat)
             }
             cout << mat;
             cout << mat3;
-
-            if (mode == 7)
+        }
+        
+        if (mode == 7)
+        {
+            int index1;
+            int index2;
+            cout << "Enter the index (lines, columns): ";
+            cin >> index1;
+            cin >> index2;
+            if (mat.getLines() < index1 || mat.getColumns() < index2)
             {
-                int index1;
-                int index2;
-                cout << "Enter the index (lines, columns): ";
-                cin >> index1;
-                cin >> index2;
-                if (mat.getLines() < index1 || mat.getColumns() < index2)
-                {
-                    cout << "There is wrong index\n";
-                }
-                else
-                {
-                    cout << "Here is your element: " << mat[index1][index2] << endl;
-                }
+                cout << "There is wrong index\n";
             }
-
-            if (mode == 8)
+            else
             {
-                int numlines;
-                cout << "Enter the number of lines: ";
-                cin >> numlines;
-                mat.setLinesNumber(numlines);
+                cout << "Here is your element: " << mat[index1][index2] << endl;
             }
+        }
 
-            if (mode == 9)
-            {
-                int numcolumns;
-                cout << "Enter the number of columns: ";
-                cin >> numcolumns;
-                mat.setLinesNumber(numcolumns);
-            }
+        if (mode == 8)
+        {
+            int numlines;
+            cout << "Enter the number of lines: ";
+            cin >> numlines;
+            mat.setLinesNumber(numlines);
+        }
 
-            if (mode == 10)
-            {
-                int sublines;
-                int subcolumns;
-                cout << "Enter the number of lines and columns of submatrix: ";
-                cin >> sublines;
-                cin >> subcolumns;
-                mat.extractSubMatrix(sublines, subcolumns);
-            }
+        if (mode == 9)
+        {
+            int numcolumns;
+            cout << "Enter the number of columns: ";
+            cin >> numcolumns;
+            mat.setLinesNumber(numcolumns);
+        }
 
-            if (mode == 11)
-            {
-                mat = mat.transpose();
-            }
+        if (mode == 10)
+        {
+            int sublines;
+            int subcolumns;
+            cout << "Enter the number of lines and columns of submatrix: ";
+            cin >> sublines;
+            cin >> subcolumns;
+            mat.extractSubMatrix(sublines, subcolumns);
+        }
 
-            if (mode == 12)
-            {
-                cout << mat.getMatrixType();
-            }
+        if (mode == 11)
+        {
+            mat = mat.transpose();
+        }
+
+        if (mode == 12)
+        {
+            cout << mat.getMatrixType();
         }
     }
 }
+
 
 int main()
 {
@@ -187,6 +186,10 @@ int main()
         Menu(mat);
     }
 
+    /*Matrix mat(2, 4);
+    cout << mat;
+    mat = mat.transpose();
+    cout << mat;*/
 
     return 0;
 }

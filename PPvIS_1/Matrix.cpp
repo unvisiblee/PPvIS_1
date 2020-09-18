@@ -38,16 +38,16 @@ Matrix::Matrix(const Matrix& other)
 	/*!
 		Конструктор копирования создаёт новый объект и копирует в него другой, избегая проблем с памятью 
 	*/
-	this->columns = other.columns;
-	this->lines = other.lines;
+	columns = other.columns;
+	lines = other.lines;
 
-	this->elements = new int* [lines];
+	elements = new int* [lines];
 	for (int i = 0; i < lines; i++)
 		elements[i] = new int[columns];
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			this->elements[i][k] = other.elements[i][k];
+			elements[i][k] = other.elements[i][k];
 
 	//cout << "Copy constructor " << this << endl;
 }
@@ -57,10 +57,18 @@ Matrix::~Matrix()
 	/*!
 		Деструктор освобождает память, выделенную для матрицы
 	*/
-	for (int i = 0; i < lines; i++)
-		delete[]elements[i];
-
-	delete[]elements;
+	if (lines > 0)
+	{
+		for (int i = 0; i < lines; i++)
+		{
+			delete[]elements[i];
+		}
+	}
+	
+	if (columns > 0)
+	{
+		delete[]elements;
+	}
 
 	//cout << "Destructor  " << this << endl;
 }
@@ -111,29 +119,37 @@ istream& operator>>(istream& in, Matrix& p)
 	return in;
 }
 
-Matrix& Matrix::operator=(const Matrix& other)
+Matrix Matrix::operator=(const Matrix& other)
 {
 	/*!
 		Перегрузка оператора присваивания передаёт элементы одной матрицы в соответсвующие индексы другой
 	*/
-	if (this->elements != nullptr)
+	if (columns > 0)
 	{
-		delete this->elements;
+		for (int i = 0; i < lines; i++)
+		{
+			delete[] elements[i];
+		}
 	}
 
-	this->lines = other.lines;
-	this->columns = other.columns;
-	int** newMatrix = new int* [lines];
+	if (lines > 0)
+	{
+		delete elements;
+	}
+
+	lines = other.lines;
+	columns = other.columns;
+	elements = new int* [lines];
 	for (int i = 0; i < lines; i++)
-		newMatrix[i] = new int[columns];
+		elements[i] = new int[columns];
 	
 
-	for (int i = 0; i < this->lines; i++)
-		for (int j = 0; j < this->columns; j++)
-			newMatrix[i][j] = other.elements[i][j];
+	for (int i = 0; i < lines; i++)
+		for (int j = 0; j < columns; j++)
+			elements[i][j] = other.elements[i][j];
 
-	delete this->elements;
-	this->elements = newMatrix;
+	/*delete this->elements;
+	this->elements = newMatrix;*/
 
 	return *this;
 }
@@ -220,21 +236,6 @@ int* Matrix::operator[](unsigned int i)
 	if (i > this->lines)
 		throw "Index is out of bounds!";
 	else return this->elements[i];
-}
-
-void Matrix::print()
-{
-	/*!
-		Метод print() выводит матрицу в консоль
-	*/
-	cout << "-----------\n";
-	for (int i = 0; i < lines; i++)
-	{
-		for (int k = 0; k < columns; k++)
-			cout << elements[i][k] << "\t";
-
-		cout << endl << endl;
-	}
 }
 
 void Matrix::setLinesNumber(unsigned int newLinesNum)
