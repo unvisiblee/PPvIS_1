@@ -241,7 +241,7 @@ int* Matrix::operator[](unsigned int i)
 void Matrix::setLinesNumber(unsigned int newLinesNum)
 {
 	/*!
-		Изменение количества строк матрицы
+		Изменение количества строк матрицы, изменяет объект матрицы.
 	*/
 	int** newMatrix = new int* [newLinesNum];
 	for (int i = 0; i < newLinesNum; i++)
@@ -263,7 +263,7 @@ void Matrix::setLinesNumber(unsigned int newLinesNum)
 void Matrix::setColumnsNumber(unsigned int newColumnsNum)
 {
 	/*!
-		Изменение количества столбцов матрицы
+		Изменение количества столбцов матрицы, изменяет объект матрицы
 	*/
 	int** newMatrix = new int* [this->lines];
 	for (int i = 0; i < this->lines; i++)
@@ -285,7 +285,12 @@ void Matrix::setColumnsNumber(unsigned int newColumnsNum)
 Matrix Matrix::loadMatrixFromFile(const string& filepath)
 {
 	/*!
-		Принимает путь к файлу с матрицей и возвращает объект с данной матрицей
+		Принимает путь к файлу с матрицей и возвращает объект класса Matrix с данной матрицей
+		В файле в первой строке указывается количество строк и столбцов, а затем, через пробел,
+		описываются элементы матрицы. Например:
+		2 2
+		1 2
+		3 4
 	*/
 	ifstream fin;
 	fin.open(filepath);
@@ -317,7 +322,7 @@ Matrix Matrix::loadMatrixFromFile(const string& filepath)
 Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns)
 {
 	/*!
-		Возвращает подматрицу заданных размеров
+		Возвращает подматрицу (объект класса Matrix) заданных размеров
 	*/
 	if (lines > this->lines || columns > this->columns || lines <= 0 || columns <= 0)
 		throw "Index out of bounds!";
@@ -334,7 +339,7 @@ Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns)
 Matrix Matrix::transpose()
 {
 	/*!
-		Возвращает матрицу транспонированную данной
+		Возвращает матрицу (объект класса Matrix) транспонированную данной
 	*/
 	Matrix newMatrix(this->columns, this->lines);
 

@@ -1,16 +1,17 @@
 ﻿  PPvIS_1.cpp
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\PPvIS_1.cpp(155,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\PPvIS_1.cpp(155,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   matrix.cpp
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(236,8): warning C4018: >: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(247,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(250,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(273,21): warning C4018: <: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(304,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(308,21): warning C4018: <: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(322,12): warning C4018: >: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(322,37): warning C4018: >: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(327,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(328,21): warning C4018: <: несоответствие типов со знаком и без знака
-  Создание кода...
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(420): warning C4715: dentityType: значение возвращается не при всех путях выполнения
-  PPvIS_1.vcxproj -> D:\study\2course\3sem\PPVISlab\PPvIS_1\x64\Debug\PPvIS_1.exe
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(236,8): warning C4018: '>': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(247,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(250,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(273,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(304,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(308,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(322,12): warning C4018: '>': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(322,37): warning C4018: '>': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(327,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(328,21): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(420): warning C4715: 'dentityType': not all control paths return a value
+  LINK : C:\Users\bobaw\Desktop\PPvIS_1\x64\Debug\PPvIS_1.exe not found or not built by the last incremental link; performing full link
+  PPvIS_1.vcxproj -> C:\Users\bobaw\Desktop\PPvIS_1\x64\Debug\PPvIS_1.exe
