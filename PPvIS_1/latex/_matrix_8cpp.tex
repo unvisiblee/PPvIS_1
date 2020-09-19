@@ -1,4 +1,4 @@
-\hypertarget{_matrix_8cpp}{\section{Файл Matrix.\-cpp}
+\hypertarget{_matrix_8cpp}{\section{Matrix.\-cpp File Reference}
 \label{_matrix_8cpp}\index{Matrix.\-cpp@{Matrix.\-cpp}}
 }
 
@@ -10,33 +10,73 @@
 {\ttfamily \#include $<$iostream$>$}\\*
 {\ttfamily \#include $<$fstream$>$}\\*
 {\ttfamily \#include $<$sstream$>$}\\*
-\subsection*{Функции}
+\subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-ostream \& \hyperlink{_matrix_8cpp_aa8f4214bd22af7e40971a2614816063d}{operator$<$$<$} (ostream \&os, const \hyperlink{class_matrix}{Matrix} \&p)
+ostream \& \hyperlink{_matrix_8cpp_a85a2865bcc2b7c641162bbd4aa13a7c6}{operator$<$$<$} (ostream \&os, const \hyperlink{class_matrix}{Matrix} \&matrix)
 \item 
-istream \& \hyperlink{_matrix_8cpp_a4e914824d92c87ee5eb20abe65f35ff3}{operator$>$$>$} (istream \&in, \hyperlink{class_matrix}{Matrix} \&p)
+istream \& \hyperlink{_matrix_8cpp_a65e4cbf2651c384b15830e97747feebc}{operator$>$$>$} (istream \&in, \hyperlink{class_matrix}{Matrix} \&matrix)
+\item 
+\hypertarget{_matrix_8cpp_ac308d2d0cd1651df117cd293f4a062ec}{bool {\bfseries square\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix)}\label{_matrix_8cpp_ac308d2d0cd1651df117cd293f4a062ec}
+
+\item 
+\hypertarget{_matrix_8cpp_a8f168d2d101b11060ff7665b718dbd00}{bool {\bfseries diagonal\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)}\label{_matrix_8cpp_a8f168d2d101b11060ff7665b718dbd00}
+
+\item 
+\hypertarget{_matrix_8cpp_a0fe53702f523992357b0045647d86add}{bool {\bfseries dentity\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool diagonal)}\label{_matrix_8cpp_a0fe53702f523992357b0045647d86add}
+
+\item 
+\hypertarget{_matrix_8cpp_ad324d8057612009e306716ff6f944d8d}{bool {\bfseries null\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix)}\label{_matrix_8cpp_ad324d8057612009e306716ff6f944d8d}
+
+\item 
+\hypertarget{_matrix_8cpp_a6952b686de4d766d5e6071ea05ce1e5e}{bool {\bfseries symmetric\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)}\label{_matrix_8cpp_a6952b686de4d766d5e6071ea05ce1e5e}
+
+\item 
+\hypertarget{_matrix_8cpp_add887b389e9c6a532fd0de569ded15e1}{bool {\bfseries up\-Triangle\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)}\label{_matrix_8cpp_add887b389e9c6a532fd0de569ded15e1}
+
+\item 
+\hypertarget{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{bool {\bfseries down\-Triangle\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)}\label{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}
+
 \end{DoxyCompactItemize}
 
 
-\subsection{Подробное описание}
+\subsection{Detailed Description}
 Файл с описанием функционала класса \hyperlink{class_matrix}{Matrix}. 
 
-\subsection{Функции}
-\hypertarget{_matrix_8cpp_aa8f4214bd22af7e40971a2614816063d}{\index{Matrix.\-cpp@{Matrix.\-cpp}!operator$<$$<$@{operator$<$$<$}}
+\subsection{Function Documentation}
+\hypertarget{_matrix_8cpp_a85a2865bcc2b7c641162bbd4aa13a7c6}{\index{Matrix.\-cpp@{Matrix.\-cpp}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!Matrix.cpp@{Matrix.\-cpp}}
 \subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
 \begin{DoxyParamCaption}
 \item[{ostream \&}]{os, }
-\item[{const {\bf Matrix} \&}]{p}
+\item[{const {\bf Matrix} \&}]{matrix}
 \end{DoxyParamCaption}
-)}}\label{_matrix_8cpp_aa8f4214bd22af7e40971a2614816063d}
-Перегрузка потокового оператора для вывода матрицы в консоль\hypertarget{_matrix_8cpp_a4e914824d92c87ee5eb20abe65f35ff3}{\index{Matrix.\-cpp@{Matrix.\-cpp}!operator$>$$>$@{operator$>$$>$}}
+)}}\label{_matrix_8cpp_a85a2865bcc2b7c641162bbd4aa13a7c6}
+Перегрузка потокового оператора для вывода матрицы в консоль \begin{DoxyReturn}{Returns}
+объект типа ostream, который выводится на экран 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em os} & ссылка на объект типа ostream, который выводится на экран \\
+\hline
+{\em matrix} & матрица, которая выводится на экран\\
+\hline
+\end{DoxyParams}
+\hypertarget{_matrix_8cpp_a65e4cbf2651c384b15830e97747feebc}{\index{Matrix.\-cpp@{Matrix.\-cpp}!operator$>$$>$@{operator$>$$>$}}
 \index{operator$>$$>$@{operator$>$$>$}!Matrix.cpp@{Matrix.\-cpp}}
 \subsubsection[{operator$>$$>$}]{\setlength{\rightskip}{0pt plus 5cm}istream\& operator$>$$>$ (
 \begin{DoxyParamCaption}
 \item[{istream \&}]{in, }
-\item[{{\bf Matrix} \&}]{p}
+\item[{{\bf Matrix} \&}]{matrix}
 \end{DoxyParamCaption}
-)}}\label{_matrix_8cpp_a4e914824d92c87ee5eb20abe65f35ff3}
-Перегрузка потокового оператора для ввода матрицы вручную
+)}}\label{_matrix_8cpp_a65e4cbf2651c384b15830e97747feebc}
+Перегрузка потокового оператора для ввода матрицы вручную 
+\begin{DoxyParams}{Parameters}
+{\em in} & объект типа istream, который принимает в себя значения, считываемые из клавиатуры при вводе в консоли \\
+\hline
+{\em matrix} & матрица, элементы которой вводятся \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+объект типа istream, который заполняет матрицу вводёнными числами
+\end{DoxyReturn}

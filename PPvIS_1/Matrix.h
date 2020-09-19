@@ -1,5 +1,6 @@
 /*!
-	\file Описание прототипов методов и полей класса Matrix
+	\file
+	\brief Описание прототипов методов и полей класса Matrix
 */
 
 #pragma once
@@ -13,7 +14,6 @@ public:
 	Matrix(int lines, int columns);
 	Matrix(const Matrix& other);
 	~Matrix();
-	
 	Matrix operator = (const Matrix& other);
 	Matrix& operator ++ ();
 	Matrix& operator ++ (int number);
