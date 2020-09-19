@@ -134,12 +134,22 @@ void Menu(Matrix& mat)
             cout << "Enter the number of lines and columns of submatrix: ";
             cin >> sublines;
             cin >> subcolumns;
-            mat = mat.extractSubMatrix(sublines, subcolumns);
+            try {
+                mat = mat.extractSubMatrix(sublines, subcolumns);
+            }
+            catch (const char* msg) {
+                cout << msg << endl;
+            }
         }
 
         if (mode == 11)
         {
-            mat = mat.transpose();
+            try {
+                mat = mat.transpose();
+            }
+            catch (exception& e) {
+                cout << e.what();
+            }
         }
 
         if (mode == 12)
