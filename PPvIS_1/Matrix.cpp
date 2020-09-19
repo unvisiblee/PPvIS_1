@@ -410,9 +410,10 @@ bool diagonalType(const Matrix& matrix, bool square)
 {
 	/*!
 		\brief Дружественная функция Определяет, является ли матрица диагональной, путём сравнения количества нулей в матрице
-		\details матриа называется диагональной, если все е1 элементы, кроме главной диагонали равны нулю
+		\details матрица называется диагональной, если она квадратная и все её элементы, кроме главной диагонали, равны нулю
 		\param matrix матрица, исследование которой проводится
-		\return Булево значение true, если матрица квадратная и false в ином случае
+		\param square булево значение, является ли матрица квадратной
+		\return Булево значение true, если матрица диагональная и false в ином случае
 	 */
 	if (!square)
 	{
@@ -448,8 +449,15 @@ bool diagonalType(const Matrix& matrix, bool square)
 	}
 }
 
-bool dentityType(const Matrix& matrix, bool diagonal)
+bool identityType(const Matrix& matrix, bool diagonal)
 {
+	/*!
+		\brief Дружественная функция Определяет, является ли матрица единичной, путём сравнения единиц в диагональной матрице
+		\details матрица называется единичной, если она диагональная и все её элементы на главной диагонали равны единице
+		\param matrix матрица, исследование которой проводится
+		\param diagonal булево значение, диагональная ли матрица
+		\return Булево значение true, если матрица единичная и false в ином случае
+	 */
 	if (diagonal)
 	{
 		int ones = 0;
@@ -476,6 +484,12 @@ bool dentityType(const Matrix& matrix, bool diagonal)
 
 bool nullType(const Matrix& matrix)
 {
+	/*!
+		\brief Дружественная функция Определяет, является ли матрица нулевой, путём сравнения количества нулей в матрице
+		\details матрица называется нулевой, если все её равны нулю
+		\param matrix матрица, исследование которой проводится
+		\return Булево значение true, если матрица нулевая и false в ином случае
+	 */
 	for (int i = 0; i < matrix.lines; i++)
 	{
 		for (int k = 0; k < matrix.columns; k++)
@@ -492,6 +506,13 @@ bool nullType(const Matrix& matrix)
 
 bool symmetricType(const Matrix& matrix, bool square)
 {
+	/*!
+		\brief Дружественная функция Определяет, является ли матрица симметричной, путём сравнения елементов с обратными индексами
+		\details матрица называется симметричной, если транспанированная матрица равна исходной
+		\param matrix матрица, исследование которой проводится
+		\param square булево значения, является ли матрица квадратной
+		\return Булево значение true, если матрица симметричная и false в ином случае
+	 */
 	if (square)
 	{
 		for (int i = 0; i < matrix.lines; i++)
@@ -520,6 +541,13 @@ bool symmetricType(const Matrix& matrix, bool square)
 
 bool upTriangleType(const Matrix& matrix, bool square)
 {
+	/*!
+		\brief Дружественная функция Определяет, является ли матрица верхней треугольной, путём сравнения елементов выше главой диагонали с нулём
+		\details матрица называется верхней треугольной, если её элементы ниже главной диагонали равны нулю
+		\param matrix матрица, исследование которой проводится
+		\param square булево значения, является ли матрица квадратной
+		\return Булево значение true, если матрица верхняя треугольная и false в ином случае
+	 */
 	if (square)
 	{
 		for (int i = 0; i < matrix.lines; i++)
@@ -543,6 +571,13 @@ bool upTriangleType(const Matrix& matrix, bool square)
 
 bool downTriangleType(const Matrix& matrix, bool square)
 {
+	/*!
+		\brief Дружественная функция Определяет, является ли матрица нижней треугольной, путём сравнения елементов ниже главой диагонали с нулём
+		\details матрица называется верхней треугольной, если её элементы выше главной диагонали равны нулю
+		\param matrix матрица, исследование которой проводится
+		\param square булево значения, является ли матрица квадратной
+		\return Булево значение true, если матрица нижняя треугольная и false в ином случае
+	 */
 	if (square)
 	{
 		for (int i = 0; i < matrix.lines; i++)
@@ -567,13 +602,15 @@ bool downTriangleType(const Matrix& matrix, bool square)
 string Matrix::getMatrixType(const Matrix& matrix)
 {
 	/*!
-		Метод возвращает строку, которая описывает тип матрицы (квадратная, диагональная, нулевая, единичная, симметрическая,
-верхняя треугольная, нижняя треугольная)
+		\brief определяет тип матрицы
+		\details возможные типы: квадратная, диагональьная, единичная, нулевая, верхняя треугольная, нижняя треугольная, симметричная либо ни одна из перечсиленных
+		\param matrix матрица, исследование которой производится
+		\return строку, которая содержит информацию о типе переданой матрицы
 	*/
 	string result = "";
 	bool square = squareType(matrix);
 	bool diagonal = diagonalType(matrix, square);
-	bool identity = dentityType(matrix, diagonal);
+	bool identity = identityType(matrix, diagonal);
 	bool nullM = nullType(matrix);
 	bool symmetricM = symmetricType(matrix, square);
 	bool upTriangle = upTriangleType(matrix, square);

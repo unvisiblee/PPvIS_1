@@ -45,26 +45,19 @@ int \hyperlink{class_matrix_a324b4057cd6e2167687e406abd720020}{get\-Columns} ()
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_matrix_ac308d2d0cd1651df117cd293f4a062ec}{bool {\bfseries square\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix)}\label{class_matrix_ac308d2d0cd1651df117cd293f4a062ec}
-
+bool \hyperlink{class_matrix_ac308d2d0cd1651df117cd293f4a062ec}{square\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix)
 \item 
-\hypertarget{class_matrix_a8f168d2d101b11060ff7665b718dbd00}{bool {\bfseries diagonal\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)}\label{class_matrix_a8f168d2d101b11060ff7665b718dbd00}
-
+bool \hyperlink{class_matrix_a8f168d2d101b11060ff7665b718dbd00}{diagonal\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)
 \item 
-\hypertarget{class_matrix_a0fe53702f523992357b0045647d86add}{bool {\bfseries dentity\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool diagonal)}\label{class_matrix_a0fe53702f523992357b0045647d86add}
-
+bool \hyperlink{class_matrix_a0fe53702f523992357b0045647d86add}{dentity\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool diagonal)
 \item 
-\hypertarget{class_matrix_ad324d8057612009e306716ff6f944d8d}{bool {\bfseries null\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix)}\label{class_matrix_ad324d8057612009e306716ff6f944d8d}
-
+bool \hyperlink{class_matrix_ad324d8057612009e306716ff6f944d8d}{null\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix)
 \item 
-\hypertarget{class_matrix_a6952b686de4d766d5e6071ea05ce1e5e}{bool {\bfseries symmetric\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)}\label{class_matrix_a6952b686de4d766d5e6071ea05ce1e5e}
-
+bool \hyperlink{class_matrix_a6952b686de4d766d5e6071ea05ce1e5e}{symmetric\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)
 \item 
-\hypertarget{class_matrix_add887b389e9c6a532fd0de569ded15e1}{bool {\bfseries up\-Triangle\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)}\label{class_matrix_add887b389e9c6a532fd0de569ded15e1}
-
+bool \hyperlink{class_matrix_add887b389e9c6a532fd0de569ded15e1}{up\-Triangle\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)
 \item 
-\hypertarget{class_matrix_a9bca4cd9ce5dbee1a08831254b359093}{bool {\bfseries down\-Triangle\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)}\label{class_matrix_a9bca4cd9ce5dbee1a08831254b359093}
-
+bool \hyperlink{class_matrix_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)
 \item 
 ostream \& \hyperlink{class_matrix_a85a2865bcc2b7c641162bbd4aa13a7c6}{operator$<$$<$} (ostream \&os, const \hyperlink{class_matrix}{Matrix} \&matrix)
 \item 
@@ -125,7 +118,17 @@ istream \& \hyperlink{class_matrix_a65e4cbf2651c384b15830e97747feebc}{operator$>
 \item[{unsigned int}]{columns}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_aeaa460b51a3e8ba810c4caa86427429b}
-Возвращает подматрицу заданных размеров\hypertarget{class_matrix_a324b4057cd6e2167687e406abd720020}{\index{Matrix@{Matrix}!get\-Columns@{get\-Columns}}
+Новая матрицы получается путём \char`\"{}обрезания\char`\"{} данной. Элементы и индексы сохраняются, если они соответсвуют новым заданным размерам Извлекает подматрицу заданных размеров 
+\begin{DoxyParams}{Parameters}
+{\em lines} & число строк новой матрицы \\
+\hline
+{\em columns} & число столбцов новой матрицы \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+объект матрицы, которая является подматрицей исходной матрицы
+\end{DoxyReturn}
+\hypertarget{class_matrix_a324b4057cd6e2167687e406abd720020}{\index{Matrix@{Matrix}!get\-Columns@{get\-Columns}}
 \index{get\-Columns@{get\-Columns}!Matrix@{Matrix}}
 \subsubsection[{get\-Columns}]{\setlength{\rightskip}{0pt plus 5cm}int Matrix\-::get\-Columns (
 \begin{DoxyParamCaption}
@@ -152,44 +155,84 @@ istream \& \hyperlink{class_matrix_a65e4cbf2651c384b15830e97747feebc}{operator$>
 \item[{const {\bf Matrix} \&}]{matrix}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_a0a730222578ce4b86e2166dfe8d402d2}
-\begin{DoxyVerb}    Метод возвращает строку, которая описывает тип матрицы (квадратная, диагональная, нулевая, единичная, симметрическая,
-\end{DoxyVerb}
- верхняя треугольная, нижняя треугольная)\hypertarget{class_matrix_aeef502e91c5f815b9a99525c0c55f741}{\index{Matrix@{Matrix}!load\-Matrix\-From\-File@{load\-Matrix\-From\-File}}
+определяет тип матрицы
+
+возможные типы\-: квадратная, диагональьная, единичная, нулевая, верхняя треугольная, нижняя треугольная, симметричная либо ни одна из перечсиленных 
+\begin{DoxyParams}{Parameters}
+{\em matrix} & матрица, исследование которой производится \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+строку, которая содержит информацию о типе переданой матрицы
+\end{DoxyReturn}
+\hypertarget{class_matrix_aeef502e91c5f815b9a99525c0c55f741}{\index{Matrix@{Matrix}!load\-Matrix\-From\-File@{load\-Matrix\-From\-File}}
 \index{load\-Matrix\-From\-File@{load\-Matrix\-From\-File}!Matrix@{Matrix}}
 \subsubsection[{load\-Matrix\-From\-File}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} Matrix\-::load\-Matrix\-From\-File (
 \begin{DoxyParamCaption}
 \item[{const string \&}]{path}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_aeef502e91c5f815b9a99525c0c55f741}
-Принимает путь к файлу с матрицей и возвращает объект с данной матрицей\hypertarget{class_matrix_a8507366342ab66e74b5a14226bf99791}{\index{Matrix@{Matrix}!operator++@{operator++}}
+Загрузка матрицы из файла
+
+файл представляет собой набор чисел, первые два которые означают число строк и столбцов матрицы, а последующие элементы матрицы, записанные через пробел и переносы строк, соответсвенно строкам и столбцам получаемой матрицы 
+\begin{DoxyParams}{Parameters}
+{\em filepath} & константная строка передаётся по ссылке, содержащая путь (имя) файла, из которого считывается матрица \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+объект матрицы, считанной из файла
+\end{DoxyReturn}
+\hypertarget{class_matrix_a8507366342ab66e74b5a14226bf99791}{\index{Matrix@{Matrix}!operator++@{operator++}}
 \index{operator++@{operator++}!Matrix@{Matrix}}
 \subsubsection[{operator++}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} \& Matrix\-::operator++ (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_a8507366342ab66e74b5a14226bf99791}
-Префиксный инкремент увеличивает каждый элемент матрицы на единицу\hypertarget{class_matrix_a61760c9681e9d2d56db2119c48334da0}{\index{Matrix@{Matrix}!operator++@{operator++}}
+Префиксный инкремент увеличивает каждый элемент матрицы на единицу \begin{DoxyReturn}{Returns}
+Разыменованный указатель на данную матрицу
+\end{DoxyReturn}
+\hypertarget{class_matrix_a61760c9681e9d2d56db2119c48334da0}{\index{Matrix@{Matrix}!operator++@{operator++}}
 \index{operator++@{operator++}!Matrix@{Matrix}}
 \subsubsection[{operator++}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} \& Matrix\-::operator++ (
 \begin{DoxyParamCaption}
 \item[{int}]{number}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_a61760c9681e9d2d56db2119c48334da0}
-Постфиксный инкремент увеличивает каждый элемент матрицы на единицу\hypertarget{class_matrix_ad408cd4553ebed67bfd3fd5cc17f8423}{\index{Matrix@{Matrix}!operator-\/-\/@{operator-\/-\/}}
+Постфиксный инкремент увеличивает каждый элемент матрицы на единицу \begin{DoxyReturn}{Returns}
+Разыменованный указатель на данную матрицу 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em number} & нужен для отличия от префиксного инкремента, согласно документации с++\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_matrix_ad408cd4553ebed67bfd3fd5cc17f8423}{\index{Matrix@{Matrix}!operator-\/-\/@{operator-\/-\/}}
 \index{operator-\/-\/@{operator-\/-\/}!Matrix@{Matrix}}
 \subsubsection[{operator-\/-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} \& Matrix\-::operator-\/-\/ (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_ad408cd4553ebed67bfd3fd5cc17f8423}
-Префиксный декремент уменьшает каждый элемент матрицы на единицу\hypertarget{class_matrix_af0781e207002c53ba55d2f2609b3de05}{\index{Matrix@{Matrix}!operator-\/-\/@{operator-\/-\/}}
+Префиксный декремент уменьшает каждый элемент матрицы на единицу \begin{DoxyReturn}{Returns}
+Разыменованный указатель на данную матрицу
+\end{DoxyReturn}
+\hypertarget{class_matrix_af0781e207002c53ba55d2f2609b3de05}{\index{Matrix@{Matrix}!operator-\/-\/@{operator-\/-\/}}
 \index{operator-\/-\/@{operator-\/-\/}!Matrix@{Matrix}}
 \subsubsection[{operator-\/-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} \& Matrix\-::operator-\/-\/ (
 \begin{DoxyParamCaption}
 \item[{int}]{number}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_af0781e207002c53ba55d2f2609b3de05}
-Префиксный декремент уменьшает каждый элемент матрицы на единицу\hypertarget{class_matrix_a26d63d1bb523197df74a89be08a36cda}{\index{Matrix@{Matrix}!operator=@{operator=}}
+Префиксный декремент уменьшает каждый элемент матрицы на единицу \begin{DoxyReturn}{Returns}
+Разыменованный указатель на данную матрицу 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em number} & нужен для отличия от префиксного декремента, согласно документации с++\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_matrix_a26d63d1bb523197df74a89be08a36cda}{\index{Matrix@{Matrix}!operator=@{operator=}}
 \index{operator=@{operator=}!Matrix@{Matrix}}
 \subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} Matrix\-::operator= (
 \begin{DoxyParamCaption}
@@ -211,37 +254,151 @@ istream \& \hyperlink{class_matrix_a65e4cbf2651c384b15830e97747feebc}{operator$>
 \item[{{\bf Matrix} \&}]{other}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_a1e08ad098ff5d0a8022d5c735f01c4cb}
-Перегрузка оператора сравнения возвращает true, если матрицы равны и false в ином случае\hypertarget{class_matrix_a583f72a63d862f837281c1bc765a1cef}{\index{Matrix@{Matrix}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+Перегрузка оператора сравнения осуществляется поэлементный сравнением матриц (соответствующих индексов) 
+\begin{DoxyParams}{Parameters}
+{\em other} & ссылка на вторую матрицу в сравнении на равенство \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+возвращает true, если матрицы равны и false в ином случае
+\end{DoxyReturn}
+\hypertarget{class_matrix_a583f72a63d862f837281c1bc765a1cef}{\index{Matrix@{Matrix}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
 \index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!Matrix@{Matrix}}
 \subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Matrix\-::operator\mbox{[}$\,$\mbox{]} (
 \begin{DoxyParamCaption}
 \item[{unsigned int}]{index}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_a583f72a63d862f837281c1bc765a1cef}
-Перегрузка оператора \mbox{[}\mbox{]} для доступа к элементу матрицы по индексу\hypertarget{class_matrix_a8faf7bdf85069f6e15f16f854c28621b}{\index{Matrix@{Matrix}!set\-Columns\-Number@{set\-Columns\-Number}}
+Перегрузка оператора \mbox{[}\mbox{]} для доступа к элементу матрицы по индексу \begin{DoxyReturn}{Returns}
+Массив значений строки матрицы заданного индекса 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em index} & индекс строки матрицы\\
+\hline
+\end{DoxyParams}
+впоследствии можно применить еще один оператор \mbox{[}\mbox{]} для получения конкретного элемента, а не целой строки\hypertarget{class_matrix_a8faf7bdf85069f6e15f16f854c28621b}{\index{Matrix@{Matrix}!set\-Columns\-Number@{set\-Columns\-Number}}
 \index{set\-Columns\-Number@{set\-Columns\-Number}!Matrix@{Matrix}}
 \subsubsection[{set\-Columns\-Number}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-::set\-Columns\-Number (
 \begin{DoxyParamCaption}
 \item[{unsigned int}]{columns}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_a8faf7bdf85069f6e15f16f854c28621b}
-Изменение количества столбцов матрицы\hypertarget{class_matrix_a2ef1bcce25b5c796ac9dadf002c7ddbc}{\index{Matrix@{Matrix}!set\-Lines\-Number@{set\-Lines\-Number}}
+Изменение количества столбцов матрицы 
+\begin{DoxyParams}{Parameters}
+{\em new\-Columns\-Number} & число столбцов в новой матрице\\
+\hline
+\end{DoxyParams}
+в ходе выполнения метода создаётся новая матрица, элементы с одинаковым индексом от предыдущей матрицы остаются теми же. В дополнительные ячейки, если введено число столбцов, превосходящее число столбцов изначальной матрицы, помещяются нули\hypertarget{class_matrix_a2ef1bcce25b5c796ac9dadf002c7ddbc}{\index{Matrix@{Matrix}!set\-Lines\-Number@{set\-Lines\-Number}}
 \index{set\-Lines\-Number@{set\-Lines\-Number}!Matrix@{Matrix}}
 \subsubsection[{set\-Lines\-Number}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-::set\-Lines\-Number (
 \begin{DoxyParamCaption}
 \item[{unsigned int}]{lines}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_a2ef1bcce25b5c796ac9dadf002c7ddbc}
-Изменение количества строк матрицы\hypertarget{class_matrix_ae23f817021383e3c8636a714dcba1d21}{\index{Matrix@{Matrix}!transpose@{transpose}}
+Изменение количества строк матрицы 
+\begin{DoxyParams}{Parameters}
+{\em new\-Lines\-Number} & число строк в новой матрице\\
+\hline
+\end{DoxyParams}
+в ходе выполнения метода создаётся новая матрица, элементы с одинаковым индексом от предыдущей матрицы остаются теми же. В дополнительные ячейки, если введено число строк, превосходящее число строк изначальной матрицы, помещяются нули\hypertarget{class_matrix_ae23f817021383e3c8636a714dcba1d21}{\index{Matrix@{Matrix}!transpose@{transpose}}
 \index{transpose@{transpose}!Matrix@{Matrix}}
 \subsubsection[{transpose}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} Matrix\-::transpose (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{class_matrix_ae23f817021383e3c8636a714dcba1d21}
-Возвращает матрицу транспонированную данной
+выполняется операция транспонирования
+
+элемент индекса \mbox{[}i\mbox{]}\mbox{[}j\mbox{]} становится элементом \mbox{[}j\mbox{]}\mbox{[}i\mbox{]}, что соответсвует \char`\"{}переворачиванию\char`\"{} матрицы 
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < this->lines; i++)
+\textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < this->columns; j++)
+    newMatrix[j][i] = this->elements[i][j];
+\end{DoxyCode}
+ \begin{DoxyReturn}{Returns}
+объект новой, транспанированной матрицы
+\end{DoxyReturn}
+
 
 \subsection{Friends And Related Function Documentation}
+\hypertarget{class_matrix_a0fe53702f523992357b0045647d86add}{\index{Matrix@{Matrix}!dentity\-Type@{dentity\-Type}}
+\index{dentity\-Type@{dentity\-Type}!Matrix@{Matrix}}
+\subsubsection[{dentity\-Type}]{\setlength{\rightskip}{0pt plus 5cm}bool dentity\-Type (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{matrix, }
+\item[{bool}]{diagonal}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_matrix_a0fe53702f523992357b0045647d86add}
+Дружественная функция Определяет, является ли матрица единичной, путём сравнения единиц в диагональной матрице
+
+матрица называется единичной, если она диагональная и все её элементы на главной диагонали равны единице 
+\begin{DoxyParams}{Parameters}
+{\em matrix} & матрица, исследование которой проводится \\
+\hline
+{\em diagonal} & булево значение, диагональная ли матрица \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Булево значение true, если матрица единичная и false в ином случае
+\end{DoxyReturn}
+\hypertarget{class_matrix_a8f168d2d101b11060ff7665b718dbd00}{\index{Matrix@{Matrix}!diagonal\-Type@{diagonal\-Type}}
+\index{diagonal\-Type@{diagonal\-Type}!Matrix@{Matrix}}
+\subsubsection[{diagonal\-Type}]{\setlength{\rightskip}{0pt plus 5cm}bool diagonal\-Type (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{matrix, }
+\item[{bool}]{square}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_matrix_a8f168d2d101b11060ff7665b718dbd00}
+Дружественная функция Определяет, является ли матрица диагональной, путём сравнения количества нулей в матрице
+
+матрица называется диагональной, если она квадратная и все её элементы, кроме главной диагонали, равны нулю 
+\begin{DoxyParams}{Parameters}
+{\em matrix} & матрица, исследование которой проводится \\
+\hline
+{\em square} & булево значение, является ли матрица квадратной \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Булево значение true, если матрица диагональная и false в ином случае
+\end{DoxyReturn}
+\hypertarget{class_matrix_a9bca4cd9ce5dbee1a08831254b359093}{\index{Matrix@{Matrix}!down\-Triangle\-Type@{down\-Triangle\-Type}}
+\index{down\-Triangle\-Type@{down\-Triangle\-Type}!Matrix@{Matrix}}
+\subsubsection[{down\-Triangle\-Type}]{\setlength{\rightskip}{0pt plus 5cm}bool down\-Triangle\-Type (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{matrix, }
+\item[{bool}]{square}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_matrix_a9bca4cd9ce5dbee1a08831254b359093}
+Дружественная функция Определяет, является ли матрица нижней треугольной, путём сравнения елементов ниже главой диагонали с нулём
+
+матрица называется верхней треугольной, если её элементы выше главной диагонали равны нулю 
+\begin{DoxyParams}{Parameters}
+{\em matrix} & матрица, исследование которой проводится \\
+\hline
+{\em square} & булево значения, является ли матрица квадратной \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Булево значение true, если матрица нижняя треугольная и false в ином случае
+\end{DoxyReturn}
+\hypertarget{class_matrix_ad324d8057612009e306716ff6f944d8d}{\index{Matrix@{Matrix}!null\-Type@{null\-Type}}
+\index{null\-Type@{null\-Type}!Matrix@{Matrix}}
+\subsubsection[{null\-Type}]{\setlength{\rightskip}{0pt plus 5cm}bool null\-Type (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{matrix}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_matrix_ad324d8057612009e306716ff6f944d8d}
+Дружественная функция Определяет, является ли матрица нулевой, путём сравнения количества нулей в матрице
+
+матрица называется нулевой, если все её равны нулю 
+\begin{DoxyParams}{Parameters}
+{\em matrix} & матрица, исследование которой проводится \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Булево значение true, если матрица нулевая и false в ином случае
+\end{DoxyReturn}
 \hypertarget{class_matrix_a85a2865bcc2b7c641162bbd4aa13a7c6}{\index{Matrix@{Matrix}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!Matrix@{Matrix}}
 \subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
@@ -277,6 +434,61 @@ istream \& \hyperlink{class_matrix_a65e4cbf2651c384b15830e97747feebc}{operator$>
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 объект типа istream, который заполняет матрицу вводёнными числами
+\end{DoxyReturn}
+\hypertarget{class_matrix_ac308d2d0cd1651df117cd293f4a062ec}{\index{Matrix@{Matrix}!square\-Type@{square\-Type}}
+\index{square\-Type@{square\-Type}!Matrix@{Matrix}}
+\subsubsection[{square\-Type}]{\setlength{\rightskip}{0pt plus 5cm}bool square\-Type (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{matrix}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_matrix_ac308d2d0cd1651df117cd293f4a062ec}
+Дружественная функция Определяет, является ли матрица квадратной, путём сравнения количества строк и столбцов 
+\begin{DoxyParams}{Parameters}
+{\em matrix} & матрица, исследование которой проводится \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Булево значение true, если матрица квадратная и false в ином случае
+\end{DoxyReturn}
+\hypertarget{class_matrix_a6952b686de4d766d5e6071ea05ce1e5e}{\index{Matrix@{Matrix}!symmetric\-Type@{symmetric\-Type}}
+\index{symmetric\-Type@{symmetric\-Type}!Matrix@{Matrix}}
+\subsubsection[{symmetric\-Type}]{\setlength{\rightskip}{0pt plus 5cm}bool symmetric\-Type (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{matrix, }
+\item[{bool}]{square}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_matrix_a6952b686de4d766d5e6071ea05ce1e5e}
+Дружественная функция Определяет, является ли матрица симметричной, путём сравнения елементов с обратными индексами
+
+матрица называется симметричной, если транспанированная матрица равна исходной 
+\begin{DoxyParams}{Parameters}
+{\em matrix} & матрица, исследование которой проводится \\
+\hline
+{\em square} & булево значения, является ли матрица квадратной \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Булево значение true, если матрица симметричная и false в ином случае
+\end{DoxyReturn}
+\hypertarget{class_matrix_add887b389e9c6a532fd0de569ded15e1}{\index{Matrix@{Matrix}!up\-Triangle\-Type@{up\-Triangle\-Type}}
+\index{up\-Triangle\-Type@{up\-Triangle\-Type}!Matrix@{Matrix}}
+\subsubsection[{up\-Triangle\-Type}]{\setlength{\rightskip}{0pt plus 5cm}bool up\-Triangle\-Type (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{matrix, }
+\item[{bool}]{square}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_matrix_add887b389e9c6a532fd0de569ded15e1}
+Дружественная функция Определяет, является ли матрица верхней треугольной, путём сравнения елементов выше главой диагонали с нулём
+
+матрица называется верхней треугольной, если её элементы ниже главной диагонали равны нулю 
+\begin{DoxyParams}{Parameters}
+{\em matrix} & матрица, исследование которой проводится \\
+\hline
+{\em square} & булево значения, является ли матрица квадратной \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Булево значение true, если матрица верхняя треугольная и false в ином случае
 \end{DoxyReturn}
 
 

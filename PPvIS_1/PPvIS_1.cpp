@@ -13,6 +13,11 @@ using namespace std;
 
 void Menu(Matrix& mat)
 {
+/*!
+    \brief меню для проверки функционала класса
+    \details функции выбираются путём ввода числа из клавиатуры, соответсвующеие описанным в сообщении из консоли. Для этого используется цикл while. После каждого действия матрица выводится на жкран для наглядной проверки работы класса
+    \param mat матрица, которая подвергается проверке
+ */
     int mode = 0;
 
     while (true)
@@ -48,6 +53,7 @@ void Menu(Matrix& mat)
 
         if (mode == 6)
         {
+
             cout << "You should create second matrix to compare with this\n";
             int create2;
             cout << "Choose how to init matrix:\n1 - Filling with random numbers\n2 - Loading from file\n3 - Filling manual\n";
@@ -158,6 +164,13 @@ void Menu(Matrix& mat)
 
 int main()
 {
+/*!
+ \brief Перед входом в меню нужно создать матрицу для последующих действий с ней
+ /details описаны три вариантта создания матрицы: 1. Выбор размерности и заполнение ячеек случайными числами в диапазоне от -50 до +50
+ 2. Загрузка матрицы из существующего файла
+ 3. Выбор размерности матрицы и ручной поэлементный ввод из клавиатуры
+ Далее происходит переход в ::Menu
+*/
     srand(time(NULL));
     int create;
     cout << "Choose how to init matrix:\n1 - Filling with random numbers\n2 - Loading from file\n3 - Filling manual\n";

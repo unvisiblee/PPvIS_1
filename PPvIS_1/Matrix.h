@@ -31,7 +31,7 @@ public:
 	int getColumns();
 	friend bool squareType(const Matrix& matrix);
 	friend bool diagonalType(const Matrix& matrix, bool square);
-	friend bool dentityType(const Matrix& matrix, bool diagonal);
+	friend bool identityType(const Matrix& matrix, bool diagonal);
 	friend bool nullType(const Matrix& matrix);
 	friend bool symmetricType(const Matrix& matrix, bool square);
 	friend bool upTriangleType(const Matrix& matrix, bool square);

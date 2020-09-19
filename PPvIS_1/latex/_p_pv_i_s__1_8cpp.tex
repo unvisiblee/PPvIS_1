@@ -13,11 +13,9 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{_p_pv_i_s__1_8cpp_ad266f688a280b5a29d50be888676cd9a}{void {\bfseries Menu} (\hyperlink{class_matrix}{Matrix} \&mat)}\label{_p_pv_i_s__1_8cpp_ad266f688a280b5a29d50be888676cd9a}
-
+void \hyperlink{_p_pv_i_s__1_8cpp_ad266f688a280b5a29d50be888676cd9a}{Menu} (\hyperlink{class_matrix}{Matrix} \&mat)
 \item 
-\hypertarget{_p_pv_i_s__1_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{int {\bfseries main} ()}\label{_p_pv_i_s__1_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
-
+int \hyperlink{_p_pv_i_s__1_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
 \end{DoxyCompactItemize}
 
 
@@ -25,3 +23,31 @@
 Основной файл с использованием функционала класса \hyperlink{class_matrix}{Matrix}. \begin{DoxyAuthor}{Author}
 Орлов, Драгун, Насекайло (921701) 
 \end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{_p_pv_i_s__1_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{\index{P\-Pv\-I\-S\-\_\-1.\-cpp@{P\-Pv\-I\-S\-\_\-1.\-cpp}!main@{main}}
+\index{main@{main}!PPvIS_1.cpp@{P\-Pv\-I\-S\-\_\-1.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_p_pv_i_s__1_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+Перед входом в меню нужно создать матрицу для последующих действий с ней /details описаны три вариантта создания матрицы\-: 1. Выбор размерности и заполнение ячеек случайными числами в диапазоне от -\/50 до +50
+\begin{DoxyEnumerate}
+\item Загрузка матрицы из существующего файла
+\item Выбор размерности матрицы и ручной поэлементный ввод из клавиатуры Далее происходит переход в \hyperlink{_p_pv_i_s__1_8cpp_ad266f688a280b5a29d50be888676cd9a}{Menu}
+\end{DoxyEnumerate}\hypertarget{_p_pv_i_s__1_8cpp_ad266f688a280b5a29d50be888676cd9a}{\index{P\-Pv\-I\-S\-\_\-1.\-cpp@{P\-Pv\-I\-S\-\_\-1.\-cpp}!Menu@{Menu}}
+\index{Menu@{Menu}!PPvIS_1.cpp@{P\-Pv\-I\-S\-\_\-1.\-cpp}}
+\subsubsection[{Menu}]{\setlength{\rightskip}{0pt plus 5cm}void Menu (
+\begin{DoxyParamCaption}
+\item[{{\bf Matrix} \&}]{mat}
+\end{DoxyParamCaption}
+)}}\label{_p_pv_i_s__1_8cpp_ad266f688a280b5a29d50be888676cd9a}
+меню для проверки функционала класса
+
+функции выбираются путём ввода числа из клавиатуры, соответсвующеие описанным в сообщении из консоли. Для этого используется цикл while. После каждого действия матрица выводится на жкран для наглядной проверки работы класса 
+\begin{DoxyParams}{Parameters}
+{\em mat} & матрица, которая подвергается проверке\\
+\hline
+\end{DoxyParams}
