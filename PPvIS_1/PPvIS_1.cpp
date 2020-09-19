@@ -144,12 +144,7 @@ void Menu(Matrix& mat)
 
         if (mode == 11)
         {
-            try {
-                mat = mat.transpose();
-            }
-            catch (exception& e) {
-                cout << e.what();
-            }
+            mat = mat.transpose();
         }
 
         if (mode == 12)
