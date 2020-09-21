@@ -629,16 +629,16 @@ string Matrix::getMatrixType()
 	bool upTriangle = isUpTriangleType(*this);
 	bool downTriangle = isDownTriangleType(*this);
 
-	if (downTriangle && !nullM)
+	if (downTriangle && !nullM && !identity)
 	{
 		result += "Down Triangle ";
 	}
-	else if (upTriangle && !nullM)
+	else if (upTriangle && !nullM && !identity)
 	{
 		result += "UpperTriangle ";
 	}
 
-	if (symmetricM && !diagonal)
+	if (symmetricM && !diagonal && !identity)
 	{
 		result += "Symmetric ";
 	}
