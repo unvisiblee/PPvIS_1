@@ -28,14 +28,15 @@ public:
 	Matrix& operator--(int number);
 	bool operator==(Matrix& other);
 	int* operator[](unsigned int index);
+	int getLines();
+	int getColumns();
 	void setLinesNumber(unsigned int lines);  
 	void setColumnsNumber(unsigned int columns);
+	void fillSameElements(const Matrix& other);
 	Matrix loadMatrixFromFile(const string& path);
 	Matrix extractSubMatrix(unsigned int lines, unsigned int columns);
 	string getMatrixType();
 	Matrix transpose();
-	int getLines();
-	int getColumns();
 	friend bool isSquareType(const Matrix& matrix);
 	friend bool isDiagonalType(const Matrix& matrix);
 	friend bool isIdentityType(const Matrix& matrix);
@@ -47,4 +48,5 @@ public:
 	friend istream& operator >> (istream& in, Matrix& matrix);
 	friend void increment(Matrix& matrix);
 	friend void decrement(Matrix& matrix);
+	
 };

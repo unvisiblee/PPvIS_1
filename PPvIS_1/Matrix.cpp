@@ -161,6 +161,17 @@ istream& operator>>(istream& in, Matrix& matrix)
 }
 
 /*!
+	\brief Заполняет данную матрицу элементами матрицы, переданной в функцию
+	\param other матрица, элементы которой копируются в исходнюю
+*/
+void Matrix::fillSameElements(const Matrix& other)
+{
+	for (int i = 0; i < lines; i++)
+		for (int j = 0; j < columns; j++)
+			elements[i][j] = other.elements[i][j];
+}
+
+/*!
 	Перегрузка оператора присваивания передаёт элементы одной матрицы в соответсвующие индексы другой
 	\param other второй объект типа матрица в операции присваивания
 	\return разыменованный указатель на данную матрицу
@@ -176,9 +187,7 @@ Matrix Matrix::operator=(const Matrix& other)
 	for (int i = 0; i < lines; i++)
 		elements[i] = new int[columns];	
 
-	for (int i = 0; i < lines; i++)
-		for (int j = 0; j < columns; j++)
-			elements[i][j] = other.elements[i][j];
+	fillSameElements(other);
 
 	return *this;
 }
@@ -380,15 +389,13 @@ Matrix Matrix::loadMatrixFromFile(const string& filepath)
 Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns)
 {
 	if (lines > this->lines || columns > this->columns || lines <= 0 || columns <= 0)
-		throw "Index out of bounds!";
+		throw "Index is out of bounds!";
 
 	Matrix newMatrix(lines, columns);
 
-	for (int i = 0; i < lines; i++)
-		for (int j = 0; j < columns; j++)
-			newMatrix[i][j] = elements[i][j];
+	fillSameElements(newMatrix);
 
-	return newMatrix;
+	return *this;
 }
 
 /*!
