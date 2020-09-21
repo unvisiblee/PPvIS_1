@@ -18,19 +18,19 @@ ostream \& \hyperlink{_matrix_8cpp_a85a2865bcc2b7c641162bbd4aa13a7c6}{operator$<
 istream \& \hyperlink{_matrix_8cpp_a65e4cbf2651c384b15830e97747feebc}{operator$>$$>$} (istream \&in, \hyperlink{class_matrix}{Matrix} \&matrix)
 \item 
 bool \hyperlink{_matrix_8cpp_ac308d2d0cd1651df117cd293f4a062ec}{square\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix)
-\item 
+\begin{DoxyCompactList}\small\item\em Дружественная функция Определяет, является ли матрица квадратной, путём сравнения количества строк и столбцов \end{DoxyCompactList}\item 
 bool \hyperlink{_matrix_8cpp_a8f168d2d101b11060ff7665b718dbd00}{diagonal\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)
-\item 
+\begin{DoxyCompactList}\small\item\em Дружественная функция Определяет, является ли матрица диагональной, путём сравнения количества нулей в матрице \end{DoxyCompactList}\item 
 bool \hyperlink{_matrix_8cpp_a53225b6314572edc7c8d855d359c9395}{identity\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool diagonal)
-\item 
+\begin{DoxyCompactList}\small\item\em Дружественная функция Определяет, является ли матрица единичной, путём сравнения единиц в диагональной матрице \end{DoxyCompactList}\item 
 bool \hyperlink{_matrix_8cpp_ad324d8057612009e306716ff6f944d8d}{null\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix)
-\item 
+\begin{DoxyCompactList}\small\item\em Дружественная функция Определяет, является ли матрица нулевой, путём сравнения количества нулей в матрице \end{DoxyCompactList}\item 
 bool \hyperlink{_matrix_8cpp_a6952b686de4d766d5e6071ea05ce1e5e}{symmetric\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)
-\item 
+\begin{DoxyCompactList}\small\item\em Дружественная функция Определяет, является ли матрица симметричной, путём сравнения елементов с обратными индексами \end{DoxyCompactList}\item 
 bool \hyperlink{_matrix_8cpp_add887b389e9c6a532fd0de569ded15e1}{up\-Triangle\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)
-\item 
+\begin{DoxyCompactList}\small\item\em Дружественная функция Определяет, является ли матрица верхней треугольной, путём сравнения елементов выше главой диагонали с нулём \end{DoxyCompactList}\item 
 bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-Type} (const \hyperlink{class_matrix}{Matrix} \&matrix, bool square)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Дружественная функция Определяет, является ли матрица нижней треугольной, путём сравнения елементов ниже главой диагонали с нулём \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -45,7 +45,9 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \item[{bool}]{square}
 \end{DoxyParamCaption}
 )}}\label{_matrix_8cpp_a8f168d2d101b11060ff7665b718dbd00}
-Дружественная функция Определяет, является ли матрица диагональной, путём сравнения количества нулей в матрице
+
+
+Дружественная функция Определяет, является ли матрица диагональной, путём сравнения количества нулей в матрице 
 
 матрица называется диагональной, если она квадратная и все её элементы, кроме главной диагонали, равны нулю 
 \begin{DoxyParams}{Parameters}
@@ -55,7 +57,7 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Булево значение true, если матрица диагональная и false в ином случае
+Булево значение true, если матрица диагональная и false в ином случае 
 \end{DoxyReturn}
 \hypertarget{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{\index{Matrix.\-cpp@{Matrix.\-cpp}!down\-Triangle\-Type@{down\-Triangle\-Type}}
 \index{down\-Triangle\-Type@{down\-Triangle\-Type}!Matrix.cpp@{Matrix.\-cpp}}
@@ -65,7 +67,9 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \item[{bool}]{square}
 \end{DoxyParamCaption}
 )}}\label{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}
-Дружественная функция Определяет, является ли матрица нижней треугольной, путём сравнения елементов ниже главой диагонали с нулём
+
+
+Дружественная функция Определяет, является ли матрица нижней треугольной, путём сравнения елементов ниже главой диагонали с нулём 
 
 матрица называется верхней треугольной, если её элементы выше главной диагонали равны нулю 
 \begin{DoxyParams}{Parameters}
@@ -75,7 +79,7 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Булево значение true, если матрица нижняя треугольная и false в ином случае
+Булево значение true, если матрица нижняя треугольная и false в ином случае 
 \end{DoxyReturn}
 \hypertarget{_matrix_8cpp_a53225b6314572edc7c8d855d359c9395}{\index{Matrix.\-cpp@{Matrix.\-cpp}!identity\-Type@{identity\-Type}}
 \index{identity\-Type@{identity\-Type}!Matrix.cpp@{Matrix.\-cpp}}
@@ -85,7 +89,9 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \item[{bool}]{diagonal}
 \end{DoxyParamCaption}
 )}}\label{_matrix_8cpp_a53225b6314572edc7c8d855d359c9395}
-Дружественная функция Определяет, является ли матрица единичной, путём сравнения единиц в диагональной матрице
+
+
+Дружественная функция Определяет, является ли матрица единичной, путём сравнения единиц в диагональной матрице 
 
 матрица называется единичной, если она диагональная и все её элементы на главной диагонали равны единице 
 \begin{DoxyParams}{Parameters}
@@ -95,7 +101,7 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Булево значение true, если матрица единичная и false в ином случае
+Булево значение true, если матрица единичная и false в ином случае 
 \end{DoxyReturn}
 \hypertarget{_matrix_8cpp_ad324d8057612009e306716ff6f944d8d}{\index{Matrix.\-cpp@{Matrix.\-cpp}!null\-Type@{null\-Type}}
 \index{null\-Type@{null\-Type}!Matrix.cpp@{Matrix.\-cpp}}
@@ -104,7 +110,9 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \item[{const {\bf Matrix} \&}]{matrix}
 \end{DoxyParamCaption}
 )}}\label{_matrix_8cpp_ad324d8057612009e306716ff6f944d8d}
-Дружественная функция Определяет, является ли матрица нулевой, путём сравнения количества нулей в матрице
+
+
+Дружественная функция Определяет, является ли матрица нулевой, путём сравнения количества нулей в матрице 
 
 матрица называется нулевой, если все её равны нулю 
 \begin{DoxyParams}{Parameters}
@@ -112,7 +120,7 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Булево значение true, если матрица нулевая и false в ином случае
+Булево значение true, если матрица нулевая и false в ином случае 
 \end{DoxyReturn}
 \hypertarget{_matrix_8cpp_a85a2865bcc2b7c641162bbd4aa13a7c6}{\index{Matrix.\-cpp@{Matrix.\-cpp}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!Matrix.cpp@{Matrix.\-cpp}}
@@ -129,7 +137,7 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \begin{DoxyParams}{Parameters}
 {\em os} & ссылка на объект типа ostream, который выводится на экран \\
 \hline
-{\em matrix} & матрица, которая выводится на экран\\
+{\em matrix} & матрица, которая выводится на экран \\
 \hline
 \end{DoxyParams}
 \hypertarget{_matrix_8cpp_a65e4cbf2651c384b15830e97747feebc}{\index{Matrix.\-cpp@{Matrix.\-cpp}!operator$>$$>$@{operator$>$$>$}}
@@ -148,7 +156,7 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-объект типа istream, который заполняет матрицу вводёнными числами
+объект типа istream, который заполняет матрицу вводёнными числами 
 \end{DoxyReturn}
 \hypertarget{_matrix_8cpp_ac308d2d0cd1651df117cd293f4a062ec}{\index{Matrix.\-cpp@{Matrix.\-cpp}!square\-Type@{square\-Type}}
 \index{square\-Type@{square\-Type}!Matrix.cpp@{Matrix.\-cpp}}
@@ -157,13 +165,17 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \item[{const {\bf Matrix} \&}]{matrix}
 \end{DoxyParamCaption}
 )}}\label{_matrix_8cpp_ac308d2d0cd1651df117cd293f4a062ec}
+
+
 Дружественная функция Определяет, является ли матрица квадратной, путём сравнения количества строк и столбцов 
+
+
 \begin{DoxyParams}{Parameters}
 {\em matrix} & матрица, исследование которой проводится \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Булево значение true, если матрица квадратная и false в ином случае
+Булево значение true, если матрица квадратная и false в ином случае 
 \end{DoxyReturn}
 \hypertarget{_matrix_8cpp_a6952b686de4d766d5e6071ea05ce1e5e}{\index{Matrix.\-cpp@{Matrix.\-cpp}!symmetric\-Type@{symmetric\-Type}}
 \index{symmetric\-Type@{symmetric\-Type}!Matrix.cpp@{Matrix.\-cpp}}
@@ -173,7 +185,9 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \item[{bool}]{square}
 \end{DoxyParamCaption}
 )}}\label{_matrix_8cpp_a6952b686de4d766d5e6071ea05ce1e5e}
-Дружественная функция Определяет, является ли матрица симметричной, путём сравнения елементов с обратными индексами
+
+
+Дружественная функция Определяет, является ли матрица симметричной, путём сравнения елементов с обратными индексами 
 
 матрица называется симметричной, если транспанированная матрица равна исходной 
 \begin{DoxyParams}{Parameters}
@@ -183,7 +197,7 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Булево значение true, если матрица симметричная и false в ином случае
+Булево значение true, если матрица симметричная и false в ином случае 
 \end{DoxyReturn}
 \hypertarget{_matrix_8cpp_add887b389e9c6a532fd0de569ded15e1}{\index{Matrix.\-cpp@{Matrix.\-cpp}!up\-Triangle\-Type@{up\-Triangle\-Type}}
 \index{up\-Triangle\-Type@{up\-Triangle\-Type}!Matrix.cpp@{Matrix.\-cpp}}
@@ -193,7 +207,9 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \item[{bool}]{square}
 \end{DoxyParamCaption}
 )}}\label{_matrix_8cpp_add887b389e9c6a532fd0de569ded15e1}
-Дружественная функция Определяет, является ли матрица верхней треугольной, путём сравнения елементов выше главой диагонали с нулём
+
+
+Дружественная функция Определяет, является ли матрица верхней треугольной, путём сравнения елементов выше главой диагонали с нулём 
 
 матрица называется верхней треугольной, если её элементы ниже главной диагонали равны нулю 
 \begin{DoxyParams}{Parameters}
@@ -203,5 +219,5 @@ bool \hyperlink{_matrix_8cpp_a9bca4cd9ce5dbee1a08831254b359093}{down\-Triangle\-
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Булево значение true, если матрица верхняя треугольная и false в ином случае
+Булево значение true, если матрица верхняя треугольная и false в ином случае 
 \end{DoxyReturn}

@@ -20,6 +20,7 @@ public:
 	Matrix(int lines, int columns, int from, int to);
 	Matrix(const Matrix& other);
 	~Matrix();
+	void clean(Matrix& matrix);
 	Matrix operator = (const Matrix& other);
 	Matrix& operator ++ ();
 	Matrix& operator ++ (int number);
@@ -35,13 +36,13 @@ public:
 	Matrix transpose();
 	int getLines();
 	int getColumns();
-	friend bool squareType(const Matrix& matrix);
-	friend bool diagonalType(const Matrix& matrix, bool square);
-	friend bool identityType(const Matrix& matrix, bool diagonal);
-	friend bool nullType(const Matrix& matrix);
-	friend bool symmetricType(const Matrix& matrix, bool square);
-	friend bool upTriangleType(const Matrix& matrix, bool square);
-	friend bool downTriangleType(const Matrix& matrix, bool square);
+	friend bool isSquareType(const Matrix& matrix);
+	friend bool isDiagonalType(const Matrix& matrix);
+	friend bool isIdentityType(const Matrix& matrix);
+	friend bool isNullType(const Matrix& matrix);
+	friend bool isSymmetricType(const Matrix& matrix);
+	friend bool isUpTriangleType(const Matrix& matrix);
+	friend bool isDownTriangleType(const Matrix& matrix);
 	friend ostream& operator << (ostream& os, const Matrix& matrix);
 	friend istream& operator >> (istream& in, Matrix& matrix);
 

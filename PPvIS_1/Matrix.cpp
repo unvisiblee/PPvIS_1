@@ -80,26 +80,32 @@ Matrix::Matrix(const Matrix& other)
 			elements[i][k] = other.elements[i][k];
 
 }
+/*!
+	\brief Очистка динамической памяти, занятой матрицой
+	\param matrix матрица, память которой удаляется
+*/
+void Matrix::clean(Matrix& matrix)
+{
+	if (matrix.lines > 0)
+	{
+		for (int i = 0; i < matrix.lines; i++)
+		{
+			delete[]matrix.elements[i];
+		}
+	}
+
+	if (columns > 0)
+	{
+		delete[]matrix.elements;
+	}
+}
 
 /*!
 	Деструктор освобождает память, выделенную для матрицы. Не принимает параметров
 */
 Matrix::~Matrix()
 {
-	
-	if (lines > 0)
-	{
-		for (int i = 0; i < lines; i++)
-		{
-			delete[]elements[i];
-		}
-	}
-	
-	if (columns > 0)
-	{
-		delete[]elements;
-	}
-
+	clean(*this);
 }
 
 /*!
@@ -164,26 +170,13 @@ istream& operator>>(istream& in, Matrix& matrix)
 */
 Matrix Matrix::operator=(const Matrix& other)
 {
-	
-	if (columns > 0)
-	{
-		for (int i = 0; i < lines; i++)
-		{
-			delete[] elements[i];
-		}
-	}
-
-	if (lines > 0)
-	{
-		delete elements;
-	}
+	clean(*this);
 
 	lines = other.lines;
 	columns = other.columns;
 	elements = new int* [lines];
 	for (int i = 0; i < lines; i++)
-		elements[i] = new int[columns];
-	
+		elements[i] = new int[columns];	
 
 	for (int i = 0; i < lines; i++)
 		for (int j = 0; j < columns; j++)
@@ -415,17 +408,15 @@ Matrix Matrix::transpose()
 	return newMatrix;
 }
 
-
 /*!
 	\brief Дружественная функция Определяет, является ли матрица квадратной, путём сравнения количества строк и столбцов
 	\param matrix матрица, исследование которой проводится
 	\return Булево значение true, если матрица квадратная и false в ином случае
 */
-bool squareType(const Matrix& matrix)
+bool isSquareType(const Matrix& matrix)
 {
 	return matrix.columns == matrix.lines;
 }
-
 
 /*!
 	\brief Дружественная функция Определяет, является ли матрица диагональной, путём сравнения количества нулей в матрице
@@ -434,42 +425,37 @@ bool squareType(const Matrix& matrix)
 	\param square булево значение, является ли матрица квадратной
 	\return Булево значение true, если матрица диагональная и false в ином случае
 */
-bool diagonalType(const Matrix& matrix, bool square)
+bool isDiagonalType(const Matrix& matrix)
 {
-	if (!square)
+	if (!isSquareType(matrix))
 	{
 		return false;
 	}
-	else
-	{
-		int zeros = 0;
-		for (int i = 0; i < matrix.lines; i++)
-		{
-			for (int k = 0; k < matrix.columns; k++)
-			{
-				if (i == k)
-				{
-					continue;
-				}
 
-				if (matrix.elements[i][k] == 0)
-				{
-					zeros++;
-				}
+	int zeros = 0;
+	for (int i = 0; i < matrix.lines; i++)
+	{
+		for (int k = 0; k < matrix.columns; k++)
+		{
+			if (i == k)
+			{
+				continue;
+			}
+
+			if (matrix.elements[i][k] == 0)
+			{
+				zeros++;
 			}
 		}
-
-		if (zeros == matrix.lines * matrix.columns - matrix.columns)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
 	}
-}
 
+	if (zeros == matrix.lines * matrix.columns - matrix.columns)
+	{
+		return true;
+	}
+
+	return false;
+}
 
 /*!
 	\brief Дружественная функция Определяет, является ли матрица единичной, путём сравнения единиц в диагональной матрице
@@ -478,30 +464,30 @@ bool diagonalType(const Matrix& matrix, bool square)
 	\param diagonal булево значение, диагональная ли матрица
 	\return Булево значение true, если матрица единичная и false в ином случае
 */
-bool identityType(const Matrix& matrix, bool diagonal)
+bool isIdentityType(const Matrix& matrix)
 {
-	if (diagonal)
-	{
-		int ones = 0;
-		int k = 0;
-		for (int i = 0; i < matrix.lines; i++)
-		{
-			if (matrix.elements[i][k] == 1)
-			{
-				ones++;
-			}
-			k++;
-		}
-
-		if (ones == matrix.columns)
-		{
-			return true;
-		}
-	}
-	else
+	if (!isDiagonalType(matrix))
 	{
 		return false;
 	}
+			
+	int ones = 0;
+	int k = 0;
+	for (int i = 0; i < matrix.lines; i++)
+	{
+		if (matrix.elements[i][k] == 1)
+		{
+			ones++;
+		}
+		k++;
+	}
+
+	if (ones == matrix.columns)
+	{
+		return true;
+	}
+
+	return false;
 }
 
 /*!
@@ -510,7 +496,7 @@ bool identityType(const Matrix& matrix, bool diagonal)
 	\param matrix матрица, исследование которой проводится
 	\return Булево значение true, если матрица нулевая и false в ином случае
 */
-bool nullType(const Matrix& matrix)
+bool isNullType(const Matrix& matrix)
 {
 	for (int i = 0; i < matrix.lines; i++)
 	{
@@ -526,7 +512,6 @@ bool nullType(const Matrix& matrix)
 	return true;
 }
 
-
 /*!
 	\brief Дружественная функция Определяет, является ли матрица симметричной, путём сравнения елементов с обратными индексами
 	\details матрица называется симметричной, если транспанированная матрица равна исходной
@@ -534,30 +519,27 @@ bool nullType(const Matrix& matrix)
 	\param square булево значения, является ли матрица квадратной
 	\return Булево значение true, если матрица симметричная и false в ином случае
 */
-bool symmetricType(const Matrix& matrix, bool square)
+bool isSymmetricType(const Matrix& matrix)
 {
-	
-	if (square)
-	{
-		for (int i = 0; i < matrix.lines; i++)
-		{
-			for (int j = 0; j < matrix.columns; j++)
-			{
-				if (i == j)
-				{
-					continue;
-				}
-
-				if (matrix.elements[j][i] != matrix.elements[i][j])
-				{
-					return false;
-				}
-			}
-		}
-	}
-	else
+	if (!isSquareType(matrix))
 	{
 		return false;
+	}
+	
+	for (int i = 0; i < matrix.lines; i++)
+	{
+		for (int j = 0; j < matrix.columns; j++)
+		{
+			if (i == j)
+			{
+				continue;
+			}
+
+			if (matrix.elements[j][i] != matrix.elements[i][j])
+			{
+				return false;
+			}
+		}
 	}
 
 	return true;
@@ -570,29 +552,26 @@ bool symmetricType(const Matrix& matrix, bool square)
 	\param square булево значения, является ли матрица квадратной
 	\return Булево значение true, если матрица верхняя треугольная и false в ином случае
 */
-bool upTriangleType(const Matrix& matrix, bool square)
+bool isUpTriangleType(const Matrix& matrix)
 {
-	if (square)
-	{
-		for (int i = 0; i < matrix.lines; i++)
-		{
-			for (int j = 0; j < matrix.columns; j++)
-			{
-				if (i > j && matrix.elements[i][j] != 0)
-				{
-					return false;
-				}
-			}
-		}
-	}
-	else
+	if (!isSquareType(matrix))
 	{
 		return false;
 	}
-
+	
+	for (int i = 0; i < matrix.lines; i++)
+	{
+		for (int j = 0; j < matrix.columns; j++)
+		{
+			if (i > j && matrix.elements[i][j] != 0)
+			{
+				return false;
+			}
+		}
+	}
+	
 	return true;
 }
-
 
 /*!
 	\brief Дружественная функция Определяет, является ли матрица нижней треугольной, путём сравнения елементов ниже главой диагонали с нулём
@@ -601,30 +580,26 @@ bool upTriangleType(const Matrix& matrix, bool square)
 	\param square булево значения, является ли матрица квадратной
 	\return Булево значение true, если матрица нижняя треугольная и false в ином случае
 */
-bool downTriangleType(const Matrix& matrix, bool square)
+bool isDownTriangleType(const Matrix& matrix)
 {
-	
-	if (square)
-	{
-		for (int i = 0; i < matrix.lines; i++)
-		{
-			for (int j = 0; j < matrix.columns; j++)
-			{
-				if (i < j && matrix.elements[i][j] != 0)
-				{
-					return false;
-				}
-			}
-		}
-	}
-	else
+	if (!isSquareType(matrix))
 	{
 		return false;
+	}	
+
+	for (int i = 0; i < matrix.lines; i++)
+	{
+		for (int j = 0; j < matrix.columns; j++)
+		{
+			if (i < j && matrix.elements[i][j] != 0)
+			{
+				return false;
+			}
+		}
 	}
 
 	return true;
 }
-
 
 /*!
 	\brief определяет тип матрицы
@@ -634,15 +609,14 @@ bool downTriangleType(const Matrix& matrix, bool square)
 */
 string Matrix::getMatrixType(const Matrix& matrix)
 {
-	
 	string result = "";
-	bool square = squareType(matrix);
-	bool diagonal = diagonalType(matrix, square);
-	bool identity = identityType(matrix, diagonal);
-	bool nullM = nullType(matrix);
-	bool symmetricM = symmetricType(matrix, square);
-	bool upTriangle = upTriangleType(matrix, square);
-	bool downTriangle = downTriangleType(matrix, square);
+	bool square = isSquareType(matrix);
+	bool diagonal = isDiagonalType(matrix);
+	bool identity = isIdentityType(matrix);
+	bool nullM = isNullType(matrix);
+	bool symmetricM = isSymmetricType(matrix);
+	bool upTriangle = isUpTriangleType(matrix);
+	bool downTriangle = isDownTriangleType(matrix);
 
 	if (downTriangle && !nullM)
 	{
