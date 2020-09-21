@@ -21,6 +21,7 @@ public:
 	Matrix(const Matrix& other);
 	~Matrix();
 	void clean(Matrix& matrix);
+	void newMemory();
 	Matrix operator = (const Matrix& other);
 	Matrix& operator ++ ();
 	Matrix& operator ++ (int number);

@@ -17,6 +17,15 @@ Matrix::Matrix()
 	elements = nullptr;
 }
 
+void Matrix::newMemory()
+{
+	elements = new int* [lines];
+	for (int i = 0; i < lines; i++)
+	{
+		elements[i] = new int[columns];
+	}
+}
+
 /*!
 	Конструктор принимает количество строк и столбцов матрицы и заполняет их нулями
 	\param lines количество строк в содаваемой матрице
@@ -27,9 +36,7 @@ Matrix::Matrix(int lines, int columns)
 	this->lines = lines;
 	this->columns = columns;
 
-	elements = new int* [lines];
-	for (int i = 0; i < lines; i++)
-		elements[i] = new int[columns];
+	newMemory();
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
@@ -50,13 +57,15 @@ Matrix::Matrix(int lines, int columns, int from, int to)
 	this->lines = lines;
 	this->columns = columns;
 
-	elements = new int* [lines];
-	for (int i = 0; i < lines; i++)
-		elements[i] = new int[columns];
+	newMemory();
 
 	for (int i = 0; i < lines; i++)
+	{
 		for (int k = 0; k < columns; k++)
+		{
 			elements[i][k] = rand() % 5; // здесь выражение с from и to для нужного диапазона
+		}
+	}		
 }
 
 /*!
@@ -68,14 +77,15 @@ Matrix::Matrix(const Matrix& other)
 	columns = other.columns;
 	lines = other.lines;
 
-	elements = new int* [lines];
-	for (int i = 0; i < lines; i++)
-		elements[i] = new int[columns];
+	newMemory();
 
 	for (int i = 0; i < lines; i++)
+	{
 		for (int k = 0; k < columns; k++)
+		{
 			elements[i][k] = other.elements[i][k];
-
+		}
+	}		
 }
 
 /*!
@@ -136,8 +146,9 @@ ostream& operator<<(ostream& os, const Matrix& matrix)
 	for (int i = 0; i < matrix.lines; i++)
 	{
 		for (int k = 0; k < matrix.columns; k++)
+		{
 			os << matrix.elements[i][k] << "\t";
-
+		}
 		os << endl << endl;
 	}
 
@@ -155,7 +166,9 @@ istream& operator>>(istream& in, Matrix& matrix)
 	cout << "Fill in the matrix: \n";
 	for (int i = 0; i < matrix.lines; i++) {
 		for (int k = 0; k < matrix.columns; k++)
+		{
 			in >> matrix.elements[i][k];
+		}
 	}
 	return in;
 }
@@ -167,8 +180,12 @@ istream& operator>>(istream& in, Matrix& matrix)
 void Matrix::fillSameElements(const Matrix& other)
 {
 	for (int i = 0; i < lines; i++)
+	{
 		for (int j = 0; j < columns; j++)
+		{
 			elements[i][j] = other.elements[i][j];
+		}
+	}			
 }
 
 /*!
@@ -183,10 +200,8 @@ Matrix Matrix::operator=(const Matrix& other)
 
 	lines = other.lines;
 	columns = other.columns;
-	elements = new int* [lines];
-	for (int i = 0; i < lines; i++)
-		elements[i] = new int[columns];	
 
+	newMemory();
 	fillSameElements(other);
 
 	return *this;
@@ -195,8 +210,12 @@ Matrix Matrix::operator=(const Matrix& other)
 void increment(Matrix& matrix)
 {
 	for (int i = 0; i < matrix.lines; i++)
+	{
 		for (int k = 0; k < matrix.columns; k++)
+		{
 			matrix.elements[i][k]++;
+		}
+	}		
 }
 
 /*!
@@ -206,7 +225,6 @@ void increment(Matrix& matrix)
 Matrix& Matrix::operator++()
 {
 	increment(*this);
-
 	return *this;
 }
 
@@ -218,17 +236,19 @@ Matrix& Matrix::operator++()
 Matrix& Matrix::operator++(int number)
 {
 	Matrix temp = *this;
-
 	increment(*this);
-
 	return *this;
 }
 
 void decrement(Matrix& matrix)
 {
 	for (int i = 0; i < matrix.lines; i++)
+	{
 		for (int k = 0; k < matrix.columns; k++)
+		{
 			matrix.elements[i][k]--;
+		}
+	}	
 }
 
 /*!
@@ -238,7 +258,6 @@ void decrement(Matrix& matrix)
 Matrix& Matrix::operator--()
 {	
 	decrement(*this);
-
 	return *this;
 }
 
@@ -252,7 +271,6 @@ Matrix& Matrix::operator--(int number)
 	Matrix temp = *this;
 
 	decrement(*this);
-
 	return *this;
 }
 
@@ -291,8 +309,13 @@ bool Matrix::operator==(Matrix& other)
 int* Matrix::operator[](unsigned int index)
 {
 	if (index > this->lines || index < 0)
+	{
 		throw "Index is out of bounds!";
-	else return this->elements[index];
+	}
+	else
+	{
+		return this->elements[index];
+	}
 }
 
 /*!
@@ -309,9 +332,13 @@ void Matrix::setLinesNumber(unsigned int newLinesNumber)
 	for (int i = 0; i < newLinesNumber; i++)
 		for (int j = 0; j < this->columns; j++) {
 			if (this->lines <= i)
+			{
 				newMatrix[i][j] = 0;
+			}	
 			else
+			{
 				newMatrix[i][j] = this->elements[i][j];
+			}	
 		}
 
 	delete this->elements;
@@ -333,9 +360,13 @@ void Matrix::setColumnsNumber(unsigned int newColumnsNumber)
 	for (int i = 0; i < this->lines; i++)
 		for (int j = 0; j < newColumnsNumber; j++) {
 			if (this->columns <= j)
+			{
 				newMatrix[i][j] = 0;
+			}
 			else
+			{
 				newMatrix[i][j] = this->elements[i][j];
+			}
 		}
 
 	delete this->elements;
@@ -351,7 +382,6 @@ void Matrix::setColumnsNumber(unsigned int newColumnsNumber)
 */
 Matrix Matrix::loadMatrixFromFile(const string& filepath)
 {
-	
 	ifstream fin;
 	fin.open(filepath);
 	if (!fin.is_open())
@@ -367,9 +397,11 @@ Matrix Matrix::loadMatrixFromFile(const string& filepath)
 	ss >> columns;
 	Matrix newMatrix(lines, columns);
 	for (int i = 0; i < lines; i++) {
+
 		getline(fin, buff);
 		stringstream ss;
 		ss << buff;
+
 		for (int j = 0; j < columns; j++) {
 			ss >> elem;
 			newMatrix[i][j] = elem;
@@ -389,12 +421,12 @@ Matrix Matrix::loadMatrixFromFile(const string& filepath)
 Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns)
 {
 	if (lines > this->lines || columns > this->columns || lines <= 0 || columns <= 0)
+	{
 		throw "Index is out of bounds!";
-
+	}
+		
 	Matrix newMatrix(lines, columns);
-
 	fillSameElements(newMatrix);
-
 	return *this;
 }
 
@@ -413,8 +445,12 @@ Matrix Matrix::transpose()
 	Matrix newMatrix(this->columns, this->lines);
 
 	for (int i = 0; i < this->lines; i++)
+	{
 		for (int j = 0; j < this->columns; j++)
+		{
 			newMatrix[j][i] = this->elements[i][j];
+		}
+	}	
 
 	return newMatrix;
 }
