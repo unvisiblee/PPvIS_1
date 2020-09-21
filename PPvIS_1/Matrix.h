@@ -45,5 +45,6 @@ public:
 	friend bool isDownTriangleType(const Matrix& matrix);
 	friend ostream& operator << (ostream& os, const Matrix& matrix);
 	friend istream& operator >> (istream& in, Matrix& matrix);
-
+	friend void increment(Matrix& matrix);
+	friend void decrement(Matrix& matrix);
 };

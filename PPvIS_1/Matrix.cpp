@@ -58,7 +58,6 @@ Matrix::Matrix(int lines, int columns, int from, int to)
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
 			elements[i][k] = rand() % randomInt - fabs(from);
-
 }
 
 /*!
@@ -80,6 +79,7 @@ Matrix::Matrix(const Matrix& other)
 			elements[i][k] = other.elements[i][k];
 
 }
+
 /*!
 	\brief Очистка динамической памяти, занятой матрицой
 	\param matrix матрица, память которой удаляется
@@ -185,15 +185,20 @@ Matrix Matrix::operator=(const Matrix& other)
 	return *this;
 }
 
+void increment(Matrix& matrix)
+{
+	for (int i = 0; i < matrix.lines; i++)
+		for (int k = 0; k < matrix.columns; k++)
+			matrix.elements[i][k]++;
+}
+
 /*!
 	Префиксный инкремент увеличивает каждый элемент матрицы на единицу
 	\return Разыменованный указатель на данную матрицу
 */
 Matrix& Matrix::operator++()
 {
-	for (int i = 0; i < lines; i++)
-		for (int k = 0; k < columns; k++)
-			elements[i][k]++;
+	increment(*this);
 
 	return *this;
 }
@@ -207,11 +212,16 @@ Matrix& Matrix::operator++(int number)
 {
 	Matrix temp = *this;
 
-	for (int i = 0; i < lines; i++)
-		for (int k = 0; k < columns; k++)
-			elements[i][k]++;
+	increment(*this);
 
 	return *this;
+}
+
+void decrement(Matrix& matrix)
+{
+	for (int i = 0; i < matrix.lines; i++)
+		for (int k = 0; k < matrix.columns; k++)
+			matrix.elements[i][k]--;
 }
 
 /*!
@@ -220,9 +230,7 @@ Matrix& Matrix::operator++(int number)
 */
 Matrix& Matrix::operator--()
 {	
-	for (int i = 0; i < lines; i++)
-		for (int k = 0; k < columns; k++)
-			elements[i][k] -= 1;
+	decrement(*this);
 
 	return *this;
 }
@@ -236,9 +244,7 @@ Matrix& Matrix::operator--(int number)
 {
 	Matrix temp = *this;
 
-	for (int i = 0; i < lines; i++)
-		for (int k = 0; k < columns; k++)
-			elements[i][k] -= 1;
+	decrement(*this);
 
 	return *this;
 }
