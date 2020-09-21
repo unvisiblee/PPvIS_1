@@ -9,6 +9,11 @@ using namespace std;
 
 class Matrix {
 
+private:
+	int lines;
+	int columns;
+	int** elements;
+
 public:
 	Matrix();
 	Matrix(int lines, int columns);
@@ -38,10 +43,5 @@ public:
 	friend bool downTriangleType(const Matrix& matrix, bool square);
 	friend ostream& operator << (ostream& os, const Matrix& matrix);
 	friend istream& operator >> (istream& in, Matrix& matrix);
-
-private:
-	int lines;
-	int columns;
-	int** elements;
 
 };

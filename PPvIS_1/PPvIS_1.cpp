@@ -11,13 +11,14 @@
 
 using namespace std;
 
-void Menu(Matrix& mat)
-{
 /*!
     \brief меню для проверки функционала класса
     \details функции выбираются путём ввода числа из клавиатуры, соответсвующеие описанным в сообщении из консоли. Для этого используется цикл while. После каждого действия матрица выводится на жкран для наглядной проверки работы класса
     \param mat матрица, которая подвергается проверке
  */
+void Menu(Matrix& mat)
+{
+
     int mode = 0;
 
     while (true)
@@ -204,11 +205,6 @@ int main()
         cin >> mat;
         Menu(mat);
     }
-
-    /*Matrix mat(2, 4);
-    cout << mat;
-    mat = mat.transpose();
-    cout << mat;*/
 
     return 0;
 }
