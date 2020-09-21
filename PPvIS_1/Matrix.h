@@ -17,6 +17,7 @@ private:
 public:
 	Matrix();
 	Matrix(int lines, int columns);
+	Matrix(int lines, int columns, int from, int to);
 	Matrix(const Matrix& other);
 	~Matrix();
 	Matrix operator = (const Matrix& other);

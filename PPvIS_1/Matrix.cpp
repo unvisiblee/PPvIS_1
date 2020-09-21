@@ -18,13 +18,12 @@ Matrix::Matrix()
 }
 
 /*!
-	Конструктор принимает количество строк и столбцов матрицы и заполняет их случайными числами в диапазоне от -50 до 50
-	\param lines_p количество строк в содаваемой матрице
-	\param columns_p количество столбцов в создаваемой матрице
+	Конструктор принимает количество строк и столбцов матрицы и заполняет их нулями
+	\param lines количество строк в содаваемой матрице
+	\param columns количество столбцов в создаваемой матрице
 */
 Matrix::Matrix(int lines, int columns)
 {
-	
 	this->lines = lines;
 	this->columns = columns;
 
@@ -34,9 +33,32 @@ Matrix::Matrix(int lines, int columns)
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			elements[i][k] = rand() % 100 - 50;
+			elements[i][k] = 0;
 
-	
+}
+
+/*!
+	Конструктор принимает количество строк и столбцов матрицы и заполняет их случайными числами в диапазоне от from до to
+	\param lines количество строк в содаваемой матрице
+	\param columns количество столбцов в создаваемой матрице
+	\param from нижняя граница диапазона случайных чисел, которыми заполняется матрица
+	\param to верхняя граница диапазона случайных чисел, которыми заполняется матрица
+*/
+Matrix::Matrix(int lines, int columns, int from, int to)
+{
+	to++;
+	int randomInt = to + fabs(from);
+	this->lines = lines;
+	this->columns = columns;
+
+	elements = new int* [lines];
+	for (int i = 0; i < lines; i++)
+		elements[i] = new int[columns];
+
+	for (int i = 0; i < lines; i++)
+		for (int k = 0; k < columns; k++)
+			elements[i][k] = rand() % randomInt - fabs(from);
+
 }
 
 /*!

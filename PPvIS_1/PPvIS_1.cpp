@@ -18,7 +18,6 @@ using namespace std;
  */
 void Menu(Matrix& mat)
 {
-
     int mode = 0;
 
     while (true)
@@ -69,7 +68,13 @@ void Menu(Matrix& mat)
                 cout << "and lines: ";
                 int lines2;
                 cin >> lines2;
-                Matrix mat2(lines2, columns2);
+                int fromRange;
+                cout << "Enter the minimum of random range: ";
+                cin >> fromRange;
+                int toRange;
+                cout << "Enter the maximum of random range: ";
+                cin >> toRange;
+                Matrix mat2(lines2, columns2, fromRange, toRange);
                 mat3 = mat2;
             }
             else if (create2 == 2)
@@ -185,7 +190,13 @@ int main()
         cout << "and lines: ";
         int lines;
         cin >> lines;
-        Matrix mat(lines, columns);
+        int fromRange;
+        cout << "Enter the minimum of random range: ";
+        cin >> fromRange;
+        int toRange;
+        cout << "Enter the maximum of random range: ";
+        cin >> toRange;
+        Matrix mat(lines, columns, fromRange, toRange);
         Menu(mat);
     }
     else if (create == 2)
