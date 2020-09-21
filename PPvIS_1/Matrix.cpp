@@ -142,7 +142,7 @@ int Matrix::getColumns()
 */
 ostream& operator<<(ostream& os, const Matrix& matrix)
 {
-	cout << "-----------\n";
+	cout << "---------------------\n";
 	for (int i = 0; i < matrix.lines; i++)
 	{
 		for (int k = 0; k < matrix.columns; k++)
@@ -164,7 +164,8 @@ ostream& operator<<(ostream& os, const Matrix& matrix)
 istream& operator>>(istream& in, Matrix& matrix)
 {
 	cout << "Fill in the matrix: \n";
-	for (int i = 0; i < matrix.lines; i++) {
+	for (int i = 0; i < matrix.lines; i++)
+	{
 		for (int k = 0; k < matrix.columns; k++)
 		{
 			in >> matrix.elements[i][k];
@@ -235,7 +236,6 @@ Matrix& Matrix::operator++()
 */
 Matrix& Matrix::operator++(int number)
 {
-	Matrix temp = *this;
 	increment(*this);
 	return *this;
 }
@@ -268,8 +268,6 @@ Matrix& Matrix::operator--()
 */
 Matrix& Matrix::operator--(int number)
 {
-	Matrix temp = *this;
-
 	decrement(*this);
 	return *this;
 }
@@ -318,6 +316,7 @@ int* Matrix::operator[](unsigned int index)
 	}
 }
 
+
 /*!
 	Изменение количества строк матрицы
 	\param newLinesNumber число строк в новой матрице
@@ -327,7 +326,10 @@ void Matrix::setLinesNumber(unsigned int newLinesNumber)
 {
 	int** newMatrix = new int* [newLinesNumber];
 	for (int i = 0; i < newLinesNumber; i++)
+	{
 		newMatrix[i] = new int[this->columns];
+	}
+		
 
 	for (int i = 0; i < newLinesNumber; i++)
 		for (int j = 0; j < this->columns; j++) {
@@ -355,9 +357,12 @@ void Matrix::setColumnsNumber(unsigned int newColumnsNumber)
 {
 	int** newMatrix = new int* [this->lines];
 	for (int i = 0; i < this->lines; i++)
+	{
 		newMatrix[i] = new int[newColumnsNumber];
+	}
 
 	for (int i = 0; i < this->lines; i++)
+	{
 		for (int j = 0; j < newColumnsNumber; j++) {
 			if (this->columns <= j)
 			{
@@ -368,6 +373,7 @@ void Matrix::setColumnsNumber(unsigned int newColumnsNumber)
 				newMatrix[i][j] = this->elements[i][j];
 			}
 		}
+	}
 
 	delete this->elements;
 	this->elements = newMatrix;
@@ -384,8 +390,11 @@ Matrix Matrix::loadMatrixFromFile(const string& filepath)
 {
 	ifstream fin;
 	fin.open(filepath);
+
 	if (!fin.is_open())
+	{
 		throw "Error while opening file!";
+	}
 
 	unsigned int lines, columns;
 	int elem;	
@@ -396,13 +405,15 @@ Matrix Matrix::loadMatrixFromFile(const string& filepath)
 	ss >> lines;
 	ss >> columns;
 	Matrix newMatrix(lines, columns);
-	for (int i = 0; i < lines; i++) {
 
+	for (int i = 0; i < lines; i++)
+	{
 		getline(fin, buff);
 		stringstream ss;
 		ss << buff;
 
-		for (int j = 0; j < columns; j++) {
+		for (int j = 0; j < columns; j++)
+		{
 			ss >> elem;
 			newMatrix[i][j] = elem;
 		}
@@ -520,6 +531,7 @@ bool isIdentityType(const Matrix& matrix)
 			
 	int ones = 0;
 	int k = 0;
+
 	for (int i = 0; i < matrix.lines; i++)
 	{
 		if (matrix.elements[i][k] == 1)
