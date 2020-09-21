@@ -32,7 +32,7 @@ public:
 	void setColumnsNumber(unsigned int columns);
 	Matrix loadMatrixFromFile(const string& path);
 	Matrix extractSubMatrix(unsigned int lines, unsigned int columns);
-	string getMatrixType(const Matrix& matrix);
+	string getMatrixType();
 	Matrix transpose();
 	int getLines();
 	int getColumns();

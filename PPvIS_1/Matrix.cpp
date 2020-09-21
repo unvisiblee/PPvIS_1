@@ -47,7 +47,6 @@ Matrix::Matrix(int lines, int columns)
 Matrix::Matrix(int lines, int columns, int from, int to)
 {
 	to++;
-	int randomInt = to + fabs(from);
 	this->lines = lines;
 	this->columns = columns;
 
@@ -57,7 +56,7 @@ Matrix::Matrix(int lines, int columns, int from, int to)
 
 	for (int i = 0; i < lines; i++)
 		for (int k = 0; k < columns; k++)
-			elements[i][k] = rand() % randomInt - fabs(from);
+			elements[i][k] = rand() % 5; // здесь выражение с from и to для нужного диапазона
 }
 
 /*!
@@ -66,7 +65,6 @@ Matrix::Matrix(int lines, int columns, int from, int to)
 */
 Matrix::Matrix(const Matrix& other) 
 {
-	
 	columns = other.columns;
 	lines = other.lines;
 
@@ -613,16 +611,16 @@ bool isDownTriangleType(const Matrix& matrix)
 	\param matrix матрица, исследование которой производится
 	\return строку, которая содержит информацию о типе переданой матрицы
 */
-string Matrix::getMatrixType(const Matrix& matrix)
+string Matrix::getMatrixType()
 {
 	string result = "";
-	bool square = isSquareType(matrix);
-	bool diagonal = isDiagonalType(matrix);
-	bool identity = isIdentityType(matrix);
-	bool nullM = isNullType(matrix);
-	bool symmetricM = isSymmetricType(matrix);
-	bool upTriangle = isUpTriangleType(matrix);
-	bool downTriangle = isDownTriangleType(matrix);
+	bool square = isSquareType(*this);
+	bool diagonal = isDiagonalType(*this);
+	bool identity = isIdentityType(*this);
+	bool nullM = isNullType(*this);
+	bool symmetricM = isSymmetricType(*this);
+	bool upTriangle = isUpTriangleType(*this);
+	bool downTriangle = isDownTriangleType(*this);
 
 	if (downTriangle && !nullM)
 	{

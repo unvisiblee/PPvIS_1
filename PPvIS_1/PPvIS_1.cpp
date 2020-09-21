@@ -162,7 +162,7 @@ void Menu(Matrix& mat)
 
         if (mode == 12)
         {
-            cout << mat.getMatrixType(mat);
+            cout << mat.getMatrixType();
         }
     }
 }
