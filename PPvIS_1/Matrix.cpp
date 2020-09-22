@@ -45,17 +45,19 @@ Matrix::Matrix(int lines, int columns)
 }
 
 /*!
-	Конструктор принимает количество строк и столбцов матрицы и заполняет их случайными числами в диапазоне от from до to
+	Конструктор принимает количество строк и столбцов матрицы и заполняет их случайными числами в диапазоне от bottomBound до upperBound
 	\param lines количество строк в содаваемой матрице
 	\param columns количество столбцов в создаваемой матрице
-	\param from нижняя граница диапазона случайных чисел, которыми заполняется матрица
-	\param to верхняя граница диапазона случайных чисел, которыми заполняется матрица
+	\param bottomBound нижняя граница диапазона случайных чисел, которыми заполняется матрица
+	\param upperBound верхняя граница диапазона случайных чисел, которыми заполняется матрица
 */
-Matrix::Matrix(int lines, int columns, int from, int to)
+Matrix::Matrix(int lines, int columns, int bottomBound, int upperBound)
 {
-	to++;
+
 	this->lines = lines;
 	this->columns = columns;
+	upperBound++;
+	int range = upperBound - bottomBound;
 
 	newMemory();
 
@@ -63,7 +65,7 @@ Matrix::Matrix(int lines, int columns, int from, int to)
 	{
 		for (int k = 0; k < columns; k++)
 		{
-			elements[i][k] = rand() % 5; // здесь выражение с from и to для нужного диапазона
+			elements[i][k] = rand() % range + bottomBound;; // здесь выражение с from и to для нужного диапазона
 		}
 	}		
 }
