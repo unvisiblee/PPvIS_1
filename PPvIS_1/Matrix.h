@@ -17,7 +17,7 @@ private:
 public:
 	Matrix();
 	Matrix(int lines, int columns);
-	Matrix(int lines, int columns, int from, int to);
+	Matrix(int lines, int columns, int bottomBound, int upperBound);
 	Matrix(const Matrix& other);
 	~Matrix();
 	void clean(Matrix& matrix);
