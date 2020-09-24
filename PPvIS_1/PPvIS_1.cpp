@@ -137,7 +137,7 @@ void Menu(Matrix& mat)
             int numcolumns;
             cout << "Enter the number of columns: ";
             cin >> numcolumns;
-            mat.setLinesNumber(numcolumns);
+            mat.setColumnsNumber(numcolumns);
         }
 
         if (mode == 10)

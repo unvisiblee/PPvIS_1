@@ -39,9 +39,12 @@ Matrix::Matrix(int lines, int columns)
 	newMemory();
 
 	for (int i = 0; i < lines; i++)
+	{
 		for (int k = 0; k < columns; k++)
+		{
 			elements[i][k] = 0;
-
+		}
+	}
 }
 
 /*!
@@ -182,13 +185,15 @@ istream& operator>>(istream& in, Matrix& matrix)
 */
 void Matrix::fillSameElements(const Matrix& other)
 {
-	for (int i = 0; i < lines; i++)
+	for (int i = 0; i < other.lines; i++)
 	{
-		for (int j = 0; j < columns; j++)
+		for (int j = 0; j < other.columns; j++)
 		{
 			elements[i][j] = other.elements[i][j];
 		}
-	}			
+	}
+	lines = other.lines;
+	columns = other.columns;
 }
 
 /*!
@@ -334,7 +339,8 @@ void Matrix::setLinesNumber(unsigned int newLinesNumber)
 		
 
 	for (int i = 0; i < newLinesNumber; i++)
-		for (int j = 0; j < this->columns; j++) {
+		for (int j = 0; j < this->columns; j++)
+		{
 			if (this->lines <= i)
 			{
 				newMatrix[i][j] = 0;
@@ -365,7 +371,8 @@ void Matrix::setColumnsNumber(unsigned int newColumnsNumber)
 
 	for (int i = 0; i < this->lines; i++)
 	{
-		for (int j = 0; j < newColumnsNumber; j++) {
+		for (int j = 0; j < newColumnsNumber; j++)
+		{
 			if (this->columns <= j)
 			{
 				newMatrix[i][j] = 0;
@@ -437,7 +444,7 @@ Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns)
 	{
 		throw "Index is out of bounds!";
 	}
-		
+	
 	Matrix newMatrix(lines, columns);
 	fillSameElements(newMatrix);
 	return *this;
