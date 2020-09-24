@@ -56,7 +56,6 @@ Matrix::Matrix(int lines, int columns)
 */
 Matrix::Matrix(int lines, int columns, int bottomBound, int upperBound)
 {
-
 	this->lines = lines;
 	this->columns = columns;
 	upperBound++;
@@ -192,8 +191,6 @@ void Matrix::fillSameElements(const Matrix& other)
 			elements[i][j] = other.elements[i][j];
 		}
 	}
-	lines = other.lines;
-	columns = other.columns;
 }
 
 /*!
@@ -337,19 +334,20 @@ void Matrix::setLinesNumber(unsigned int newLinesNumber)
 		newMatrix[i] = new int[this->columns];
 	}
 		
-
 	for (int i = 0; i < newLinesNumber; i++)
+	{
 		for (int j = 0; j < this->columns; j++)
 		{
 			if (this->lines <= i)
 			{
 				newMatrix[i][j] = 0;
-			}	
+			}
 			else
 			{
 				newMatrix[i][j] = this->elements[i][j];
-			}	
+			}
 		}
+	}
 
 	delete this->elements;
 	this->elements = newMatrix;
@@ -442,12 +440,20 @@ Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns)
 {
 	if (lines > this->lines || columns > this->columns || lines <= 0 || columns <= 0)
 	{
-		throw "Index is out of bounds!";
+		throw "Index out of bounds!";
 	}
-	
+
 	Matrix newMatrix(lines, columns);
-	fillSameElements(newMatrix);
-	return *this;
+
+	for (int i = 0; i < lines; i++)
+	{
+		for (int j = 0; j < columns; j++)
+		{
+			newMatrix[i][j] = elements[i][j];
+		}
+	}	
+
+	return newMatrix;
 }
 
 /*!

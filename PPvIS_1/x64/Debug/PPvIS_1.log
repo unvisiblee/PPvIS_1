@@ -1,10 +1,12 @@
 ﻿  matrix.cpp
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(316,12): warning C4018: >: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(335,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(341,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(374,21): warning C4018: <: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(418,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(424,21): warning C4018: <: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(443,12): warning C4018: >: несоответствие типов со знаком и без знака
-D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(443,37): warning C4018: >: несоответствие типов со знаком и без знака
+D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(313,12): warning C4018: >: несоответствие типов со знаком и без знака
+D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(332,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(337,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(372,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(416,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(422,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(441,12): warning C4018: >: несоответствие типов со знаком и без знака
+D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(441,37): warning C4018: >: несоответствие типов со знаком и без знака
+D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(448,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\study\2course\3sem\PPVISlab\PPvIS_1\PPvIS_1\matrix.cpp(450,21): warning C4018: <: несоответствие типов со знаком и без знака
   PPvIS_1.vcxproj -> D:\study\2course\3sem\PPVISlab\PPvIS_1\x64\Debug\PPvIS_1.exe
