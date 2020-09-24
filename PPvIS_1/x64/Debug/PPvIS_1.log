@@ -1,3 +1,12 @@
-﻿  PPvIS_1.cpp
-C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\PPvIS_1.cpp(181,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+﻿  matrix.cpp
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(311,12): warning C4018: '>': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(330,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(336,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(368,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(411,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(417,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(436,12): warning C4018: '>': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(436,37): warning C4018: '>': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(441,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\bobaw\Desktop\PPvIS_1\PPvIS_1\matrix.cpp(442,21): warning C4018: '<': signed/unsigned mismatch
   PPvIS_1.vcxproj -> C:\Users\bobaw\Desktop\PPvIS_1\x64\Debug\PPvIS_1.exe

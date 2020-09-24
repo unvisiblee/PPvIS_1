@@ -182,13 +182,13 @@ istream& operator>>(istream& in, Matrix& matrix)
 */
 void Matrix::fillSameElements(const Matrix& other)
 {
-	for (int i = 0; i < lines; i++)
+	for (int i = 0; i < other.lines; i++)
 	{
-		for (int j = 0; j < columns; j++)
+		for (int j = 0; j < other.columns; j++)
 		{
 			elements[i][j] = other.elements[i][j];
 		}
-	}			
+	}
 }
 
 /*!
@@ -434,13 +434,15 @@ Matrix Matrix::loadMatrixFromFile(const string& filepath)
 Matrix Matrix::extractSubMatrix(unsigned int lines, unsigned int columns)
 {
 	if (lines > this->lines || columns > this->columns || lines <= 0 || columns <= 0)
-	{
-		throw "Index is out of bounds!";
-	}
-		
+		throw "Index out of bounds!";
+
 	Matrix newMatrix(lines, columns);
-	fillSameElements(newMatrix);
-	return *this;
+
+	for (int i = 0; i < lines; i++)
+		for (int j = 0; j < columns; j++)
+			newMatrix[i][j] = elements[i][j];
+
+	return newMatrix;
 }
 
 /*!
